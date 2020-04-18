@@ -13,10 +13,15 @@ const ProgressBarPlugin=require('progress-bar-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 // js优化
 const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
-
+// js 压缩
 const TerserPlugin = require('terser-webpack-plugin');
+// 打包进度耗时分析
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+ 
+const smp = new SpeedMeasurePlugin();
 
-module.exports=merge(
+
+module.exports= smp.wrap(merge(
    baseWebpackConfig,
    {
       mode: 'production',
@@ -96,4 +101,4 @@ module.exports=merge(
          })
       ]
    }
-);
+));

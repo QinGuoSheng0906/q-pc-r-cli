@@ -5,7 +5,22 @@ import { Button } from 'antd'
 import { Citys } from '@/stores/actions/index'
 import { ASNYJOB1 } from '@/stores/actions/actionTypes'
 import { Utils } from '@/lib'
+import './style.less'
+import Child from './component/child'
+// hook 使用
+
 class Home extends Component {
+   constructor (props) {
+      super(props)
+      this.state = {
+         text: '111'
+      }
+   }
+   static getDerivedStateFromProps (props) {
+      console.log(props)
+      return null
+   }
+   
    componentDidMount () {
       let citys = JSON.parse(JSON.stringify(this.props.citys))
       citys[2] = { key: '2',name:'张三' }
@@ -19,7 +34,9 @@ class Home extends Component {
       console.log(dd)
       let str = '张三李四王麻子'
       console.log(str.includes('李飞')) // false
+      console.log(this.state)
    }
+
    view = () => {
       let { jobs } = this.props
       return jobs.map((i,index) => {
@@ -28,15 +45,17 @@ class Home extends Component {
          )
       })
    }
+   
    render () {
       let { jobs, asyncJob1 } = this.props
       return (
-         <div>
+         <div className = 'home'>
             这里是首页
             <div>数据异步切换：{ jobs && this.view() }</div>
             <div>
                <Button onClick = { asyncJob1 }>点击</Button>
             </div>
+            <Child />
          </div>
       )
    }

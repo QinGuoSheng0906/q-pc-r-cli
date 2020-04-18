@@ -14,7 +14,7 @@ import Home from '@/pages/home'
 class RouterApp extends Component {
    // 路由视图
    views = () => {
-      
+      console.log(111)
    }
    render () {
       return (

@@ -20,6 +20,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //多线程打包
 const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({ size: 3 });
+
+// 去除无用的样式
+// const glob = require('glob');
+// const PurgecssWebpackPlugin = require('purgecss-webpack-plugin');
 module.exports={
    //输入
    entry: {
@@ -119,6 +123,10 @@ module.exports={
          filename: 'styles/[name].[hash:4].css',
          chunkFilename:'styles/[name].[hash:4].css'
       }),
+      // // 去除无用的样式
+      // new PurgecssWebpackPlugin({
+      //    paths: glob.sync(path.join(__dirname, '../src/**/*'), { nodir: true })
+      // }),
       // 多线程打包
       new HappyPack({
          // 用唯一的标识符 id 来代表当前的 HappyPack 是用来处理一类特定的文件
