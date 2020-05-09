@@ -11,6 +11,7 @@ import { Main } from '@/components/index'                           // 容器组
 import Login from '@/pages/login';                                  // 登录组件单独处理
 import Err404 from '@/pages/404';                                   // 404
 import Home from '@/pages/home'
+import Hooks from '@/pages/hooks'
 class RouterApp extends Component {
    // 路由视图
    views = () => {
@@ -22,6 +23,7 @@ class RouterApp extends Component {
             <Switch>
                <Route path = '/' exact component = { Login } />
                <Route path = '/login' exact component = { Login } />
+               <Route path = '/hooks' exact component = { Hooks } />
                <Main history = { this.props.history }>
                   <Switch>
                      <Route path = '/home'  component = { Home } />

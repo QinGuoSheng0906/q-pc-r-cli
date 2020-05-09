@@ -13,10 +13,11 @@ class Main extends Component {
    render () {
       return (
          <>
+            <h1>这里是容器</h1>
             <Header />
             <Sider />
             <Content> 
-               { this.props.children }
+               { /* { this.props.children } */ }
             </Content>
          </>
       )

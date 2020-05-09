@@ -150,11 +150,12 @@ module.exports={
       // 指定以下目录寻找第三方模块，避免webpack往父级目录递归搜索
       modules: [ path.resolve(__dirname, '../src'), path.resolve('node_modules') ],
       alias: {
-         '@': path.resolve(__dirname, '../src'),
-         'assets': path.resolve(__dirname, '../src/assets'),
-         'components': path.resolve(__dirname, '../src/components'),
-         'pages': path.resolve(__dirname, '../src/pages/'),
-         'lib': path.resolve(__dirname, '../src/lib')
+         '@': path.resolve(__dirname, '../src/'),
+         '@assets': path.resolve(__dirname, '../src/assets/'),
+         '@components': path.resolve(__dirname, '../src/components/'),
+         '@pages': path.resolve(__dirname, '../src/pages/'),
+         '@lib': path.resolve(__dirname, '../src/lib/'),
+         '@actions': path.resolve(__dirname, '../src/stores/actions/')
       },
       enforceExtension: false,
       extensions: [ '.js', '.jsx',  '.css', '.less' , '.json' ]
