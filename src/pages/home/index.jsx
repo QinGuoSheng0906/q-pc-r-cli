@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button } from 'antd'
+import { Button, Badge } from 'antd'
 // actions
 import { Citys } from '@/stores/actions/index'
 import { ASNYJOB1 } from '@/stores/actions/actionTypes'
@@ -50,7 +50,9 @@ class Home extends Component {
       let { jobs, asyncJob1 } = this.props
       return (
          <div className = 'home'>
-            这里是首页
+            <Badge count = { 5 }>
+               这里是首页
+            </Badge>
             <div>数据异步切换：{ jobs && this.view() }</div>
             <div>
                <Button onClick = { asyncJob1 }>点击</Button>

@@ -27,7 +27,7 @@ class RouterApp extends Component {
                <Main history = { this.props.history }>
                   <Switch>
                      <Route path = '/home'  component = { Home } />
-                     <Route exact component = { Err404 } />
+                     <Route component = { Err404 } />
                   </Switch>
                </Main>
                <Route exact component = { Err404 } />
