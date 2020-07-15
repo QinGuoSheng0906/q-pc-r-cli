@@ -17,7 +17,7 @@ class Main extends Component {
             <Header />
             <Sider />
             <Content> 
-               { /* { this.props.children } */ }
+               { this.props.children }
             </Content>
          </>
       )

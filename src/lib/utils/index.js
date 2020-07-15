@@ -144,6 +144,12 @@ const expExcel = (data, name) => {
       navigator.msSaveBlob(blob, fileName)
    }
 }
+
+// 参数验证不能为空
+const isParmaRequired = () => {
+   throw new Error('param is required')
+}
+
 export default {
    moneyFormat,
    phoneFormat,
@@ -152,5 +158,6 @@ export default {
    isType,
    scrollTop,
    arrayToHeavy,
-   expExcel
+   expExcel,
+   isParmaRequired
 }

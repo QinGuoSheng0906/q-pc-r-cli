@@ -24,7 +24,7 @@ class RouterApp extends Component {
                <Route path = '/' exact component = { Login } />
                <Route path = '/login' exact component = { Login } />
                <Route path = '/hooks' exact component = { Hooks } />
-               <Main history = { this.props.history }>
+               <Main { ...this.props }>
                   <Switch>
                      <Route path = '/home'  component = { Home } />
                      <Route component = { Err404 } />

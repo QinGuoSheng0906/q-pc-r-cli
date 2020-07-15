@@ -11,7 +11,7 @@ window.Map = Map;
 // 入口配置文件
 import React from 'react';
 import { render } from 'react-dom';
-import {  HashRouter as Router } from 'react-router-dom';
+import {  BrowserRouter as Router } from 'react-router-dom';
 // 状态管理
 import { Provider } from 'react-redux';
 import Store from './stores';                       // 状态管理数据
