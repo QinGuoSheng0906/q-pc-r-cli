@@ -17,7 +17,6 @@ const moneyFormat = (money, point) => {
       des = parseInt(des, 10) / times;
       return (des + '').replace(/[^\d.-]/g, '');
    };
-   console.log('money', money);
    money = toFixed(money, point);
    let l = money
       .split('.')[0]
