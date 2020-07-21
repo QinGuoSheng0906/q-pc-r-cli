@@ -5,22 +5,28 @@
 
 // 金钱的保留两位小数，3位隔开
 const moneyFormat = (money, point) => {
-   point = point > 0 && point <= 20 ? point : 2
-   let isNegative = false
+   point = point > 0 && point <= 20 ? point : 2;
+   let isNegative = false;
    if (money < 0) {
-      money = Math.abs(money)
-      isNegative = true
+      money = Math.abs(money);
+      isNegative = true;
    }
-   money =
-        parseFloat((money + '').replace(/[^\d.-]/g, '')).toFixed(point) + ''
+   let toFixed = (num, s) => {
+      let times = Math.pow(10, s);
+      let des = num * times + .5;
+      des = parseInt(des, 10) / times;
+      return (des + '').replace(/[^\d.-]/g, '');
+   };
+   console.log('money', money);
+   money = toFixed(money, point);
    let l = money
       .split('.')[0]
       .split('')
-      .reverse()
-   let r = money.split('.')[1]
-   let result = ''
+      .reverse();
+   let r = money.split('.')[1] ? money.split('.')[1] : '00';
+   let result = '';
    for (let i = 0; i < l.length; i++) {
-      result += l[i] + ((i + 1) % 3 === 0 && i + 1 !== l.length ? ',' : '')
+      result += l[i] + ((i + 1) % 3 === 0 && i + 1 !== l.length ? ',' : '');
    }
    return (
       (isNegative ? '-' : '') +
@@ -30,9 +36,8 @@ const moneyFormat = (money, point) => {
            .join('') +
         '.' +
         r
-   )
-}
-
+   );
+};
 //  手机格式化 中间****号 isStar 是否星号替换 默认需要
 const phoneFormat = (phone, isStar = true) => {
    if(!phone) return ''
