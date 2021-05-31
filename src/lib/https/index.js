@@ -29,7 +29,7 @@ Axios.defaults.baseURL = isLocalDev === true ? '' : config[process.env.PROCESS_E
 // 请求拦截
 Axios.interceptors.request.use(
    config => {
-      // if (!isInWhiteList(config.url)) {}
+      if (!isInWhiteList(config.url)) {}
       return config
    },
    err => {

@@ -1,6 +1,7 @@
 import { put } from 'redux-saga/effects'
 import { Job } from '../actions/index';
 
+
 function* getJob () {
    let job = [
       { code: '01',jobName: '财务' }
@@ -20,7 +21,7 @@ function* getJob2 () {
    yield put(action)
 }
 
-export  default {
+export default {
    getJob,
    getJob2
 }

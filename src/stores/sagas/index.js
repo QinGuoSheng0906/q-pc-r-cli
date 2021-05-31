@@ -3,7 +3,7 @@
    秦国胜
    2018-08-12
 */
-import { takeEvery } from 'redux-saga/effects'
+import { takeEvery, put } from 'redux-saga/effects'
 import { ASNYJOB, ASNYJOB1 } from '../actions/actionTypes'
 
 import getJob from './job'
@@ -13,6 +13,12 @@ function* mySaga () {
    // 拦截对应actionTpe 的 action 
    yield takeEvery(ASNYJOB, getJob.getJob)
    yield takeEvery(ASNYJOB1, getJob.getJob2)
+   yield takeEvery(ASNYJOB1, function*() {
+      yield put({
+         type: JOB,
+         data: {}
+      })
+   });
 }
  
 export default mySaga

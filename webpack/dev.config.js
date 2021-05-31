@@ -8,6 +8,8 @@ const path = require('path');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const baseWebpackConfig = require('./base.config');
+
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin'); // 模块提供了中间缓存 提高构建速度
 // 打包日志
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
@@ -51,9 +53,9 @@ module.exports=merge(
                message: 'http://localhost:9999/',
                notes: [ 'http://localhost:9999/' ]
             }
-         })
+         }),
          // 提升编译速度
-         // new HardSourceWebpackPlugin()
+         new HardSourceWebpackPlugin()
       ],
       //本地服务器配置
       devServer: {
