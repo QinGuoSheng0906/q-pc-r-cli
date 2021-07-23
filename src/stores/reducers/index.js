@@ -1,15 +1,12 @@
 /*
-   整合合并  reucer加工函数
-   秦国胜
-   2019-12-05
+*整合合并  reucer加工函数
+*秦国胜
+*2020-07-02
 */
 import { combineReducers } from 'redux';
 
-import citys from './city'
-import jobs from './job'
+import home from './home';
 
-// 创建规则
 export  default combineReducers({
-   citys,
-   jobs
+    home
 });

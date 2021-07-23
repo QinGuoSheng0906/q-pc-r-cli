@@ -7,20 +7,20 @@ import React, { Component } from 'react'
 import './404.less'
 
 class Err404 extends Component {
-   componentDidMount () {
-      document.title  = '404'
-   }
-   render () {
-      return (
-         <div className = 'err-404'>
-            <div className = 'err-text cl-2'>
-               <span className = 'text'>4</span>
-               <span className = 'text text-1'>0</span>
-               <span className = 'text'>4</span>
+    componentDidMount () {
+        document.title  = '404'
+    }
+    render () {
+        return (
+            <div className = 'err-404'>
+                <div className = 'err-text cl-2'>
+                    <span className = 'text'>4</span>
+                    <span className = 'text text-1'>0</span>
+                    <span className = 'text'>4</span>
+                </div>
             </div>
-         </div>
-      )
-   }
+        )
+    }
 }
 
 export default Err404

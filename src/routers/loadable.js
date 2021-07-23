@@ -6,9 +6,10 @@
 
 import Loadable from 'react-loadable';
 import { Loading } from '@/components/index';  
-export default (loader,loading = Loading) => {
-   return Loadable({
-      loader,
-      loading
-   });
+
+export default (loader) => {
+    return Loadable({
+        loader,
+        loading: Loading
+    });
 }

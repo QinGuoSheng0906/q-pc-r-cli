@@ -8,18 +8,18 @@ import { Spin } from 'antd'
 import './loading.less'
 
 class Loading extends Component {
-   render () {
-      return (
-         <div className = 'loading'>
-            <div className = 'loading-content'>
-               <div className = 'loading-spin' >
-                  <Spin tip = '加载中...' size = 'large' />
-               </div>
-            </div>
+    render () {
+        return (
+            <div className = 'loading'>
+                <div className = 'loading-content'>
+                    <div className = 'loading-spin' >
+                        <Spin tip = '加载中...' size = 'large' />
+                    </div>
+                </div>
             
-         </div>
-      );
-   }
+            </div>
+        );
+    }
 }
 
 export default  Loading;

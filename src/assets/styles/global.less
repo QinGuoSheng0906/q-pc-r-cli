@@ -5,157 +5,163 @@
 */
 
 @charset "utf-8";
-@theme-cl-1: #1abc9c; // 主题色 深蓝色
-@theme-cl-2: #3e518b; // 主题色
-@cl-1: #302222; // 图标色
-@cl-2: #e24719; // 图标色
-@cl-3: #E1E4ED; // 图标色
-@cl-4: #F4C11B; // 图标色
-@cl-5: #1FD092; // 图标色
+@import './size.less';
 
-html,
-body {
-  /* 抗锯齿，使字体图标更清晰 */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-overflow-scrolling: touch;
-  // overflow-scrolling: touch;
-  color: #313131;
+@theme-c-1abc9c: #1abc9c; // 主题色 深蓝色
+@theme-c-3e518b: #3e518b; // 主题色
+@c-302222: #302222; // 图标色
+@c-E1E4ED: #E1E4ED; // 图标色
+@c-333: #333;
+@c-555: #555;
+@c-666: #666;
+@c-888: #888;
+@c-999: #999;
+
+
+html,body {
+    /* 抗锯齿，使字体图标更清晰 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-overflow-scrolling: touch;
+    // overflow-scrolling: touch;
+    height: 100%;
+    color: #313131;
+    font-size: 12px;
 }
 
-html,
-body,
-ul,
-ol,
-li,
-dl,
-dt,
-dd,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-img,
-div,
-a,
-b,
-s,
-i,
-span,
-header,
-article,
-nav,
-section,
-footer,
-form,
-input,
-select,
-option,
-textarea,
-button,
-label,
-table,
-tr,
-td,
-th,
-thead,
-tbody,
-tfoot,
-canvas,
-video,
-audio,
-svg {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  font-family: "Microsoft YaHei", "Avenir", Helvetica, Arial, sans-serif;
+html,body,ul,ol,li,dl,dt,dd,p,h1,h2,h3,h4,h5,h6,img,div,a,b,s,i,span,
+header,article,nav,section,footer,form,input,select,option,textarea,
+button,label,table,tr,td,th,thead,tbody,tfoot,canvas,video,audio,svg {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei", "Avenir", Helvetica, Arial, sans-serif;
+    list-style: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: normal;
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
 }
 
 input {
-  -webkit-appearance: none;
+    -webkit-appearance: none;
 }
 
 img {
-  object-fit: cover;
-  vertical-align: bottom;
-  border: none;
+    object-fit: cover;
+    vertical-align: bottom;
+    border: none;
 }
 
 a {
-  color: #333;
-  text-decoration: none;
+    color: #333;
+    text-decoration: none;
 }
 
 // 背景相关
-.bg-1 {
-  background: @theme-cl-1;
+.bg-E1E4ED{
+    background: @c-E1E4ED;
 }
 
 // 字体颜色相关
-.cl-1 {
-  color: @theme-cl-1;
+.f-c-302222{
+    color: @c-302222
 }
 
-.cl-2 {
-  color: @cl-2;
+
+// 文本布局
+.t-j { // 两端对齐
+    text-align: justify;
 }
 
-// 布局相关
-
-// 超出宽度省略号
-.leave-out {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.t-l {
+    text-align: left;
 }
 
-// 文本两端布局
-.text-justify {
-  text-align: justify;
+.t-c {
+    text-align: center;
 }
+
+.t-r {
+    text-align: right;
+}
+
 
 // 浮动
 .f-c::after {
-  display: block;
-  content: "";
-  clear: both;
+    display: block;
+    clear: both;
+    content: "";
 }
 
 .f-l {
-  float: left;
+    float: left;
 }
 
 .f-r {
-  float: right;
+    float: right;
+}
+
+// 超出宽度省略号
+.spill {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+// 水平垂直居中  -- 定位
+.layout-position-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform:translate(-50%,-50%) ;
+    transform: translate(-50%,-50%);
+}
+
+// 水平垂直居中  -- table  外部父级必须有固定的宽高。
+.layout-table-center{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+// flex-box布局布局相关
+.layout-flex{
+    display: flex;
+}
+
+// 水平垂直居中  -- 弹性布局
+.layout-flex-center{
+    .layout-flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+// 水平两端布局 -- 弹性布局
+.layout-space-between{
+    .layout-flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+// 边框线 解决一像素问题 底部边框一像素
+.border-1px::after{
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #44B3E1;
+    transform: scaleY(0.5); // 纵向缩放
+    transform-origin: 0 0;
+    content: '';
 }
 
 #root {
-  height: 100%;
-
-  .ant-menu {
-    background: transparent;
-    color: #fff;
-  }
-
-  .cy-layout-sider {
-    .ant-menu-inline,
-    .ant-menu-vertical {
-      border-right: none;
-    }
-  }
+    height: 100%;
 }

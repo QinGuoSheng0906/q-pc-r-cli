@@ -1,12 +1,17 @@
+/*
+*  登录页
+*/
+
 import React, { Component } from 'react'
 import './style.less'
 class Login extends Component {
-   render () {
-      return (
-         <div className = 'login'>
+    render () {
+        // console.log(1111);
+        return (
+            <div className = 'login'>
             这里是登录
-         </div>
-      )
-   }
+            </div>
+        )
+    }
 }
-export default Login
+export default Login;

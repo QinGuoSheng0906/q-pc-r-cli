@@ -1,42 +1,49 @@
 /*
-   路由配置
-   秦国胜
-   2019-12-18
+*  路由配置
+*  秦国胜
 */
-import React, { Component } from 'react';
-import { Route, Switch /* Redirect */ } from 'react-router-dom';
-import ErrorBoundary from './errorBoundary';  
 
-import { Main } from '@components/index'                           // 容器组件 
-import Login from '@pages/login';                                  // 登录组件单独处理
-import Err404 from '@pages/404';                                   // 404
-import Home from '@pages/home'
-import Hooks from '@pages/hooks'
-import Study from '@pages/study'
+import React, { Component } from 'react';
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+
+import ErrorBoundary from './errorBoundary';  
+import Loadable from './loadable';  
+
+import Main from '@components/main';
+import Err404 from '@pages/404';
+import Login from '@pages/login';
+import Home from '@pages/home';
+// import List from '@pages/list';
+
+const isRedirect = false;
+
 class RouterApp extends Component {
-   // 路由视图
-   views = () => {
-      console.log(111)
-   }
-   render () {
-      return (
-         <ErrorBoundary>
-            <Switch>
-               <Route path = '/' exact component = { Login } />
-               <Route path = '/login' exact component = { Login } />
-               <Route path = '/hooks' exact component = { Hooks } />
-               <Route path = '/study' exact component = { Study } />
-               <Main { ...this.props }>
-                  <Switch>
-                     <Route path = '/home'  component = { Home } />
-                     <Route component = { Err404 } />
-                  </Switch>
-               </Main>
-               <Route exact component = { Err404 } />
-            </Switch>
-         </ErrorBoundary>
-       
-      )
-   }
+    render () {
+        return (
+            <HashRouter>
+                <ErrorBoundary>
+                    <Switch>
+                        <Route path = '/login' exact component = { Login } />
+                        <Route path = '/' render = { () => {
+                            return (
+                                isRedirect ?
+                                    <Redirect to = '/login' component = { Login } />
+                                    :
+                                    <Main>
+                                        <Switch>
+                                            <Route path = '/' exact component = { Home } />
+                                            <Route path = '/list' exact component = { Loadable(() => import('@pages/list')) } />
+                                            <Route component = { Err404 } />
+                                        </Switch>
+                                    </Main>
+                            )
+                        } }
+                        />
+                        <Route component = { Err404 } />
+                    </Switch>
+                </ErrorBoundary>
+            </HashRouter>
+        )
+    }
 }
 export default RouterApp
