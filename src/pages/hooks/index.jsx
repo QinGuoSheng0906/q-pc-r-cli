@@ -8,13 +8,30 @@ import React, { useState  } from 'react'; // useEffect
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { modalUpdate } from '@actions/modal';
-import {  } from 'antd';
+import { Button } from 'antd';
 
 function Hooks () {
     // let { modal, modalUpdate } = props;
     const[ text ] = useState('这是一个文本'); // setText
+    const [ count , setCount ] = useState(0);
+    const handleClick = () => {
+        setTimeout(() => {
+            setCount((prevCount) => prevCount + 1);
+        }, 3000)
+    }
+    function handleClickSync () {
+        setCount(count + 1);
+    }
     return (
-        <div>这里是hook是， { text }</div>
+        <div className = 'p-l-10'>
+            这里是hook是， { text }
+            <div>conunt: { count  }</div>
+            <div className = 'p-b-10'>
+                <Button type = 'primary' onClick = { handleClick }>setTemout</Button>
+            </div>
+           
+            <Button type = 'primary' onClick = { handleClickSync }>点击</Button>
+        </div>
     );
 }
 

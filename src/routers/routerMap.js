@@ -3,33 +3,61 @@
  */
 
 import Loadable from './loadable'                           // 按需加载
+import Home from '@pages/home';
+
 let routerMap = [
     {
-        isMenu: false,                      // 是否是下拉 true 不是 false 是 默认下拉
-        isShow: true,                       // 是否显示  true  不显示 false 显示
-        rightControl: '6',                  // 权限控制
-        icon: 'home',                       // 图标
-        title: '首页',                       // 标题
-        name: 'home'
+        title: '首页',
+        name: 'home',
+        icon: '',
+        path: '/home',
+        component: Home,                        // 是否异步
+        isSubMenu: false,                       // 是否是下拉菜单   true 是         false 不是     默认不是
+        isShow: false                           // 是否显示         true 不显示     false 显示     默认显示
     },
     {
-        isMenu: true,                     // 是否是下拉 true 不是 false 是 默认下拉
-        isShow: true,                     // 是否显示  true 不显示 false 默认显示
-        rightControl: '6',                // 权限控制
-        icon: 'home',                     // 图标
-        title: '导航一',                  // 标题
-        name: 'nav一',
+        title: '导航一',
+        name: 'nav1',
+        icon: '',
+        isSubMenu: true,
         children: [
             {
-                isShow: true,                     
                 title: '列表页',                    
                 name: 'list',
                 path: '/list',              
                 component: Loadable(() => import('@pages/list'))
+            },
+            {
+                title: '列表二',
+                name: 'list2',
+                icon: '',
+                isSubMenu: true,
+                children: [
+                    {
+                        title: '列表页二-二',                    
+                        name: 'list',
+                        path: '/list',              
+                        component: Loadable(() => import('@pages/list'))
+                    }
+                ]
             }
         ]
+    },
+    {
+        title: 'ReactStudy',
+        name: 'reactStudy',
+        icon: '',
+        isSubMenu: true,
+        children: [
+            {
+                title: 'Hooks',                    
+                name: 'hooks',
+                path: '/hooks',              
+                component: Loadable(() => import('@pages/hooks'))  
+            }
+        ]
+       
     }
-
 ];
 
 // 定义Key
@@ -43,9 +71,9 @@ let initMenuData = (routerMap) => {
         })
     }
     init(routerMap,'')
-    return  routerMap;
+    return routerMap;
 }
 
-routerMap = initMenuData(initMenuData);
+routerMap = initMenuData(routerMap);
 
 export default routerMap

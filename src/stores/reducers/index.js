@@ -6,7 +6,9 @@
 import { combineReducers } from 'redux';
 
 import home from './home';
+import modal from './modal';
 
 export  default combineReducers({
-    home
+    home,
+    modal
 });

@@ -1,5 +1,5 @@
 {
-  "name": "q-pc-r-cli",
+  "name": "pc-r-cli",
   "version": "1.0.0",
   "description": "webpack+react+antd",
   "main": "index.js",

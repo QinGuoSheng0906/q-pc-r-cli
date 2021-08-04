@@ -94,8 +94,6 @@ module.exports = {
         /*
              *********** react ***********
       */
-        'react/default-props-match-prop-types': 2,                        // 防止组件上的无关defaultProps
-        'react/forbid-prop-types': 0,                                     // 禁止某些propTypes
         'react/no-access-state-in-setstate': 2,                           // 阻止在this.setState中使用this.state
         'react/display-name': 2,                                          // 组件定义时需要定义组件名称
         // "react/no-unused-state:": 2,                                   // 禁止定义未使用的state属性
@@ -120,12 +118,14 @@ module.exports = {
         'react/no-multi-comp': 0,                                         // 防止每个文件有多个组件定义
         'react/no-unknown-property': 2,                                   // 防止使用未知的DOM属性
         'react/prefer-es6-class': 2,                                      // 为React组件强制执行ES5或ES6类
-        'react/prop-types': 0,                                            // 防止在React组件定义中丢失props验证 props定义关闭
+        'react/default-props-match-prop-types': 2,                        // 防止组件上的无关defaultProps
+        'react/forbid-prop-types': 0,                                     // 禁止某些propTypes
+        'react/prop-types': 2,                                            // 防止在React组件定义中丢失props验证 props定义关闭
         'react/react-in-jsx-scope': 2,                                    // 使用JSX时防止丢失React
         'react/self-closing-comp': 1,                                     // 防止没有children的组件的额外结束标签
         'react/no-array-index-key': 0,                                    // 防止在数组中遍历中使用数组key做索引
         'react/no-deprecated': 1,                                         // 不使用弃用的方法
-        'react/no-string-refs': 2,                                        // 不使用弃用的方法
+        'react/no-string-refs': 2,                                        // 防止引用的字符串定义和防止引用this.refs  
         'react-hooks/rules-of-hooks': 'error',                            // 检查 Hook 的规则
         'react-hooks/exhaustive-deps': 'warn'                             // 检查 effect 的依赖
     },

@@ -4,7 +4,9 @@
    2019-06-08
 */ 
 import React,{ Component } from 'react';
-import Err404 from '@/pages/404';                                   // 404
+import PropTypes from 'prop-types';
+
+import Err404 from '@/pages/404';   // 404
 class ErrorBoundary extends Component {
     constructor (props) {
         super(props);
@@ -34,4 +36,11 @@ class ErrorBoundary extends Component {
         return this.props.children; 
     }
 }
+
+
+ErrorBoundary.propTypes={
+    children: PropTypes.any
+}
+
+
 export default ErrorBoundary;
