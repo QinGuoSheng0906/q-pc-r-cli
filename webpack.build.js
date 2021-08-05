@@ -9,7 +9,7 @@ const { merge } = require('webpack-merge'); // 链接公共配置
 const COMMON = require('./webpack.common'); // 公共配置
 
 //css 压缩
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin  = require('css-minimizer-webpack-plugin');
 
 // js优化
 const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
@@ -24,12 +24,44 @@ module.exports = merge(
         devtool:'cheap-module-source-map',
         // 分割
         optimization: {
-            minimize: true,
+            splitChunks: {
+                // 自动提取所有公共模块到单独 bundle
+                chunks: 'all'
+            },
+            minimize: true,// 启动压缩
+            usedExports: true, //只导出被使用的模块
             minimizer: [ 
                 new TerserWebpackPlugin({
-                    test: /\.js(\?.*)?$/i,
-                    cache: true
-                }) 
+                    test: /\.js(\?.*)?$/i
+                }),
+                // css 压缩
+                new CssMinimizerPlugin({
+                    // parallel: true, // 启用/禁用多进程并发执行。
+                    // parallel: 4,// 启用多进程并发执行且设置并发数。
+                    minimizerOptions: {
+                        preset: [
+                            'default',
+                            {
+                                discardComments: { removeAll: true }, // 清除注释
+                                normalizeUnicode: false // 建议false,否则在使用unicode-range的时候会产生乱码
+                            }
+                        ]
+                    }
+                  
+                })
+                //new OptimizeCSSAssetsPlugin (
+                // // 引入css 规则
+                //     cssProcessor: require('cssnano'),
+                //     cssProcessorPluginOptions: {
+                //         preset: [
+                //             'default', {
+                //                 discardComments: { removeAll: true }, //对注释的处理
+                //                 normalizeUnicode: false // 建议false,否则在使用unicode-range的时候会产生乱码
+                //             } 
+                //         ]
+                //     },
+                //     canPrint: true  // 是否打印处理过程中的日志
+                //)
             ]
         },
         cache: { // 缓存
@@ -79,20 +111,6 @@ module.exports = merge(
         },
         /* 插件 */
         plugins: [
-            // css 压缩
-            new OptimizeCSSAssetsPlugin ({
-            // 引入css 规则
-                cssProcessor: require('cssnano'),
-                cssProcessorPluginOptions: {
-                    preset: [
-                        'default', {
-                            discardComments: { removeAll: true }, //对注释的处理
-                            normalizeUnicode: false // 建议false,否则在使用unicode-range的时候会产生乱码
-                        } 
-                    ]
-                },
-                canPrint: true  // 是否打印处理过程中的日志
-            }),
             // js优化
             new WebpackParallelUglifyPlugin({
                 uglifyJS: {

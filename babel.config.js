@@ -12,7 +12,8 @@ module.exports = function (api) {
                 'targets': {
                     'browsers': [ '> 1%', 'last 2 versions', 'not ie <= 11' ]
                 },
-                // modules: false // 意思是不转义import语法，主要是为了tree-shaking
+                //  防止 babel将任何模块类型都转换成commonJS类型，主要是为了tree-shaking
+                'modules': false, 
                 'useBuiltIns': 'usage',
                 'corejs': 3
                 // 'debug': true
