@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import {  Menu } from 'antd';
 import { HomeOutlined, MergeCellsOutlined  } from '@ant-design/icons';
 
-
 import routerMap from '@/routers/routerMap'; // 路由
 
 import { dataType, clone } from '@/lib/utils'; // 工具
@@ -14,9 +13,10 @@ const { SubMenu } = Menu;
 const MenuItem = Menu.Item;
 
 class Sider extends Component {
+
     // 点击菜单
-    handleClick = ({ key }) => {
-        let { leftMenuChange } = this.props;
+    handleMenuItem = ({ key }) => {
+        let { handleMenuItem } = this.props;
         let itemData = {};
         let queryItem = (data) => {
             for(let i=0; i<data.length; i++){
@@ -30,8 +30,9 @@ class Sider extends Component {
             }
         }
         queryItem(routerMap);
-        leftMenuChange && leftMenuChange(itemData);
+        handleMenuItem && handleMenuItem(itemData);
     }
+
     // 菜单渲染
     menuView = () => {
         let routerMaps = clone(routerMap);
@@ -46,21 +47,28 @@ class Sider extends Component {
                         }
                     </SubMenu>
                 } else {
-                    return (
-                        <MenuItem key = { item.key } icon = { <HomeOutlined /> }>{ item.title }</MenuItem> 
-                    ) 
+                    if(!item.isShow){
+                        return (
+                            <MenuItem key = { item.key } icon = { <HomeOutlined /> }>{ item.title }</MenuItem> 
+                        ) 
+                    } else  return ''
+                   
                 }
             })
         }
         return views(routerMaps)
     }
     render () {
+        let { navOpenKeys,handleSubMenu, navselectedKeys  } = this.props;
+        // console.log('navOpenKeys', navOpenKeys)
+        // console.log('navselectedKeys', navselectedKeys)
         return (
             <Menu
-                onClick = { this.handleClick }
+                onClick = { this.handleMenuItem }
+                onOpenChange = { handleSubMenu }
                 // style = { { width: 256 } }
-                defaultSelectedKeys = { [ '0' ] }
-                defaultOpenKeys = { [ '0' ] }
+                selectedKeys = { navselectedKeys }
+                openKeys = { navOpenKeys }
                 mode = 'inline'
                 theme = 'dark'
             >
@@ -78,7 +86,10 @@ class Sider extends Component {
 }
 
 Sider.propTypes={
-    leftMenuChange: PropTypes.func
+    navOpenKeys: PropTypes.array,
+    navselectedKeys: PropTypes.array,
+    handleMenuItem: PropTypes.func,
+    handleSubMenu: PropTypes.func
 }
 
 export default Sider;

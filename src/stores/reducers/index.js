@@ -6,9 +6,9 @@
 import { combineReducers } from 'redux';
 
 import home from './home';
-import modal from './modal';
+import spinInfo from './spin-info';
 
 export  default combineReducers({
     home,
-    modal
+    spinInfo
 });

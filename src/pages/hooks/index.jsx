@@ -7,11 +7,11 @@
 import React, { useState  } from 'react'; // useEffect
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { modalUpdate } from '@actions/modal';
+import { updateSpin } from '@/stores/actions/spin-info';
 import { Button } from 'antd';
 
 function Hooks () {
-    // let { modal, modalUpdate } = props;
+    // let { modal, updateSpin } = props;
     const[ text ] = useState('这是一个文本'); // setText
     const [ count , setCount ] = useState(0);
     const handleClick = () => {
@@ -44,7 +44,7 @@ function propMap (state) {
 
 function propMapDispatch (dispatch) {
     return {
-        modalUpdate: (data) => dispatch(modalUpdate(data))
+        updateSpin: (data) => dispatch(updateSpin(data))
     };
 }
 
