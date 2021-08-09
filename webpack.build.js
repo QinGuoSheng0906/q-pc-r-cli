@@ -11,6 +11,7 @@ const COMMON = require('./webpack.common'); // 公共配置
 //css 压缩
 const CssMinimizerPlugin  = require('css-minimizer-webpack-plugin');
 
+
 // js优化
 const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 

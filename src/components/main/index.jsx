@@ -57,6 +57,7 @@ class Main extends Component {
             let selectedKeys = []
             if(path != '/') {
                 queryItem(routerMap);
+                if(!itemData.key) return;
                 let keys = itemData.key.split('-');
                 let str = '';
                 let arry = [];
@@ -65,14 +66,11 @@ class Main extends Component {
                     arry.push(str)
                 })
                 openKeys = arry;
-                selectedKeys =  itemData.isShow ? [ itemData.key.slice(0,-2) ] : [ itemData.key ]
+                selectedKeys = itemData.isShow ? [ itemData.key.slice(0,-2) ] : [ itemData.key ]
             } else {
                 openKeys = [ '0' ];
                 selectedKeys =  [ '0' ];
             }
-            console.log('routerMap', routerMap)
-            console.log('openKeys', openKeys)
-            console.log('selectedKeys', selectedKeys)
             this.setState({
                 navOpenKeys: openKeys,
                 navselectedKeys: selectedKeys

@@ -19,7 +19,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const glob = require('glob');
 
 // const PATHS = {
-//    src: path.resolve(__dirname, 'src')
+//     src: path.resolve(__dirname, 'src')
 // };
 
 module.exports = {
@@ -138,10 +138,7 @@ module.exports = {
             chunkFilename:'styles/[name].css'
         }),
         // new PurgecssWebpackPlugin({
-        //    paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-        //    whitelistPatterns: () => {
-        //       return [/^antd-/];
-        //   },
+        //     paths: glob.sync(`${PATHS.src}/*.html`, { nodir: true })
         // }),
         // 全局环境变量
         new webpack.DefinePlugin({

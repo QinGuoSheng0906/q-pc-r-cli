@@ -3,7 +3,7 @@
  */
 
 // import Loadable from './loadable'                           // 按需加载
-import AsyncComponent from './async-component '                           // 按需加载
+import AsyncComponent from './async-component '                // 按需加载
 import Home from '@pages/home';
 /**
  * @params

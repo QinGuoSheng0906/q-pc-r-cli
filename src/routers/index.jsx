@@ -4,7 +4,7 @@
 */
 
 import React, { Component } from 'react';
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import ErrorBoundary from './errorBoundary'; // 错误边界
 
@@ -14,7 +14,7 @@ import { dataType, clone } from '@/lib/utils'; //  工具
 
 import Main from '@components/main'; // 布局容器组件
 import Err404 from '@pages/404';
-import Login from '@/pages/user-account';
+import Login from '@/pages/user_account';
 
 const isRedirect = false; // 重定向
 
@@ -65,7 +65,7 @@ class RouterApp extends Component {
     }
     render () {
         return (
-            <HashRouter >
+            <BrowserRouter >
                 <ErrorBoundary>
                     <Switch>
                         <Route path = '/login' exact 
@@ -98,7 +98,7 @@ class RouterApp extends Component {
                         <Route component = { Err404 } />
                     </Switch>
                 </ErrorBoundary>
-            </HashRouter>
+            </BrowserRouter>
         )
     }
 }

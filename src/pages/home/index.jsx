@@ -12,6 +12,8 @@ import { updateHome } from '@actions/home';
 
 import { Button } from 'antd';
 
+import './style.less';
+
 class Home extends Component {
    onClick = () => {
        let { dispatch } = this.props;
@@ -23,10 +25,13 @@ class Home extends Component {
        //    let { home } = this.props;
        //    console.log('home', home);
        return (
-           <div>
+           <div className = 'home-container'>
             这里是首页111
                <div>
                    <Button type = 'primary' onClick = { this.onClick }>点击切换状态</Button>
+                   <div className = 'home-radius'>
+                        内圆角
+                   </div>
                </div>
            </div>
        )

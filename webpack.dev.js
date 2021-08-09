@@ -14,7 +14,13 @@ const devServer = {
     contentBase: path.resolve(__dirname, './dist'),
     host: '0.0.0.0',
     port: 7777,
-    historyApiFallback: true,
+    historyApiFallback: true,   // 服务路由配置 
+    // historyApiFallback:{
+    //     index:'dist/index.html',
+    //     rewrites: [
+    //         { from: /.*/, to: path.posix.join('dist','index.html') }
+    //     ]
+    // },
     overlay: {
         errors: false//当出现编译器错误或警告时，就在网页上显示一层黑色的背景层和错误信息
     },
@@ -45,9 +51,6 @@ module.exports = merge(
         cache: {
             type: 'memory'
         },
-        // optimization: {
-        //     namedModules: true
-        // },
         module:{
             rules:[
                 {
@@ -63,14 +66,6 @@ module.exports = merge(
         },
         /* 插件 */
         plugins: [
-            // new StylelintWebpackPlugin({
-            //     // context: 'app',
-            //     configFile: path.resolve(__dirname, '.stylelintrc.js'),
-            //     files: '**/*.(less|css)',
-            //     failOnError: false,
-            //     quiet: true,
-            //     fix: true
-            // }),
             new webpack.HotModuleReplacementPlugin()	// 热更新
         ],
         devServer
