@@ -65,8 +65,8 @@ let routerMap = [
         ]
     },
     {
-        title: 'ReactStudy',
-        name: 'reactStudy',
+        title: 'Study',
+        name: 'study',
         icon: '',
         isSubMenu: true,
         children: [
@@ -74,7 +74,13 @@ let routerMap = [
                 title: 'Hooks',                    
                 name: 'hooks',
                 path: '/hooks',              
-                component: AsyncComponent(() => import('@pages/hooks'))  
+                component: AsyncComponent(() => import('@/pages/syudy/hooks'))  
+            },
+            {
+                title: 'promise',                    
+                name: 'promise',
+                path: '/promise',              
+                component: AsyncComponent(() => import('@/pages/syudy/promise'))  
             }
         ]
        
