@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 
 import { Button } from 'antd';
 
+import SelectLetterSort from '@components/form_item/select_letter_sort';
+
 
 class Order extends Component {
     goDetail = () => {
@@ -18,6 +20,9 @@ class Order extends Component {
             <div className = 'p-10'>
             这里是order页
                 <Button onClick = { this.goDetail }>详情页</Button>
+                <div>
+                    <SelectLetterSort />
+                </div>
             </div>
         )
     }

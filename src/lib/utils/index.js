@@ -15,11 +15,14 @@ export const dataType = (target) => {
         'Arguments': true,
         'Set': true,
         'Map': true,
+        'Promise': true,
+        'Symbol': true,
+        'BigInt': true,
+        'Math': true,
         'Null': true,
         'Undefined': true,
         'String': true,
         'Number': true,
-        'Math': true,
         'Boolean': true
     };
     let val = {
@@ -117,6 +120,7 @@ export const paramSerialize  = (data) => {
     str = str.replace(/&$/, '');
     return str;
 }
+
 // URL 参数反序列化 解析为对象
 export const paramDeserialization  = (url) => {
     let string = url.split('&');
@@ -168,23 +172,109 @@ export const scrollToTop = () => {
 }
 
 // 深拷贝
-export const clone = (data) => {                                                                                    
-    if(!data) return;                                                                                     
-    const type =  dataType(data);                                                                         
-    let result  = null;  
-    type.isObject ? result = {} : '';                                                                             
-    type.isArray ? result = [] : '';                                                                                                                                                                                                                                  
-    // 遍历数据                                                                                            
-    for (let i in data) {                                                                                 
-        //获取遍历数据结构的每一项值。                                                                           
-        let value = data[i];                                                                                 
-        //判断目标结构里的每一值是否存在对象/数组                                                                  
-        if (dataType(value).isObject || dataType(value).isArray) { //对象/数组里嵌套了对象/数组         
-            //继续遍历获取到value值                                                                              
-            result[i] = clone(value);                                                                          
-        } else { //获取到value值是基本的数据类型或者是函数。                                                      
-            result[i] = value;                                                                                
-        }                                                                                                   
-    }                                                                                                     
-    return result;                                                                                        
-}     
+export const deepClone = (data) => {
+    if(!dataType(data).isObject || !dataType(data).isArray) return data;
+    const type = dataType(data);
+    let result  = type.isObject ? {} : [];
+    // 遍历数据
+    for (let i in data) {
+        //获取遍历数据结构的每一项值。
+        let value = data[i];
+        //判断目标结构里的每一值是否存在对象/数组
+        if (dataType(value).isObject || dataType(value).isArray) { //对象/数组里嵌套了对象/数组
+            //继续遍历获取到value值
+            result[i] = deepClone(value);
+        } else { //获取到value值是基本的数据类型或者是函数。
+            result[i] = value; 
+        }
+    }  
+    return result;
+}
+
+/**
+ * 防抖函数(可用于防止重复提交)
+ * 当持续触发事件时，一定时间段内没有再触发事件，事件处理函数才会执行一次，
+ * 如果设定时间到来之前，又触发了事件，就重新开始延时。也就是说当一个用户一直触发这个函数，
+ * 且每次触发函数的间隔小于既定时间，那么防抖的情况下只会执行一次。
+ *
+ * @param func 执行函数
+ * @param wait 间隔时间
+ * @param immediate 立即执行
+ */
+export const debounce = (fn, wait = 300, immediate) => {
+    let timer;
+    return function () {
+        timer ? clearTimeout(timer) : '';
+        if (immediate) {
+            // 如果已经执行过，不再执行
+            let callNow = !timer;
+            timer = setTimeout(() => {
+                timer = null;
+            }, wait)
+            if (callNow) {
+                fn.apply(this, arguments)
+            }
+        } else {
+            timer = setTimeout(() => {
+                fn.apply(this, arguments)
+            }, wait);
+        }
+    }
+}
+
+/**
+ * 节流函数
+ * 当持续触发事件时，保证在一定时间内只调用一次事件处理函数，意思就是说，假设一个用户一直触发这个函数，且每次触发
+ * 小于既定值，函数节流会每隔这个时间调用一次
+ * 用一句话总结防抖和节流的区别：防抖是将多次执行变为最后一次执行，节流是将多次执行变为每隔一段时间执行
+ * 实现函数节流我们主要有两种方法：时间戳和定时器
+ *
+ * @param func 执行函数
+ * @param wait 间隔时间
+ * @param options 立即执行
+ * options中  leading：false 表示禁用第一次执行 trailing: false 表示禁用停止触发的回调
+ */
+export const throttle = (fn, wait=300 , options = {}) => {
+    let timer;
+    let previous = 0;
+    return function () {
+        let now = +new Date();
+        // remaining 不触发下一次函数的剩余时间
+        if (!previous && options.leading === false) previous = now;
+        let remaining = wait - (now - previous);
+        if (remaining < 0) {
+            if (timer) {
+                clearTimeout(timer);
+                timer = null;
+            }
+            previous = now;
+            fn.apply(this, arguments)
+        } else if (!timer && options.trailing !== false) {
+            timer = setTimeout(() => {
+                previous = options.leading === false ? 0 : new Date().getTime();
+                timer = null;
+                fn.apply(this, arguments);
+            }, remaining);
+        }
+    }
+}
+
+
+/**
+ *  中文按照字母顺序排序
+ *  
+**/ 
+export const letterSort = (data) => {
+    if(!data) return;
+    let result = [];
+    result = data.sort((item1, item2) => item1.localeCompare(item2));
+    return result;
+}
+
+
+/**
+ * ajax 并发请求，限制数量，防止内存溢出
+ * 
+**/ 
+
+

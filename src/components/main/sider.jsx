@@ -7,7 +7,7 @@ import { HomeOutlined, MergeCellsOutlined  } from '@ant-design/icons';
 
 import routerMap from '@/routers/routerMap'; // 路由
 
-import { dataType, clone } from '@/lib/utils'; // 工具
+import { dataType, deepClone } from '@/lib/utils'; // 工具
 
 const { SubMenu } = Menu;
 const MenuItem = Menu.Item;
@@ -35,7 +35,7 @@ class Sider extends Component {
 
     // 菜单渲染
     menuView = () => {
-        let routerMaps = clone(routerMap);
+        let routerMaps = deepClone(routerMap);
         if(!dataType(routerMaps).isArray || routerMaps.length <= 0 ) return;
         let views = (data) => {
             if(!dataType(data).isArray || data.length <= 0) return;

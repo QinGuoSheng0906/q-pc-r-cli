@@ -25,9 +25,10 @@ html,body {
     -webkit-overflow-scrolling: touch;
     // overflow-scrolling: touch;
     height: 100%;
-    color: #313131;
+    color: #000;
     font-size: 12px;
 }
+
 
 html,body,ul,ol,li,dl,dt,dd,p,h1,h2,h3,h4,h5,h6,img,div,a,b,s,i,span,
 header,article,nav,section,footer,form,input,select,option,textarea,
@@ -70,7 +71,6 @@ a {
     color: @c-333
 }
 
-
 // 文本布局
 .t-j { // 两端对齐
     text-align: justify;
@@ -88,6 +88,18 @@ a {
     text-align: right;
 }
 
+// 鼠标手
+.c-p{
+    cursor: pointer;
+}
+
+// 块
+.block{
+    display: block;
+}
+.inline-block{
+    display: inline-block;
+}
 
 // 浮动
 .f-c::after {
@@ -105,21 +117,34 @@ a {
 }
 
 // display：inline-block 间隙， 是因为标签换行造成的, 清除换行间隙
-.clear-newline{
+.clear-lacuna{
     display: table;
     word-spacing: -1em;
 }
 
-
 // 超出宽度省略号
-.spill {
+.ellipsis{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
+// 量省略号 两行
+.ellipsis-2{
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+
+    /*! autoprefixer: on */
+    -webkit-line-clamp: 2;
+}
+
 // 水平垂直居中  -- 定位
-.layout-position-center{
+.position-center{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -131,32 +156,41 @@ a {
 }
 
 // 水平垂直居中  -- table  外部父级必须有固定的宽高。
-.layout-table-center{
+.dt-center{
     display: table-cell;
     text-align: center;
     vertical-align: middle;
 }
 
-// flex-box布局布局相关
-.layout-flex{
+// 弹性布局
+.df{
     display: flex;
 }
 
-// 水平垂直居中  -- 弹性布局
-.layout-flex-center{
-    .layout-flex;
+//水平两端垂直居中布局 --  一行 -- 弹性布局
+.df-ac-js{
+    .df;
 
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; 
 }
 
-// 水平两端布局 -- 弹性布局
-.layout-space-between{
-    .layout-flex;
+// 水平居中垂直两端布局 -- 多行
+.df-as-jc {
+    .df;
+
+    align-content: space-between;
+    justify-content: center; 
+}
+
+// 水平垂直居中 一行 -- 弹性布局
+.df-ac-jc{
+    .df;
 
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; 
 }
+
 
 // 边框线 解决一像素问题 底部边框一像素
 .border-1px::after{
@@ -171,4 +205,9 @@ a {
 
 #root {
     height: 100%;
+}
+
+
+.select-letter-sort{
+    width: 100%;
 }

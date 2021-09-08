@@ -8,9 +8,6 @@ import PropTypes from 'prop-types';
 
 
 
-
-
-
 class Child1 extends Component {
     render () {
         return (

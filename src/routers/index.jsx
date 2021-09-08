@@ -9,7 +9,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import ErrorBoundary from './errorBoundary'; // 错误边界
 
 import routerMap from '@/routers/routerMap'; // 路由
-import { dataType, clone } from '@/lib/utils'; //  工具
+import { dataType, deepClone } from '@/lib/utils'; //  工具
 
 
 import Main from '@components/main'; // 布局容器组件
@@ -21,7 +21,7 @@ const isRedirect = false; // 重定向
 class RouterApp extends Component {
     // 路由视图
     routerView = () => {
-        let routerMaps = clone(routerMap);
+        let routerMaps = deepClone(routerMap);
         if(!dataType(routerMaps).isArray || routerMaps.length <= 0 ) return;
         let routers = []; // 路由
         let views = (data) => { // 提取路由

@@ -11,3 +11,698 @@
         box-shadow: 0 0 0 5px #b4a078;
     }
 }
+
+
+
+.bg-fff{
+    background: #fff;
+}
+
+.f-clear{
+    &::after {
+        display: block;
+        clear: both;
+        content: '';
+    }
+}
+
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+
+// 内江首页
+@c-0057AD:#0057AD;
+@c-E8F2FC:#E8F2FC;
+
+.ellipsis{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ellipsis-2{
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+
+    /*! autoprefixer: on */
+    -webkit-line-clamp: 2;
+
+
+}
+
+.block{
+    display: block;
+}
+
+.m-b-10{
+    margin-bottom: 10px;
+}
+.m-b-16{
+    margin-bottom: 16px;
+}
+
+.c-0057AD {
+    color:@c-0057AD;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+
+// 两端对齐
+.df-ac-js{
+    display: flex;  
+    align-items: center;
+    justify-content: space-between; 
+}
+// 居中
+.df-ac-jc{
+    display: flex;  
+    align-items: center;
+    justify-content: center; 
+}
+
+.w-1200{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.nj-common-container{
+    *{
+        box-sizing: border-box;
+    }
+}
+
+.nj-banner-container{
+    position: relative;
+    height: 460px;
+    background: url(../../assets//images/nj/banner.png) no-repeat center center;
+    background-size: 100% 100%;
+   
+    .nj-banner-content{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%,-50%);
+      
+        .nj-banner-search{
+            display: inline-block;
+            width: 738px;
+            margin: 0 auto;
+            font-size: 16px;
+            border: 2px solid @c-0057AD;
+            .nj-search-content{
+                position: relative;
+                display: inline-block;
+                width: 640px;
+                .nj-search-icon{
+                    position: absolute;
+                    top: 15px;
+                    left: 11px;
+                    width: 20px;
+                    height: 20px;
+                    background: url(../../assets//images/nj/search-icon.png) no-repeat center center;
+                    background-size: 100% 100%;
+                }
+                .nj-banner-input{
+                    display: block;
+                    width: 100%;
+                    height: 50px;
+                    padding-left: 43px;
+                    border: none;
+                    outline: none;
+                }
+            }
+            .nj-banner-btn{
+                display: inline-block;
+                width: 94px;
+                height: 50px;
+                color: #fff;
+                line-height: 50px;
+                text-align: center;
+                background: @c-0057AD;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.nj-statistics{
+    padding: 30px 0;
+    font-size: 16px;
+    background: #fff;
+    .nj-statistics-content{
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+        .item{
+            float: left;
+            margin-right: 32.5px;
+            .num{
+                padding: 0 7px;  
+                color: #fff;
+                font-size: 20px;
+                vertical-align: middle;
+                background: linear-gradient(0deg, #F78000 49%, #FF9F17 53%);
+            }
+        }
+        .item:last-child{
+            margin-right: 0;
+        }
+    }
+}
+
+.nj-main{
+    padding: 20px 0;
+    background: @c-E8F2FC;
+}
+
+.nj-ietm-category{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+    .category-item {
+        width: 220px;
+        box-shadow: 0 4px 3px 1px rgba(1, 117, 223, 0.09);
+        .category-title{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90px;
+            font-size: 18px;
+            text-align: center;
+            cursor: pointer;
+            -moz-transition:font-size .3s;
+            -webkit-transition:font-size .3s;
+            -o-transition:font-size .3s;
+            transition:font-size .3s;
+            &:hover {
+                font-size: 22px;
+            }
+        }
+        .category-container {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .category-content{ 
+            color: #333;
+            font-size: 14px;
+        }
+        .category-foot{
+            padding-top: 12px;
+            text-align: right;
+
+            .category-foot-link{
+                color: @c-0057AD;
+                font-size: 13px;
+            }
+            .category-icon{
+                display:inline-block;
+                width: 20px;
+                height: 20px;
+                vertical-align: bottom;
+                background: url(../../assets//images/nj/arrow.png) no-repeat center center;
+                background-size: 100% 100%;
+            }
+        }
+    }
+
+    .category-item:nth-child(1) .category-title{
+        color: #B83437;
+        background: linear-gradient(90deg, #FFC6BB 0%, #FDCFAB 100%);
+    }
+    .category-item:nth-child(2) .category-title{
+        color: #0256C9;
+        background: linear-gradient(90deg, #8CAAF3 0%, #CEDBFF 100%);
+    }
+    .category-item:nth-child(3) .category-title{
+        color: #CE5B01;
+        background: linear-gradient(90deg, #FFAF70 0%, #FFD7B4 100%);
+    }
+    .category-item:nth-child(4) .category-title{
+        color: #0042CA;
+        background: linear-gradient(90deg, #77AAFD 0%, #B8D5FD 100%);
+    }
+    .category-item:nth-child(5) .category-title{
+        color: #B83437;
+        background: linear-gradient(90deg, #FFC6BB 0%, #FDCFAB 100%);
+    }
+
+}
+
+.nj-news{
+    display: flex;
+    justify-content: space-between;
+    height: 348px;
+    padding: 20px;
+    color: #333;
+    font-size: 16px;
+    .more-btn{
+        color: #888;
+        font-size: 14px;
+        &:hover{
+            color: @c-0057AD;
+        }
+    }
+   
+    .nj-news-banner{
+        position: relative;
+        width: 238px;
+        .news-banner-content{
+            width: 100%;
+            height: 100%;
+            background: url('../../assets/images/nj/news-banner.png') no-repeat center center;
+            background-size: 100% 100%;
+        }
+
+        .news-banner-title{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 16px;
+            color: #fff;
+            background: rgba(0, 0, 0, .28);
+        }
+        .news-banner-msg{
+
+            .news-banner-text{
+                width: 168px;
+            }
+            .dot-btn{
+                width: 30px;
+                .dot{
+                    display: inline-block;
+                    width: 6px;
+                    height: 6px;
+                    background: rgba(255, 255, 255, 0.46);
+                    border-radius: 50%;
+                    cursor: pointer;
+                    &:hover {
+                        background: #fff;
+                    }
+                }
+                .dot-active{
+                    background: #fff;
+                   
+                }
+                .df-ac-js;
+            }
+            .df-ac-js;
+        }
+       
+    }
+    .nj-news-content{
+        flex: 1;
+        padding-right: 50px;
+        padding-left: 25px;
+        .nj-news-nav{
+            display: flex;  
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 10px;
+        }
+        .nj-news-department{
+            display: flex;
+        }
+        .department-item{
+            margin-right: 20px;
+            cursor: pointer;
+            &:hover {
+                color: @c-0057AD;
+            }
+        }
+        .department-item-active {
+            color: @c-0057AD;
+        }
+        .department-item:last-child{
+            margin-right: 0;
+        }
+        .nj-news-list-content{
+            padding-left: 20px;
+        }
+        .nj-news-list{
+            font-size: 14px;
+            .news-item{
+                margin-bottom: 14px;
+                list-style: initial;
+                .cursor-pointer;
+                &:hover{
+                    .c-0057AD;
+                }
+            }
+            .news-item:last-child{
+                margin-bottom: 0;
+            }
+            .news-list-title{
+                width: 365px;
+                padding-right: 10px;
+              
+            }
+            .news-time{
+                width: 72px;
+                color: #888;
+            }
+        }
+    }
+
+    .nj-news-link{
+        width: 390px; 
+        .news-link-title{
+            padding-bottom: 10px;
+        }
+        .news-link-container{
+            position: relative;
+            height: 275px;
+        }
+        .arrow-btn{
+            width:27px ;
+            height: 48px;
+            cursor: pointer;
+        }
+
+        .left-arrow{
+            position: absolute;
+            top: 50%;
+            left:0;
+            z-index: 10;
+            background: url('../../assets/images/nj/arrow-l.png') no-repeat center center;
+            background-size: 100% 100%;
+            transform: translate(0,-50%);
+        }
+
+        .right-arrow{
+            position: absolute;
+            top: 50%;
+            right: 0;
+            z-index: 10;
+            background: url('../../assets/images/nj/arrow-r.png') no-repeat center center;
+            background-size: 100% 100%;
+            transform: translate(0,-50%);
+        }
+
+        .news-link-list{
+            flex-wrap: wrap;
+            .link-content-item{
+                margin-bottom: 10px;
+                overflow: hidden;
+                .link-item{
+                    display: block;
+                    width: 122px;
+                    height: 85px; 
+                    cursor: pointer;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                    &:hover{
+                        transform: scale(1.1);
+                        transition: transform .2s;
+                    }
+                }
+            }
+            .df-ac-js;
+        }
+    }
+}
+
+.nj-industry{
+
+    .nj-industry-card{
+        position: relative;
+        width: 390px;
+        padding: 20px;
+        padding-top: 10px;
+      
+        .cursor-pointer;
+        &:hover{
+            .industry-hint{
+                display: block;
+            }
+        }
+
+        .card-title{
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            font-size: 18px;
+            border-bottom: 1px solid #EAEAEA;
+        }
+        .industry-hint{
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .3);
+
+            .industry-hint-content{
+                .df-ac-jc;
+
+                flex-wrap: wrap;
+                width: 100%;
+                height: 100%;
+                color: #fff;
+                font-size: 20px;
+                background: rgba(0, 0, 0, .7);
+                .company-item{
+                    width: 100%;
+                }
+                .company-num{
+                    color:#FFB542 ;
+                    font-size: 24px;
+                }
+            }
+          
+        }
+    }
+    .industry-content{
+        flex-flow: wrap;
+    }
+    .m-r-8{
+        margin-right: 8px;
+    }
+    .industry-container{
+        width: 171px;
+        height: 61px;
+        margin-bottom: 8.5px;
+    }
+    .industry-container-1{
+        width: 100%;
+        height: 61px;
+    }
+
+    .industry-1{
+        background: url('../../assets/images/nj/industry-1.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .industry-2{
+        background: url('../../assets/images/nj/industry-2.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .industry-3{
+        background: url('../../assets/images/nj/industry-3.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .industry-4{
+        background: url('../../assets/images/nj/industry-4.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .industry-5{
+        background: url('../../assets/images/nj/industry-5.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .service-6{
+        background: url('../../assets/images/nj/service-1.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .service-7{
+        background: url('../../assets/images/nj/service-2.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .service-8{
+        background: url('../../assets/images/nj/service-3.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .service-9{
+        background: url('../../assets/images/nj/service-4.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .service-10{
+        background: url('../../assets/images/nj/service-5.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+
+    .farming-container{
+        width: 171px;
+        height: 95px;
+        overflow: hidden;
+        .farming-container-content{
+            width: 100%;
+            height: 100%;
+            &:hover {
+                transform: scale(1.1);
+                transition: transform .2s;
+            }
+        }
+    }
+    .farming-1{
+        background: url('../../assets/images/nj/farming-1.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .farming-2{
+        background: url('../../assets/images/nj/farming-2.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .farming-3{
+        background: url('../../assets/images/nj/farming-3.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .farming-4{
+        background: url('../../assets/images/nj/farming-4.png') no-repeat center center;
+        background-size: 100% 100%;
+    }
+    .df-ac-js;
+}
+
+.item-steward{
+    display: flex;
+    justify-content: space-between;
+    .item-steward-title{
+        margin: 0;
+        margin-bottom: 18px;
+        padding: 0;
+        color: #333;
+        font-size: 16px;  
+        .all-text{
+            color: #888;
+            font-size: 14px;
+            cursor: pointer;
+            &:hover{
+                color: @c-0057AD;
+            }
+        }
+    }
+    .item-steward-left{
+        width: 240px;
+        height: 470px;
+        padding: 20px;
+        color: #fff;
+        background: url('../../assets/images/nj/item-steward-bg.png') no-repeat center center;
+        background-size: 100% 100%;
+        .item-steward-title{
+            color: #fff;
+        }
+        .item-steward-statistics{
+            margin-bottom: 34px;
+            padding-top: 4px;
+            padding-left: 60px;
+            font-size: 14px;
+            .sub-statistics{
+                margin: 0;
+                margin-bottom: 10px;
+                padding: 0;
+                color: #fff;
+            }
+            .statistics-money{
+                font-size: 24px;
+            }
+        }
+        .statistics-foot{
+            .df-ac-js;
+
+            flex-wrap: wrap;
+
+            .btn-item{
+                width: 94px;
+                height: 30px;
+                color: #D05800;
+                line-height: 30px;
+                text-align: center;
+                background: #FFF8ED;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+        }
+    }
+    .item-steward-center{
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+        align-content: stretch;
+        margin: 0 20px;
+        padding-top: 20px;
+        .steward-content{
+            width: 100%;
+        }
+        .item-steward-chart{
+            height: 162px; 
+        }
+        .item-steward-chart-1 {
+            background: url('../../assets/images/nj/item-steward-chart-1.png') no-repeat center center;
+            background-size: 100% 100%;
+        }
+        .item-steward-chart-2 {
+            background: url('../../assets/images/nj/item-steward-chart-2.png') no-repeat center center;
+            background-size: 100% 100%;
+        }
+    }
+    .item-steward-right{
+        width: 640px;
+        padding: 20px 20px 0 0; 
+        .steward-declar-table{
+            text-align: center;
+            border:1px solid #ddd ;
+            border-right: none;
+            border-bottom: none;
+        }
+        .steward-declare-tbody{
+            font-size: 14px;
+        }
+        .steward-declare-thead{
+            font-size: 16px;
+            background: #F1F7FD;
+        }
+        .steward-declare-tr{
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .steward-declare-td{
+            padding: 6px 14px;
+            border-right: 1px solid #ddd;
+        }
+        .declare-td-1{
+            width: 50%;
+        }
+        .declare-td-2{
+            width: 30%;
+        }
+        .declare-td-3{
+            width: 20%;
+        }
+        .steward-declare-date{
+            color: #888;
+        }
+        .time-icon{
+            display:inline-block;
+            width: 20px ;
+            height: 20px;
+            vertical-align: top;
+            background: url('../../assets/images/nj/time-icon.png') no-repeat center center;
+            background-size: 100% 100%;
+        }
+        .tiemt-text{
+            color: #FFA213;
+        }
+    }
+}

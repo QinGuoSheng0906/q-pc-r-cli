@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 /*
 *   登录--注册--忘记密码
 *   秦国胜
@@ -15,6 +16,7 @@ import { Form, Button, Spin } from 'antd';
 import Login from './login'; // 登录
 
 import './style.less';
+
 
 class UserAccount extends Component {
     render () {

@@ -106,22 +106,21 @@ class Promise extends Component {
     state = {
 
     }
-    
-    componentDidMount (){
-        let p = new MyPromise(function (resolve, reject){
+    componentDidMount () {
+        let pp = new MyPromise(function (resolve, reject){
             // resolve(1)
             reject(2)
         });
-        p.then(result => {
+        pp.then(result => {
             console.log('resolve：', result)//1   
         }, reason => {
             console.log('reason', reason)//  2
         })
-    }
-    static getDerivedStateFromProps () {
+    } 
+    // static getDerivedStateFromProps () {
         
-        return null;
-    }
+    //     return null;
+    // }
     render () {
         return (
             <div>
