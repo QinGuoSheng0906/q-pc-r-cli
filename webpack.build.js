@@ -26,8 +26,15 @@ module.exports = merge(
         // 分割
         optimization: {
             splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendors',
+                        chunks: 'all'
+                    }
+                }
                 // 自动提取所有公共模块到单独 bundle
-                chunks: 'all'
+                // chunks: 'all'
             },
             minimize: true,// 启动压缩
             usedExports: true, //只导出被使用的模块

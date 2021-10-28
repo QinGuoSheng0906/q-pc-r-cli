@@ -19,8 +19,6 @@ import Routers from './routers'; // 路由
 
 import { Loading } from '@components/index'
 
-//全局公共样式
-import './assets/styles/global.less';   
  
 class App extends Component {
     componentDidMount (){

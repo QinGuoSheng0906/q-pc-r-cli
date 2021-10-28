@@ -17,6 +17,8 @@ module.exports = {
       "color-no-invalid-hex": true,                                           // 禁止无效的 16 进制颜色。
       "block-no-empty": true,                                                 // 禁止空快
       "no-descending-specificity": null,                                      // 禁止空快
+      "function-calc-no-invalid": null,                                      // 禁止空快
+      "value-keyword-case": null,                                      // 禁止空快
       'order/order': [                                                        // 指定声明块中内容的顺序。
          'declarations', // 声明
          'custom-properties', // 自定义属性

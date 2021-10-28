@@ -6,17 +6,7 @@
 
 @charset "utf-8";
 @import './size.less';
-
-@theme-c-1abc9c: #1abc9c; // 主题色 深蓝色
-@theme-c-3e518b: #3e518b; // 主题色
-@c-302222: #302222; // 图标色
-@c-E1E4ED: #E1E4ED; // 图标色
-@c-333: #333;
-@c-555: #555;
-@c-666: #666;
-@c-888: #888;
-@c-999: #999;
-
+@import './variable.less';
 
 html,body {
     /* 抗锯齿，使字体图标更清晰 */
@@ -209,5 +199,66 @@ a {
 
 
 .select-letter-sort{
-    width: 100%;
+    position: relative;
+    .select-letter-main{
+        width: 100%;
+    }
+    .list-select-content{
+        max-height: 256px;
+        padding-right: 40px;
+        overflow-y: auto;
+        color: #000;
+    }
+    .list-group-name{
+        padding: 5px 12px;
+        color: #aeaeae;
+        cursor: default;
+    }
+    .list-option {
+        padding: 5px 12px;
+        cursor: pointer;
+        &:hover {
+            background: #e6f7ff;
+        }
+    }
+    .list-option-active {
+        background: #e6f7ff;
+    }
+    .list-option-multiple-active{
+        background: #fafafa;
+    }
+    .list-group-item{
+        padding-left: 18px;
+    }
+   
+    .letter-container{
+        position: absolute;
+        top: 50%;
+        right: 18px;
+        z-index: 9999;
+
+        /* <percentage> value */
+        max-height: calc(~"100% - 8px");
+        padding: 0;
+        overflow: hidden;
+        color: @c-000;
+        font-size: 12px;
+        background: @c-fff;
+        transform: translate(0, -50%);
+        cursor: pointer;
+        // .letter-main-content{
+            
+        // }
+        &:hover{
+            background: @c-fff;
+            cursor: pointer;
+        }
+        .letter-item{
+            padding: 0 10px;
+            text-align: center;
+            &:hover{
+                color: #1890ff;
+            }  
+        }
+    }
 }

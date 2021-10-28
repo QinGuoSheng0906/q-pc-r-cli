@@ -84,14 +84,13 @@ module.exports = {
                     },
                     'postcss-loader',
                     'less-loader',
-                    { // 处理样式变量及公共文件
+                    { // 处理样式全局变量及公共文件,
                         loader: 'style-resources-loader',
                         options: {
                             patterns: [ // 只有一条时也可以写成对象形式
-                                path.resolve(__dirname, 'src/assets/styles/*.less')
-                                // path.resolve(__dirname, 'path/to/scss/mixins/*.less')
-                            ],
-                            injector: 'append' // 如果在样式文件之后导入就加此行配置
+                                path.resolve(__dirname, 'src/assets/styles/variable.less')
+                            ]
+                            // injector: 'append' // 如果在样式文件之后导入就加此行配置
                         }
                     },
                     'thread-loader'
@@ -102,7 +101,7 @@ module.exports = {
                 type: 'asset/resource',
                 generator: {
                     // [ext]前面自带"."
-                    filename: 'assets/images/[hash:8].[name][ext]'
+                    filename: 'images/[hash:8].[name][ext]'
                 }
             },
             {

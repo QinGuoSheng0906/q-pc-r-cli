@@ -5,13 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",
-    "dev": "cross-env PROCESS_ENV=development  webpack serve --config  ./webpack.dev.js --progress",
+    "dev": "cross-env PROCESS_ENV=development webpack serve --config  ./webpack.dev.js --progress",
     "build": "cross-env PROCESS_ENV=production webpack --progress --config  ./webpack.build.js",
     "lint": "npm run lint:client && npm run lint:style",
     "lint:style": "stylelint src/**/*.less --fix",
-    "lint:client": "eslint --ext  .jsx,.js ./src --fix ",
-    "fml": "cross-env LIMIT=4096 increase-memory-limit",
-    "mos": "node --max_old_space_size=4096"
+    "lint:client": "eslint --ext  .jsx,.js ./src --fix "
   },
   "pre-commit": [
     "lint"

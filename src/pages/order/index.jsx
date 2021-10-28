@@ -10,18 +10,32 @@ import { Button } from 'antd';
 
 import SelectLetterSort from '@components/form_item/select_letter_sort';
 
+import './style.less'
 
 class Order extends Component {
+    state = {
+        selectVal: []
+    }
     goDetail = () => {
         this.props.history.push({ pathname: '/order/detail' })
     }
+    onChange = (val) =>  {
+        console.log('val', val)
+        this.setState({
+            selectVal: val
+        })
+    }
     render () {
+        let { selectVal } = this.state;
         return (
-            <div className = 'p-10'>
+            <div className = 'p-10 order-list-container'>
             这里是order页
                 <Button onClick = { this.goDetail }>详情页</Button>
                 <div>
-                    <SelectLetterSort />
+                    <SelectLetterSort 
+                        value = { selectVal }
+                        onChange = { this.onChange }
+                    />
                 </div>
             </div>
         )

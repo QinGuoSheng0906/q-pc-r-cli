@@ -162,6 +162,55 @@ export const decodeHtml = (s) => {
     return result;
 }
 
+/**
+ *  替换特殊字符串, 进行解义
+*/
+export function replaceSpecialStr (data) {
+    if(!data) return;
+    // 需要特殊处理的字符或编码
+    let specialStr =  {
+        '&#34;': '"',
+        '&#39;': '\'',
+        '&#60;': '<',
+        '&#62;': '>',
+        '&quot;': '"',
+        '&lt;': '<',
+        '&gt;': '>',
+        '&amp;': '&'
+    };
+    // 类型
+    const type = dataType(data); 
+    let result = (str) => {
+        if(!str) return str;
+        let reg = /&#34;|&#39;|&#60;|&#62;|&quot;|&#39;|&lt;|&gt;|&amp;/g;
+        let newStr = str.replace(reg, function (matchStr) {
+            return specialStr[matchStr];
+        });
+        return newStr;
+    }; 
+    // 递归
+    let recursive = (data) => {
+        for(let i in data) {
+            if(dataType(data[i]).isArray || dataType(data[i]).isObject) {
+                recursive(data[i]);
+            }
+            if(dataType(data[i]).isString) {
+                data[i] = result(data[i]);
+            }
+        }
+        return data;
+    };
+    if(type.isArray || type.isObject ) {
+        return recursive(data);
+    }
+    if(type.isString) {
+        return result(data);
+    }
+    return data;
+}
+
+
+
 // // 滑滚动页面到顶部
 export const scrollToTop = () => {
     let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -270,11 +319,62 @@ export const letterSort = (data) => {
     result = data.sort((item1, item2) => item1.localeCompare(item2));
     return result;
 }
-
-
 /**
- * ajax 并发请求，限制数量，防止内存溢出
- * 
+ *  中文按照字母顺序 分类排序 
 **/ 
+
+export const letterCategorySort = (data, key) => {
+    if(!dataType(data).isArray) return data;
+    const letters = [ 'A', 'B', 'C', 'D', 'E', 'F','G', 'H', 'J', 'K', 'L', 'M','N', 'O', 'P','Q', 'R',  'S', 'T',   'W',  'X', 'Y',  'Z' ];
+    const zh =  [ '阿','八','嚓','哒','妸','发','旮','哈','讥','咔','垃','痳','拏','噢','妑','七','呥', '扨', '它', '穵', '夕', '丫', '帀' ];
+    let segs = [];
+    let vieLetters = [];
+    letters.forEach((x, i) => {
+        let curr = { letter: x, data:[] };
+        data.forEach((y) => {
+            let item = key ? y[key] : y;
+            if( item.localeCompare(zh[i]) >= 0 && item.localeCompare(zh[ i+1 ])<0 ) {
+                curr.data.push(y)
+            }
+        })
+        if(curr.data.length) {
+            curr.data.sort((a,b) => {
+                if(key) {
+                    return a[key].localeCompare(b[key])
+                } else  {
+                    return a.localeCompare(b)
+                }
+            })
+            segs.push(curr);
+            vieLetters.push(curr.letter)
+        }
+    })
+    return  {
+        letters: vieLetters, 
+        data: segs
+    }
+}
+
+/** 
+ *  去重并排序
+*/
+export const deWeightSort = (data, key, isSort = true) => {
+    if(!dataType(data).isArray || data.length < 1) return data;
+    let obj={};
+    let newArr=[];
+    for(let i=0;i<data.length;i++){
+        let item = key ? data[i][key] : data[i]
+        if(!obj[item]){
+            obj[item]=true;
+            newArr.push(data[i]);
+        }
+    }
+    isSort ? 
+        newArr.sort((a,b) => key ? a[key] - b[key] : a - b) 
+        : 
+        null
+    return newArr;
+}
+
 
 
