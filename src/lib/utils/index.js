@@ -29,6 +29,14 @@ export const dataType = (target) => {
         type
     };
     val['is' + type] = typeObj[type];
+    if(type === 'String') {
+        try {
+            let obj = JSON.parse(target);
+            val['isJSON'] = obj && typeof obj == 'object' ? true: false;
+        }catch(e) {
+            val['isJSON'] = false;
+        }
+    }
     return val;                                                                                          
 }
 
@@ -87,7 +95,7 @@ export const bankFormat = (bankNum, isStar = true) => {
     }
 }
 
-// antd 表单内容宽度 默认5,18
+// antd 表单内容宽度 默认6,18
 export const layoutForm = (label = 6, wrapper = 18 ) => {
     return {
         labelCol: {
@@ -99,7 +107,7 @@ export const layoutForm = (label = 6, wrapper = 18 ) => {
     };
 }
 
-// a 标签打开新窗口
+// a 标签打开新窗口 下载文件
 export const aOpenWindow = (url) => {
     let newA = document.createElement('a');
     newA.id = 'new_a';
@@ -109,6 +117,42 @@ export const aOpenWindow = (url) => {
     document.body.appendChild(newA);
     newA.click();
     document.body.removeChild(newA);
+}
+/**
+ * 多文件下载 使用iframe
+ * @param ([{url: '', name: ''}], time = 5 * 60 * 1000) // 默认时间五分钟删除iframe
+ * @returns 
+**/
+export const MultifileDownload = (fileData, time = 5 * 60 * 1000) => {
+    if(!fileData || fileData.length < 1) return fileData;
+    if(!dataType(time).isNumber || time < 1 ) return '请输入正确的时间！';
+    let obj = {};
+    fileData.forEach((item, index) => {
+        if(item.url) {
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none'; // 防止影响页面
+            iframe.style.height = 0; // 防止影响页面
+            iframe.src = item.url; 
+            document.body.appendChild(iframe); // 这一行必须，iframe挂在到dom树上才会发请求
+            // 5分钟之后删除（onload方法对于下载链接不起作用，就先抠脚一下吧）
+            obj[index + '_time'] = setTimeout(() => {
+                obj[index + '_time'] = null;
+                iframe.remove();
+            }, time)
+        }
+    })
+    
+}
+
+/**
+ * 判断是否是URL
+ * @param {*} data 
+ * @returns  Boolean
+ */
+export const isUrl = (str) => {
+    if(!dataType(str).isString || !str) return false;
+    let v = new RegExp('^(?!mailto:)(?:(?:http|https|ftp)://|//)(?:\\S+(?::\\S*)?@)?(?:(?:(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[0-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,})))|localhost)(?::\\d{2,5})?(?:(/|\\?|#)[^\\s]*)?$', 'i');
+    return v.test(str);
 }
 
 // URL 参数序列化
@@ -163,6 +207,10 @@ export const decodeHtml = (s) => {
 }
 
 /**
+ *  替换特殊字符串, 进行转义
+*/
+
+/**
  *  替换特殊字符串, 进行解义
 */
 export function replaceSpecialStr (data) {
@@ -209,9 +257,7 @@ export function replaceSpecialStr (data) {
     return data;
 }
 
-
-
-// // 滑滚动页面到顶部
+// 滑滚动页面到顶部
 export const scrollToTop = () => {
     let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     if (scrollTop > 0) {
@@ -358,7 +404,7 @@ export const letterCategorySort = (data, key) => {
 /** 
  *  去重并排序
 */
-export const deWeightSort = (data, key, isSort = true) => {
+export const deWeightSort = (data, isSort = true, key ) => {
     if(!dataType(data).isArray || data.length < 1) return data;
     let obj={};
     let newArr=[];
@@ -375,6 +421,62 @@ export const deWeightSort = (data, key, isSort = true) => {
         null
     return newArr;
 }
+
+
+/** 
+ * 数组降维
+ * @param array 数组 
+ * @param count 降维层级 类型 number 默认降维所有层级到一维
+*/
+export const arrayFlat = (array, count) => {
+    if(!dataType(array).isArray || array.length < 1) return array;
+    if(count) {
+        if(!dataType(count).isNumber) return '参数count，不是Number！';
+        if(count < 1) return '参数count，必须大于等于1！';
+    }
+    let newArray = [];
+    let num = -1;
+    let flatFunc = (data) => {
+        if(count) {
+            num++;
+        }
+        data.forEach(item => {
+            if(dataType(item).isArray && item.length){
+                if(count) {
+                    num <= count + 1 ?
+                        flatFunc(item)
+                        :
+                        newArray.push(item)
+                } else {
+                    flatFunc(item) 
+                }
+            } else {
+                newArray.push(item)
+            }
+        })
+    }
+    flatFunc (array);
+    return newArray;
+}
+
+
+/**
+ *  对象 {'1':'值一'} 转为 数组对象 [{title: '值一', value: '1'}]
+*
+ */
+export const objEnumArray = (obj) => {
+    if(!dataType(obj).isObject) return obj;
+    let newArry = [];
+    Object.keys(obj).forEach(item => {
+        newArry.push({
+            title: obj[item],
+            value: item
+        })
+    })
+    return newArry;
+}
+
+
 
 
 
