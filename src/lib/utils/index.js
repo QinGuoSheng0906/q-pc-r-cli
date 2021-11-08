@@ -432,28 +432,33 @@ export const arrayFlat = (array, count) => {
     if(!dataType(array).isArray || array.length < 1) return array;
     if(count) {
         if(!dataType(count).isNumber) return '参数count，不是Number！';
-        if(count < 1) return '参数count，必须大于等于1！';
+    }
+    if(dataType(count).isNumber && count < 1) {
+        return '参数count，必须大于等于1！';
     }
     let newArray = [];
-    let num = -1;
-    let flatFunc = (data) => {
-        if(count) {
-            num++;
-        }
-        data.forEach(item => {
-            if(dataType(item).isArray && item.length){
-                if(count) {
-                    num <= count + 1 ?
-                        flatFunc(item)
-                        :
+    let flatFunc = (data, parentKey) => {
+        data.forEach((item, index) => {
+            if(count) {
+                if(dataType(item).isArray && item.length) {
+                    let keys = parentKey ? parentKey + '-' + index : '' + index;
+                    let newKey = keys.split('-');
+                    if(newKey.length <= count) {
+                        flatFunc(item, keys);
+                    } else {
                         newArray.push(item)
+                    }
                 } else {
-                    flatFunc(item) 
+                    newArray.push(item) 
                 }
             } else {
-                newArray.push(item)
+                if(dataType(item).isArray && item.length) {
+                    flatFunc(item); 
+                } else {
+                    newArray.push(item) 
+                }
             }
-        })
+        });
     }
     flatFunc (array);
     return newArray;
@@ -475,8 +480,3 @@ export const objEnumArray = (obj) => {
     })
     return newArry;
 }
-
-
-
-
-
