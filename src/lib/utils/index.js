@@ -429,19 +429,20 @@ export const deWeightSort = (data, isSort = true, key ) => {
  * @param count 降维层级 类型 number 默认降维所有层级到一维
 */
 export const arrayFlat = (array, count) => {
-    if(!dataType(array).isArray || array.length < 1) return array;
-    if(count) {
-        if(!dataType(count).isNumber) return '参数count，不是Number！';
-    }
-    if(dataType(count).isNumber && count < 1) {
-        return '参数count，必须大于等于1！';
-    }
+    if(!dataType(array).isArray) return array;
+    if(array.length < 1) return array;
+    if(count && !dataType(count).isNumber) return '参数count，不是Number！';
+    if(dataType(count).isNumber && count < 1) return '参数count，必须大于等于1！';
+
     let newArray = [];
     let flatFunc = (data, parentKey) => {
         data.forEach((item, index) => {
+            // 有层级参数时
             if(count) {
                 if(dataType(item).isArray && item.length) {
+                    // 拼接keys
                     let keys = parentKey ? parentKey + '-' + index : '' + index;
+                    // 根据长度判断当前循环层级
                     let newKey = keys.split('-');
                     if(newKey.length <= count) {
                         flatFunc(item, keys);
@@ -452,6 +453,7 @@ export const arrayFlat = (array, count) => {
                     newArray.push(item) 
                 }
             } else {
+                // 递归取到最后一层
                 if(dataType(item).isArray && item.length) {
                     flatFunc(item); 
                 } else {
@@ -480,3 +482,106 @@ export const objEnumArray = (obj) => {
     })
     return newArry;
 }
+
+/*
+ * 复制文本
+ * @param text      字符串--必传
+ * @param success   回调函数
+ * @param fail      回调函数
+*/ 
+export const copyText = (text, success = null, fail = null) => {
+    text = text.replace(/(^\s*)|(\s*$)/g, '');
+    if (!text) {
+        typeof fail === 'function' && fail('复制的内容不能为空！');
+        return;
+    }
+    const id = 'the-clipboard';
+    /**
+     * 粘贴板节点
+     * @type {HTMLTextAreaElement}
+     */
+    let clipboard = document.getElementById(id);
+    if (!clipboard) {
+        clipboard = document.createElement('textarea');
+        clipboard.id = id;
+        clipboard.readOnly = true
+        clipboard.style.cssText = 'font-size: 15px; position: fixed; top: -1000%; left: -1000%;';
+        document.body.appendChild(clipboard);
+    }
+    clipboard.value = text;
+    clipboard.select();
+    clipboard.setSelectionRange(0, text.length);
+    const state = document.execCommand('copy');
+    if (state) {
+        typeof success === 'function' && success();
+    } else {
+        typeof fail === 'function' && fail('复制失败');
+    }
+}
+
+
+/*
+ * 小数精度计算
+ * @param a      数字一
+ * @param type   何种计算
+ * @param b      数字二
+*/ 
+export const computeNumber = (a, type, b) => {
+    /**
+     * 获取数字小数点的长度
+     * @param {number} n 数字
+     */
+    function getDecimalLength (n) {
+        const decimal = n.toString().split('.')[1];
+        return decimal ? decimal.length : 0;
+    }
+    /**
+     * 修正小数点
+     * @description 防止出现 `33.33333*100000 = 3333332.9999999995` && `33.33*10 = 333.29999999999995` 这类情况做的处理
+     * @param {number} n
+     */
+    const amend = (n, precision = 15) => parseFloat(Number(n).toPrecision(precision));
+    const power = Math.pow(10, Math.max(getDecimalLength(a), getDecimalLength(b)));
+    let result = 0;
+
+    a = amend(a * power);
+    b = amend(b * power);
+
+    switch (type) {
+    case '+':
+        result = (a + b) / power;
+        break;
+    case '-':
+        result = (a - b) / power;
+        break;
+    case '*':
+        result = (a * b) / (power * power);
+        break;
+    case '/':
+        result = a / b;
+        break;
+    default:
+        break;
+    }
+
+    result = amend(result);
+
+    return {
+        /** 计算结果 */
+        result,
+        /**
+         * 继续计算
+         * @param {"+"|"-"|"*"|"/"} nextType 继续计算方式
+         * @param {number} nextValue 继续计算的值
+         */
+        next (nextType, nextValue) {
+            return computeNumber(result, nextType, nextValue);
+        }
+    };
+}
+
+  
+       
+        
+
+

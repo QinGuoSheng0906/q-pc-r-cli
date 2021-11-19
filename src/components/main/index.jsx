@@ -15,7 +15,7 @@ import routerMap from '@/routers/routerMap'; // 路由
 import { Layout  } from 'antd';
 
 const { Content } = Layout;
-const LayoutHeader = Layout.Header;
+// const LayoutHeader = Layout.Header;
 const LayoutSider = Layout.Sider;
 const LayoutFooter = Layout.Footer;
 
@@ -106,7 +106,7 @@ class Main extends Component {
                     />
                 </LayoutSider>
                 <Layout>
-                    <LayoutHeader>Header</LayoutHeader>
+                    { /* <LayoutHeader>Header</LayoutHeader> */ }
                     <Content className = 'layout-content'> { this.props.children }</Content>
                     <LayoutFooter>Footer</LayoutFooter>
                 </Layout>

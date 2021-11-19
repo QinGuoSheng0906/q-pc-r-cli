@@ -81,6 +81,24 @@ let routerMap = [
                 name: 'promise',
                 path: '/promise',              
                 component: AsyncComponent(() => import('@/pages/syudy/promise'))  
+            },
+            {
+                title: '动画',                    
+                name: 'animation',
+                path: '/animation',              
+                component: AsyncComponent(() => import('@/pages/syudy/animation'))  
+            },
+            {
+                title: '导入导出文件',                    
+                name: 'importExportFiles',
+                path: '/import-export-files',              
+                component: AsyncComponent(() => import('@/pages/syudy/import_export_files'))  
+            },
+            {
+                title: '图片懒加载',                    
+                name: 'lazyImages',
+                path: '/lazy-images',              
+                component: AsyncComponent(() => import('@/pages/syudy/lazy_images'))  
             }
         ]
        

@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>专利代理服务协议书</title>
+    <style>
+        body {
+            font-family: SimSun;
+        }
+        p strong { font-size: 12px; }
+        .contain { padding: 0 25px; }
+        .title strong { font-size: 24px; font-weight: bold; }
+        .title { text-align: center; }
+        h1 { font-size: 12px; font-weight: bold; text-indent: 3em; }
+        p {
+            line-height: 1.5;
+            margin: 0;
+            font-size: 16px;
+            letter-spacing: 0;
+            text-indent: 2em;
+        }
+        .text-p { line-height: 1.8; margin: 4px 0; font-size: 12px; letter-spacing: 4px; }
+        .divider { width: 100%; height: 15px; border-collapse: collapse; border-top: 1px solid #000; }
+        .borderTablex { text-align: center; width: 100%; border-collapse: collapse; border-top: 1px solid #000; }
+        .borderTablex td { font-size: 12px; min-height: 35px; line-height: 1.5; padding: 4px 8px; }
+        .borderTable { text-align: center; width: 100%; border-collapse: collapse; border-top: 1px solid #000; border-left: 1px solid #000; }
+        .borderTable td { border-bottom: 1px solid #000; border-right: 1px solid #000; font-size: 12px; padding: 12px 8px; }
+        .tableX { text-align: left; width: 90%; }
+        .tableX td { height: 24px; font-size: 12px; padding-top: 8px; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+        .underline-max { border-bottom: 1px solid #000; text-align: left; display: inline-block; }
+        .underline-min { text-decoration: underline; text-align: centerr; }
+        .underline { text-decoration: underline; }
+        .m-t { margin-top: 15px; }
+        .m-top { margin-top: 18px; }
+        .text-bold { font-weight: bold }
+    </style>
+</head>
+
+<body>
+    <div class="contain" th:if="${agentType} == 1 ">
+        <p>&nbsp;</p>
+        <p class="title"><strong>专利代理服务协议书</strong></p>
+        <div class="text-bold text-right">编号：[[${contractNo}]]</div>
+        <p class="text-bold" style="text-indent: 0;">甲方（委托方）：[[${customerName}]] [[${customerCardNo}]]</p>
+        <p style="text-indent: 0;">地址：[[${userAddress}]]</p>
+        <p class="text-bold" style="text-indent: 0;">乙方（受托方）：[[${accMainPartName}]]</p>
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：重庆市渝北区金开大道西段106号3号楼6F604</p>
+        <p th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：北京市海淀区中关村大街11号五层商业5B04</p>
+        <p>乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。</p>
+        <p>本协议签订地为重庆，根据相关法律法规的规定，甲、乙本着平等自愿、诚实守信的原则，经友好协商，就甲方委托乙方代为办理专利申请事宜达成一致，特签订如下协议，共同遵守：</p>
+        <p class="text-bold" style="text-indent: 0;">一、委托事项及费用</p>
+        <p style="display: flex; justify-content: space-between;"><span>1、甲方委托乙方办理专利申请事务，详情如下：</span> <span>费用单位：元</span></p>
+        <table class="borderTable">
+            <tr>
+                <td>交底名称</td>
+                <td>服务内容</td>
+                <td>单价</td>
+                <td>件数</td>
+                <td>合计金额</td>
+                <td>备注</td>
+            </tr>
+            <tr th:each="casePatentDTO, casePatentDTOStat:${casePatentDTOS}">
+                <td>[[${casePatentDTO.disclosureName}]]</td>
+                <td>[[${casePatentDTO.serviceName}]]-<span th:if="${casePatentDTO.incrementName == ''}">无</span>[[${casePatentDTO.incrementName}]]</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>1</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>[[${casePatentDTO.remark}]]</td>
+            </tr>
+        </table>
+        
+        <p>1.1 协议费用：<span class="underline">[[${count}]]</span>件共计<span class="underline">[[${totalAmount}]]</span>元人民币（大写：<span class="underline">[[${totalAmountDX}]]</span>）。</p>
+        <p>1.2 支付时间：本协议签订之日起2个工作日支付。</p>
+        <p class="text-bold">注：交底名称仅表示技术内容，不是最终专利名称，在代理人撰写中会根据专利法要求确定合理专利名称；如果暂时无法确定欲申请的技术名称，可填写“未确定”。</p>
+        <p>2、支付方式</p>
+        <p>2.1甲方应于本协议签订之日起2个工作日内，全额支付上述费用至乙方指定的下述任一账户：</p>
+        <div th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：重庆利律知识产权代理有限公司</p>
+          <p>账号：5005 0100 4141 0000 2716</p>
+          <p>开户行：中国建设银行股份有限公司重庆中山路支行</p>
+        </div>
+      	<div th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：北京酷爱智慧知识产权代理有限公司</p>
+          <p>账号：1100 1085 7000 5302 0697</p>
+          <p>开户行：中国建设银行北京中关村支行</p>
+          <p class="text-bold">（2）支付宝账户</p>
+          <p>账户名：ok@kuaizhihui.com</p>
+          <p class="text-bold">（3）猪八戒股份有限公司付款链接</p>
+          <p>甲方谅解，乙方因业务需要使用猪八戒股份有限公司支付链接作为乙方收款账户之一（款项付讫以乙方名义开具发票），猪八戒股份有限公司的收款的行为与乙方具有同等法律效力。</p>
+      	</div>
+        
+        <p>2.2甲方在付款时，应向乙方提供真实、有效的付款凭证（费用支付成功的截屏、照片等）及用途信息；甲方因未提供上述付款凭证及乙方要求备注的用途信息，导致乙方无法确认款项来源及用途的，视为甲方未支付。</p>
+        <p>3、发票开具约定</p>
+        <p>（1）甲方需要开具发票的，应如实填写下述发票需求及信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>项目</td>
+                <td>发票类型</td>
+                <td>开票金额</td>
+                <td>发票抬头</td>
+            </tr>
+            <tr>
+                <td>专利代理费</td>
+                <td th:if="${patentAgentType == 1}">专票</td>
+                <td th:if="${patentAgentType == 2}">普票</td>
+                <td th:if="${patentAgentType != 1 && patentAgentType != 2}"></td>
+                <td>[[${patentAgentAmount}]]</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]</span></td>
+            </tr>
+            <tr>
+                <td>官费</td>
+                <td th:if="${applyType == 1}">专利收据</td>
+                <td th:if="${applyType == 2}">普票</td>
+                <td th:if="${applyType != 1 && applyType != 2}"></td>
+                <td>[[${applyAmount}]]</td>
+                <td>[[${applyCustomerName}]]</td>
+            </tr>
+            <tr>
+                <td>邮寄地址</td>
+                <td>[[${applyEmailAddress}]]</td>
+                <td>收件人</td>
+                <td>[[${applyReceiveName}]]</td>
+            </tr>
+        </table>
+
+
+        <p>注：甲方需要就代理费部分开具增值税专用发票的，按照国家税务局规定，应填写以下开具专用发票的相关信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>公司名称</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]&nbsp;</span></td>
+            </tr>
+            <tr>
+                <td>纳税人识别号</td>
+                <td>[[${applyCustomerNo}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>地址、电话</td>
+                <td>[[${addressAndPhone}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>开户行及账号</td>
+                <td>[[${accountAndCard}]]&nbsp;</td>
+            </tr>
+        </table>
+        <p>甲方首次委托乙方开具增值税专用发票的，还需提供一般纳税人资质证明。</p>
+        <p>（2）甲方已根据本协议约定支付全部款项，并在本协议签订生效之日起90日内向乙方提出发票开具申请，乙方在收到甲方开票申请之日起7个工作日内，根据上述约定的开票信息为甲方开具发票。</p>
+        <p>（3）甲方已根据本协议约定支付全部款项，但未在本协议签订生效之日起90日内提出发票开具申请的，乙方将根据上述约定的开票信息自行开具发票，并代为保管该发票至开票当年的12月31日，过期后乙方不负责保管此发票。</p>
+        <p>（4）甲方购买“授权担保”服务的，乙方在甲方支付费用后仅提供收据，甲方要求开具发票的，乙方可以根据上述开票信息为甲方开具发票，但涉及到退款的，甲方须退还原始发票。</p>
+        <p>（5）非因乙方原因导致甲方需要重新开具发票的，相关费用需由甲方承担。</p>
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">（6）乙方系小规模纳税人，在开具增值税发票时，实际开票税点均以国家税收政策据实开具。</p>
+      	<p class="text-bold">4、官费收取依据：</p>
+        <p style="display: flex; justify-content: space-between;"><span>专利申请官费标准</span> <span>单位：元/件</span></p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>无减缓</td>
+                <td>85%减缓（单一申请人）</td>
+                <td>70%减缓（多个申请人</td>
+            </tr>
+            <tr>
+                <td>发明专利</td>
+                <td>3450</td>
+                <td>560</td>
+                <td>1070</td>
+            </tr>
+            <tr>
+                <td>实用新型专利</td>
+                <td>1105</td>
+                <td>170</td>
+                <td>335</td>
+            </tr>
+            <tr>
+                <td>外观设计专利</td>
+                <td>1105</td>
+                <td>170</td>
+                <td>335</td>
+            </tr>
+        </table>
+        <p>说明：</p>
+        <p>（1）发明专利的官费包含：申请费、公布印刷费和实质审查费。</p>
+        <p>（2）实用新型和外观设计官费包含：申请费、首年年费、印花税费。</p>
+        <p>（3）官费可由甲方自行缴纳至国家知识产权局，也可交由乙方代为缴纳。</p>
+        <p>（4）甲方申请官费减缓的，乙方按照上述减缓后的官费标准为甲方缴纳官费申请费。甲方未申请官费减缓或费减申请被驳回的，乙方按照无减缓的官费标准为甲方缴纳官费申请费，差价部分由甲方承担。</p>
+        <p>5、专利年费说明</p>
+        <p>（1）甲方委托乙方代缴年费的，应在当年专利年费缴纳截止之日前30日，向乙方发出明确指示，并支付当年应缴纳专利年费；</p>
+        <p>（2）甲方明确指示不需要乙方代为缴纳年费；或者乙方向甲方发出年费缴纳提醒后，甲方在专利年费缴纳截止之日前3日内仍未向乙方支付当年应缴纳专利年费的，视为甲方不再委托乙方提供年费监控及代缴服务。</p>
+        <p class="text-bold"  style="text-indent: 0;">二、服务期限</p>
+        <p>本协议约定专利申请服务期限为自本协议签订之日起至国家知识产权局专利局下发专利证书或驳回通知书之日止。</p>
+        <p class="text-bold"  style="text-indent: 0;">三、甲方权利义务</p>
+        <p>1、配合乙方办理专利申请工作，提供专利申请需要的技术信息，包括：根据乙方开具的清单提供材料，根据乙方的建议阐述技术方案内容。甲方应保证信息的真实性、合法性，同时对所需申请专利的技术方案的新颖性、创造性和实用性负责。</p>
+        <p>2、甲方应确保在本协议签订前不存在影响技术方案新颖性的行为，包括但不限于：申请专利前的销售、宣传、论文发表、及其它会导致技术信息公开的行为；因这些行为导致的专利不能授权及技术方案的提前公开，乙方不承担相关责任。</p>
+        <p>3、适时了解案件的进展程度，提出合理化建议和要求。</p>
+        <p>4、甲方应配合乙方完善本协议约定办理事项所需文书，并按时交予乙方。自付款之日起12个月内未向乙方交付、确认申请材料导致申请不能向主管部门递交，12个月后如甲方要求退款，乙方可拒绝甲方的退款申请。</p>
+        <p>5、甲方在确稿后应配合乙方完善申报信息并提交申报，若在确稿后产生的方案更换或不予申报产生的成本由甲方承担，乙方可在合同总价款中予以扣除不退还。</p>
+        <p class="text-bold"  style="text-indent: 0;">四、乙方权利义务</p>
+        <p>1、认真履行甲方委托的事项，接受甲方监督，及时回答甲方提出的问题。适时向专利局了解案件的进展程度，并及时向甲方汇报。</p>
+        <p>2、乙方默认以电子申请方式递交专利申请文件，递交前需经甲方确认。</p>
+        <p>3、乙方对在办理甲方委托的代理事务过程中收到的所有官方通知书原件后，乙方应以电子邮件形式通知甲方，甲方需要纸件的，乙方根据甲方书面指示快递给甲方。</p>
+        <p class="text-bold"  style="text-indent: 0;">五、联络信息</p>
+        <p>甲乙双方分别指定以下联系人，若联系人或联系信息发生变化，应及时告知对方。如因一方信息变化未及时告知对方导致的损失由信息变化方承担。</p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>联系人</td>
+                <td>电话</td>
+                <td>手机</td>
+                <td>电子邮箱</td>
+            </tr>
+            <tr>
+                <td>甲方</td>
+                <td>[[${userName}]]</td>
+                <td></td>
+                <td>[[${userPhone}]]</td>
+                
+                <td>[[${userEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">[[${userAddress}]]</td>
+            </tr>
+            <tr>
+                <td>乙方</td>
+                <td>[[${followManagerName}]]</td>
+                <td></td>
+                <td>[[${followManagerPhone}]]</td>
+                <td>[[${followManagerEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">重庆市渝北区金开大道西段106号互联网产业园猪八戒网总部大厦2号楼</td>
+            </tr>
+        </table>
+
+        <p class="text-bold"  style="text-indent: 0;">六、违约责任</p>
+        <p>1、因甲方未能或未及时提供所需材料或未及时支付费用导致申请不能顺利进行或导致甲方权利丧失的，乙方不承担法律责任；</p>
+        <p>2、因乙方未如约履行申请服务义务且给甲方造成损失的，乙方承担损害赔偿责任；</p>
+        <p>3、甲方购买“加快递交”服务的，乙方如不能如期履行义务，应退还“加快递交”服务费用；</p>
+        <p>4、因不可抗力或不能归咎于双方的原因导致本协议未能履行的，本协议自行解除。</p>
+        <p class="text-bold"  style="text-indent: 0;">七、“授权担保”服务的退款条款</p>
+        <p>1、退款条件：</p>
+        <p>甲方购买“授权担保”的专利申请被驳回的，应在收到国家知识产权局下发的驳回通知书之日起180日内向乙方提出书面退款申请，并退还乙方开具的原始发票。</p>
+        <p>乙方已开具增值税专用发票的，甲方如无法退还原始发票，应向其税务主管机关申请《开具红字增值税专用发票信息表》（带有甲方主管国税局签章）及情况说明的原件提交给乙方，方可办理退款。</p>
+        <p>2、退款流程：</p>
+        <p>（1）甲方在收到国家知识产权局下发的驳回通知书之日起180日内向乙方提出书面退款申请，并退还乙方开具的原始发票；</p>
+        <p>（2）乙方在收到甲方的书面退款申请、原始发票及相关材料之日起（以后到日期为准）7日内，将被驳回的“授权担保”申请的全部代理费及费减后的官费（不含甲方未申请官费减缓或费减申请被驳回补缴的官费差额部分）一并退还至甲方付款账户。</p>
+        <p>3、出现下列情况之一的，乙方有权拒绝退款：</p>
+        <p>（1）甲方拒不采纳乙方给出的专业意见，坚持要求乙方执行自己的申请意见的；</p>
+        <p>（2）专利申请后至驳回前，甲方擅自变更代理机构、导致乙方不能答复审查意见的；</p>
+        <p>（3）专利申请后至驳回前，甲方擅自变更代理机构并由乙方以外的代理机构进行答复审查意见的；</p>
+        <p>（4）甲方没有及时缴纳相关官费导致的驳回或视为撤回的；</p>
+        <p>（5）乙方已开具增值税普通发票，甲方无法退还原始发票的；</p>
+        <p>（6）乙方已开具增值税专用发票，甲方无法退还原始发票又无法提供开具红字发票信息表的；</p>
+        <p>（7）甲方在收到国家知识产权局下发的驳回通知书之日起180日内未向乙方提出书面退款申请的。</p>
+        <p class="text-bold"  style="text-indent: 0;">八、知识产权及保密条款</p>
+        <p>甲乙双方在服务过程中知悉的对方的商业和技术秘密信息，未经信息提供方允许，不得用于本协议约定服务以外的任何其他用途，亦不得以任何方式向任何第三方泄露或公开，直至相关信息已经被公开为止。</p>
+        <p>信息获取方应当告知并以适当方式要求其参与本协议约定服务之雇员遵守本协议规定，若由于参与本项工作之雇员违反本协议的规定，信息获取方应承担连带责任。</p>
+        <p>甲方根据本协议约定提供的技术资料、手续文件的知识产权归甲方所有。</p>
+        <p class="text-bold"  style="text-indent: 0;">九、其它</p>
+        <p>1、经双方协商一致，本协议可解除。</p>
+        <p>2、本协议一式貳份，双方各执一份，具有同等效力，自双方签字并盖章之日起生效；</p>
+        <p>3、本协议任何条款无效或失去效力都不影响本协议或本协议其它条款的效力。</p>
+        <p>4、本协议电子扫描件与原件具有同等法律效力。</p>
+        <p>5、本协议未明确事宜双方可在公平、平等基础上协商解决，如发生争议，可以提交北京仲裁委员会仲裁。本协议解释或争议解决均适用中华人民共和国现行法律规定。</p>
+    </div>
+	
+	
+	
+	
+	<div class="contain" th:if="${agentType} == 2 ">
+        <p>&nbsp;</p>
+        <p class="title"><strong>专利代理服务协议书</strong></p>
+		<p class="title"><strong>（双享服务）</strong></p>
+        <div class="text-bold text-right">编号：[[${contractNo}]]</div>
+        <p class="text-bold" style="text-indent: 0;">甲方（委托方）：[[${customerName}]] [[${customerCardNo}]]</p>
+        <p style="text-indent: 0;">地址：[[${userAddress}]]</p>
+        <p class="text-bold" style="text-indent: 0;">乙方（受托方）：[[${accMainPartName}]]</p>
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：重庆市渝北区金开大道西段106号3号楼6F604</p>
+        <p th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：北京市海淀区中关村大街11号五层商业5B04</p>
+        <p>乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。</p>
+        <p>本协议签订地为重庆，根据相关法律法规的规定，甲、乙本着平等自愿、诚实守信的原则，经友好协商，就甲方委托乙方代为办理专利申请事宜达成一致，特签订如下协议，共同遵守：</p>
+        <p class="text-bold" style="text-indent: 0;">一、委托事项及费用</p>
+        <p style="display: flex; justify-content: space-between;"><span>1、甲方委托乙方办理专利申请事务，详情如下：</span> <span>费用单位：元</span></p>
+        <table class="borderTable">
+            <tr>
+                <td>交底名称</td>
+                <td>服务内容</td>
+                <td>单价</td>
+                <td>件数</td>
+                <td>合计金额</td>
+                <td>备注</td>
+            </tr>
+            <tr th:each="casePatentDTO, casePatentDTOStat:${casePatentDTOS}">
+                <td>[[${casePatentDTO.disclosureName}]]</td>
+                <td>[[${casePatentDTO.serviceName}]]-<span th:if="${casePatentDTO.incrementName == ''}">无</span>[[${casePatentDTO.incrementName}]]</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>1</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>[[${casePatentDTO.remark}]]双享服务</td>
+            </tr>
+        </table>
+        
+        <p>1.1 协议费用：<span class="underline">[[${count}]]</span>件共计<span class="underline">[[${totalAmount}]]</span>元人民币（大写：<span class="underline">[[${totalAmountDX}]]</span>）。</p>
+        <p>1.2 支付时间：本协议签订之日起2个工作日支付。</p>
+        <p class="text-bold">注：交底名称仅表示技术内容，不是最终专利名称，在代理人撰写中会根据专利法要求确定合理专利名称；如果暂时无法确定欲申请的技术名称，可填写“未确定”。</p>
+        <p>2、支付方式</p>
+        <p>2.1甲方应于本协议签订之日起2个工作日内，全额支付上述费用至乙方指定的下述任一账户：</p>
+        <div th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：重庆利律知识产权代理有限公司</p>
+          <p>账号：5005 0100 4141 0000 2716</p>
+          <p>开户行：中国建设银行股份有限公司重庆中山路支行</p>
+        </div>
+      	<div th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：北京酷爱智慧知识产权代理有限公司</p>
+          <p>账号：1100 1085 7000 5302 0697</p>
+          <p>开户行：中国建设银行北京中关村支行</p>
+          <p class="text-bold">（2）支付宝账户</p>
+          <p>账户名：ok@kuaizhihui.com</p>
+          <p class="text-bold">（3）猪八戒股份有限公司付款链接</p>
+          <p>甲方谅解，乙方因业务需要使用猪八戒股份有限公司支付链接作为乙方收款账户之一（款项付讫以乙方名义开具发票），猪八戒股份有限公司的收款的行为与乙方具有同等法律效力。</p>
+      	</div>
+        
+        <p>2.2甲方在付款时，应向乙方提供真实、有效的付款凭证（费用支付成功的截屏、照片等）及用途信息；甲方因未提供上述付款凭证及乙方要求备注的用途信息，导致乙方无法确认款项来源及用途的，视为甲方未支付。</p>
+        <p>3、发票开具约定</p>
+        <p>（1）甲方需要开具发票的，应如实填写下述发票需求及信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>项目</td>
+                <td>发票类型</td>
+                <td>开票金额</td>
+                <td>发票抬头</td>
+            </tr>
+            <tr>
+                <td>专利代理费</td>
+                <td th:if="${patentAgentType == 1}">专票</td>
+                <td th:if="${patentAgentType == 2}">普票</td>
+                <td th:if="${patentAgentType != 1 && patentAgentType != 2}"></td>
+                <td>[[${patentAgentAmount}]]</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]</span></td>
+            </tr>
+            <tr>
+                <td>官费</td>
+                <td th:if="${applyType == 1}">专利收据</td>
+                <td th:if="${applyType == 2}">普票</td>
+                <td th:if="${applyType != 1 && applyType != 2}"></td>
+                <td>[[${applyAmount}]]</td>
+                <td>[[${applyCustomerName}]]</td>
+            </tr>
+            <tr>
+                <td>邮寄地址</td>
+                <td>[[${applyEmailAddress}]]</td>
+                <td>收件人</td>
+                <td>[[${applyReceiveName}]]</td>
+            </tr>
+        </table>
+
+
+        <p>注：甲方需要就代理费部分开具增值税专用发票的，按照国家税务局规定，应填写以下开具专用发票的相关信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>公司名称</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]&nbsp;</span></td>
+            </tr>
+            <tr>
+                <td>纳税人识别号</td>
+                <td>[[${applyCustomerNo}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>地址、电话</td>
+                <td>[[${addressAndPhone}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>开户行及账号</td>
+                <td>[[${accountAndCard}]]&nbsp;</td>
+            </tr>
+        </table>
+        <p>甲方首次委托乙方开具增值税专用发票的，还需提供一般纳税人资质证明。</p>
+        <p>（2）甲方已根据本协议约定支付全部款项，并在本协议签订生效之日起90日内向乙方提出发票开具申请，乙方在收到甲方开票申请之日起7个工作日内，根据上述约定的开票信息为甲方开具发票。</p>
+        <p>（3）甲方已根据本协议约定支付全部款项，但未在本协议签订生效之日起90日内提出发票开具申请的，乙方将根据上述约定的开票信息自行开具发票，并代为保管该发票至开票当年的12月31日，过期后乙方不负责保管此发票。</p>
+        <p>（4）甲方购买“双享”服务的，乙方在甲方支付费用后可先提供收据，甲方要求开具发票的，乙方可以根据上述开票信息为甲方开具发票，官费按照两件进行计算进行开票，官费部分依照国家相关规定开具普票。</p>
+        <p>（5）非因乙方原因导致甲方需要重新开具发票的，相关费用需由甲方承担。</p>
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">（6）乙方系小规模纳税人，在开具增值税发票时，实际开票税点均以国家税收政策据实开具。</p>
+      	<p class="text-bold">4、官费收取依据：</p>
+        <p style="display: flex; justify-content: space-between;"><span>专利申请官费标准</span> <span>单位：元/件</span></p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>无减缓</td>
+                <td>85%减缓（单一申请人）</td>
+                <td>70%减缓（多个申请人</td>
+            </tr>
+            <tr>
+                <td>发明专利</td>
+                <td>3450</td>
+                <td>560</td>
+                <td>1070</td>
+            </tr>
+            <tr>
+                <td>实用新型专利</td>
+                <td>1105</td>
+                <td>170</td>
+                <td>335</td>
+            </tr>
+            <tr>
+                <td>外观设计专利</td>
+                <td>1105</td>
+                <td>170</td>
+                <td>335</td>
+            </tr>
+        </table>
+        <p>说明：</p>
+        <p>（1）发明专利的官费包含：申请费、公布印刷费和实质审查费。</p>
+        <p>（2）实用新型和外观设计官费包含：申请费、首年年费、印花税费。</p>
+        <p>（3）官费可由甲方自行缴纳至国家知识产权局，也可交由乙方代为缴纳。</p>
+        <p>（4）甲方申请官费减缓的，乙方按照上述减缓后的官费标准为甲方缴纳官费申请费。甲方未申请官费减缓或费减申请被驳回的，乙方按照无减缓的官费标准为甲方缴纳官费申请费，差价部分由甲方承担。</p>
+        <p>5、专利年费说明</p>
+        <p>（1）甲方委托乙方代缴年费的，应在当年专利年费缴纳截止之日前30日，向乙方发出明确指示，并支付当年应缴纳专利年费；</p>
+        <p>（2）甲方明确指示不需要乙方代为缴纳年费；或者乙方向甲方发出年费缴纳提醒后，甲方在专利年费缴纳截止之日前3日内仍未向乙方支付当年应缴纳专利年费的，视为甲方不再委托乙方提供年费监控及代缴服务。</p>
+        <p class="text-bold"  style="text-indent: 0;">二、服务期限</p>
+        <p>本协议约定专利申请服务期限为自本协议签订之日起至国家知识产权局专利局下发专利证书或驳回通知书之日止。</p>
+        <p class="text-bold"  style="text-indent: 0;">三、甲方权利义务</p>
+        <p>1、配合乙方办理专利申请工作，提供专利申请需要的技术信息，包括：根据乙方开具的清单提供材料，根据乙方的建议阐述技术方案内容。甲方应保证信息的真实性、合法性，同时对所需申请专利的技术方案的新颖性、创造性和实用性负责。</p>
+        <p>2、甲方应确保在本协议签订前不存在影响技术方案新颖性的行为，包括但不限于：申请专利前的销售、宣传、论文发表、及其它会导致技术信息公开的行为；因这些行为导致的专利不能授权及技术方案的提前公开，乙方不承担相关责任。</p>
+        <p>3、甲方须按本协议约定按时足额支付协议费用，否则乙方有权拒绝履行义务。</p>
+		<p>4、适时了解案件的进展程度，提出合理化建议和要求。</p>
+        <p>5、在本合同生效期间，若甲方的注册地址（通信地址）、联系人、联系电话等项目中有任何一项发生变化时，甲方务必将书面文件传真或扫描后发送至乙方，否则，一切因此而造成的后果将由甲方承担。</p>
+        <p>6、甲方应配合乙方完善本协议约定办理事项所需文书，并按时交予乙方。自付款之日起12个月内未向乙方交付、确认申请材料导致申请不能向主管部门递交，12个月后如甲方要求退款，乙方可拒绝甲方的退款申请。</p>
+		<p>甲方在确稿后应配合乙方完善申报信息并提交申报，若在确稿后产生的方案更换或不予申报产生的成本由甲方承担，乙方可在合同总价款中予以扣除不退还。</p>
+        <p class="text-bold"  style="text-indent: 0;">四、乙方权利义务</p>
+        <p>1、认真履行甲方委托的事项，接受甲方监督，及时回答甲方提出的问题。适时向专利局了解案件的进展程度，并及时向甲方汇报。</p>
+        <p>2、乙方默认以电子申请方式递交专利申请文件，递交前需经甲方确认。</p>
+        <p>3、乙方对在办理甲方委托的代理事务过程中收到的所有官方通知书原件后，乙方应以电子邮件形式通知甲方，甲方需要纸件的，乙方根据甲方书面指示快递给甲方。</p>
+        <p class="text-bold"  style="text-indent: 0;">五、联络信息</p>
+        <p>甲乙双方分别指定以下联系人，若联系人或联系信息发生变化，应及时告知对方。如因一方信息变化未及时告知对方导致的损失由信息变化方承担。</p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>联系人</td>
+                <td>电话</td>
+                <td>手机</td>
+                <td>电子邮箱</td>
+            </tr>
+            <tr>
+                <td>甲方</td>
+                <td>[[${userName}]]</td>
+                <td></td>
+                <td>[[${userPhone}]]</td>
+                
+                <td>[[${userEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">[[${userAddress}]]</td>
+            </tr>
+            <tr>
+                <td>乙方</td>
+                <td>[[${followManagerName}]]</td>
+                <td></td>
+                <td>[[${followManagerPhone}]]</td>
+                <td>[[${followManagerEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">重庆市渝北区金开大道西段106号互联网产业园猪八戒网总部大厦2号楼</td>
+            </tr>
+        </table>
+
+        <p class="text-bold"  style="text-indent: 0;">六、违约责任</p>
+        <p>1、如甲方委托乙方的服务有弄虚作假或侵犯他人的合法权益等不正当行为，经发现和证实后，甲方应当承担相关一切责任，乙方有权利解除合同，所收费用均不予退回；</p>
+        <p>2、如甲方未能按要求按时、正确、完整的提供服务相关信息、材料或支付费用的，由此带来的风险由甲方承担；</p>
+        <p>3、基于乙方过错未如约履行服务义务且给甲方造成损失的，乙方所收取的费用应当退回给甲方；</p>
+        <p>4、因不可抗力或不能归咎于双方的原因导致本协议未能履行的，本协议自行解除。</p>
+        <p class="text-bold"  style="text-indent: 0;">七、“双享”服务的退款条款</p>
+        <p>1、服务条款：</p>
+        <p>甲方购买“双享服务”的专利申请首次被驳回后，应在收到国家知识产权局下发的驳回通知书之日起180日内向乙方提出再申请相同类型的专利一次，并提供申请所需材料。</p>
+        <p>2、出现下列情况之一的，乙方有权拒绝免费申报服务：</p>
+        <p>（1）甲方要求免费申报专利与之前专利不是同类型专利；</p>
+        <p>（2）甲方没有及时缴纳相关官费导致的驳回或视为撤回的；</p>
+        <p>（3）甲方在收到国家知识产权局下发的驳回通知书之日起180日内未向乙方提出书面申请的。</p>		
+        <p class="text-bold"  style="text-indent: 0;">八、知识产权及保密条款</p>
+        <p>甲乙双方在服务过程中知悉的对方的商业和技术秘密信息，未经信息提供方允许，不得用于本协议约定服务以外的任何其他用途，亦不得以任何方式向任何第三方泄露或公开，直至相关信息已经被公开为止。</p>
+        <p>信息获取方应当告知并以适当方式要求其参与本协议约定服务之雇员遵守本协议规定，若由于参与本项工作之雇员违反本协议的规定，信息获取方应承担连带责任。</p>
+        <p>甲方根据本协议约定提供的技术资料、手续文件的知识产权归甲方所有。</p>
+        <p class="text-bold"  style="text-indent: 0;">九、其它</p>
+        <p>1、经双方协商一致，本协议可解除。</p>
+        <p>2、本协议一式貳份，双方各执一份，具有同等效力，自双方签字并盖章之日起生效；</p>
+        <p>3、本协议任何条款无效或失去效力都不影响本协议或本协议其它条款的效力。</p>
+        <p>4、本协议电子扫描件与原件具有同等法律效力。</p>
+        <p>5、本协议未明确事宜双方可在公平、平等基础上协商解决，如发生争议，可以提交北京仲裁委员会仲裁。本协议解释或争议解决均适用中华人民共和国现行法律规定。</p>
+    </div>
+	
+	
+	
+	<div class="contain" th:if="${agentType} == 3 ">
+        <p>&nbsp;</p>
+        <p class="title"><strong>专利申请风险代理服务协议书</strong></p>
+        <div class="text-bold text-right">编号：[[${contractNo}]]</div>
+        <p class="text-bold" style="text-indent: 0;">甲方（委托方）：[[${customerName}]] [[${customerCardNo}]]</p>
+        <p style="text-indent: 0;">地址：[[${userAddress}]]</p>
+        <p class="text-bold" style="text-indent: 0;">乙方（受托方）：[[${accMainPartName}]]</p>
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：重庆市渝北区金开大道西段106号3号楼6F604</p>
+        <p th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：北京市海淀区中关村大街11号五层商业5B04</p>
+        <p>乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。</p>
+        <p>本协议签订地为重庆，根据相关法律法规的规定，甲、乙本着平等自愿、诚实守信的原则，经友好协商，就甲方委托乙方代为办理专利申请事宜达成一致，特签订如下协议，共同遵守：</p>
+        <p class="text-bold" style="text-indent: 0;">一、委托事项及费用</p>
+        <p style="display: flex; justify-content: space-between;"><span>1、甲方委托乙方办理专利申请事务，详情如下：</span> <span>费用单位：元</span></p>
+        <table class="borderTable">
+            <tr>
+                <td>交底名称</td>
+                <td>服务内容</td>
+                <td>单价</td>
+                <td>件数</td>
+                <td>合计金额</td>
+                <td>备注</td>
+            </tr>
+            <tr th:each="casePatentDTO, casePatentDTOStat:${casePatentDTOS}">
+                <td>[[${casePatentDTO.disclosureName}]]</td>
+                <td>[[${casePatentDTO.serviceName}]]-<span th:if="${casePatentDTO.incrementName == ''}">无</span>[[${casePatentDTO.incrementName}]]</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>1</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>[[${casePatentDTO.remark}]]</td>
+            </tr>
+        </table>
+        
+        <p>1.1 协议费用：<span class="underline">[[${count}]]</span>件共计<span class="underline">[[${totalAmount}]]</span>元人民币（大写：<span class="underline">[[${totalAmountDX}]]</span>）。</p>
+        <p>1.2 支付时间：本协议签订之日起2个工作日支付。</p>
+        <p class="text-bold">注：交底名称仅表示技术内容，不是最终专利名称，在代理人撰写中会根据专利法要求确定合理专利名称；如果暂时无法确定欲申请的技术名称，可填写“未确定”。</p>
+        <p>2、支付方式</p>
+        <p>2.1甲方应于本协议签订之日起2个工作日内，全额支付上述费用至乙方指定的下述任一账户：</p>
+        <div th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：重庆利律知识产权代理有限公司</p>
+          <p>账号：5005 0100 4141 0000 2716</p>
+          <p>开户行：中国建设银行股份有限公司重庆中山路支行</p>
+        </div>
+      	<div th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：北京酷爱智慧知识产权代理有限公司</p>
+          <p>账号：1100 1085 7000 5302 0697</p>
+          <p>开户行：中国建设银行北京中关村支行</p>
+          <p class="text-bold">（2）支付宝账户</p>
+          <p>账户名：ok@kuaizhihui.com</p>
+          <p class="text-bold">（3）猪八戒股份有限公司付款链接</p>
+          <p>甲方谅解，乙方因业务需要使用猪八戒股份有限公司支付链接作为乙方收款账户之一（款项付讫以乙方名义开具发票），猪八戒股份有限公司的收款的行为与乙方具有同等法律效力。</p>
+      	</div>
+        
+        <p>2.2甲方在付款时，应向乙方提供真实、有效的付款凭证（费用支付成功的截屏、照片等）及用途信息；甲方因未提供上述付款凭证及乙方要求备注的用途信息，导致乙方无法确认款项来源及用途的，视为甲方未支付。</p>
+        <p>3、发票开具约定</p>
+        <p>（1）甲方需要开具发票的，应如实填写下述发票需求及信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>项目</td>
+                <td>发票类型</td>
+                <td>开票金额</td>
+                <td>发票抬头</td>
+            </tr>
+            <tr>
+                <td>专利代理费</td>
+                <td th:if="${patentAgentType == 1}">专票</td>
+                <td th:if="${patentAgentType == 2}">普票</td>
+                <td th:if="${patentAgentType != 1 && patentAgentType != 2}"></td>
+                <td>[[${patentAgentAmount}]]</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]</span></td>
+            </tr>
+            <tr>
+                <td>官费</td>
+                <td th:if="${applyType == 1}">专利收据</td>
+                <td th:if="${applyType == 2}">普票</td>
+                <td th:if="${applyType != 1 && applyType != 2}"></td>
+                <td>[[${applyAmount}]]</td>
+                <td>[[${applyCustomerName}]]</td>
+            </tr>
+            <tr>
+                <td>邮寄地址</td>
+                <td>[[${applyEmailAddress}]]</td>
+                <td>收件人</td>
+                <td>[[${applyReceiveName}]]</td>
+            </tr>
+        </table>
+
+
+        <p>注：甲方需要就代理费部分开具增值税专用发票的，按照国家税务局规定，应填写以下开具专用发票的相关信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>公司名称</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]&nbsp;</span></td>
+            </tr>
+            <tr>
+                <td>纳税人识别号</td>
+                <td>[[${applyCustomerNo}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>地址、电话</td>
+                <td>[[${addressAndPhone}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>开户行及账号</td>
+                <td>[[${accountAndCard}]]&nbsp;</td>
+            </tr>
+        </table>
+        <p>甲方首次委托乙方开具增值税专用发票的，还需提供一般纳税人资质证明。</p>
+        <p>（2）甲方购买“风险代理”服务的，乙方在甲方支付费用后仅提供收据，甲方要求开具发票的，乙方可以根据上述开票信息为甲方开具发票，但涉及到退款的，甲方须退还原始发票。</p>
+        <p>（3）非因乙方原因导致甲方需要重新开具发票的，相关费用需由甲方承担。</p>
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">（6）乙方系小规模纳税人，在开具增值税发票时，实际开票税点均以国家税收政策据实开具。</p>
+      	<p class="text-bold">4、官费收取依据：</p>
+        <p style="display: flex; justify-content: space-between;"><span>专利申请官费标准</span> <span>单位：元/件</span></p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>无减缓</td>
+                <td>85%减缓（单一申请人）</td>
+                <td>70%减缓（多个申请人</td>
+            </tr>
+            <tr>
+                <td>发明专利</td>
+                <td>3450</td>
+                <td>560</td>
+                <td>1070</td>
+            </tr>
+            <tr>
+                <td>实用新型专利</td>
+                <td>1105</td>
+                <td>170</td>
+                <td>335</td>
+            </tr>
+            <tr>
+                <td>外观设计专利</td>
+                <td>1105</td>
+                <td>170</td>
+                <td>335</td>
+            </tr>
+        </table>
+        <p>说明：</p>
+        <p>（1）发明专利的官费包含：申请费、公布印刷费和实质审查费。</p>
+        <p>（2）实用新型和外观设计官费包含：申请费、首年年费、印花税费。</p>
+        <p>（3）官费可由甲方自行缴纳至国家知识产权局，也可交由乙方代为缴纳。</p>
+        <p>（4）甲方申请官费减缓的，乙方按照上述减缓后的官费标准为甲方缴纳官费申请费。甲方未申请官费减缓或费减申请被驳回的，乙方按照无减缓的官费标准为甲方缴纳官费申请费，差价部分由甲方承担。</p>
+        <p>5、专利年费说明</p>
+        <p>（1）甲方委托乙方代缴年费的，应在当年专利年费缴纳截止之日前30日，向乙方发出明确指示，并支付当年应缴纳专利年费；</p>
+        <p>（2）甲方明确指示不需要乙方代为缴纳年费；或者乙方向甲方发出年费缴纳提醒后，甲方在专利年费缴纳截止之日前3日内仍未向乙方支付当年应缴纳专利年费的，视为甲方不再委托乙方提供年费监控及代缴服务。</p>
+        <p class="text-bold"  style="text-indent: 0;">二、服务期限</p>
+        <p>本协议约定专利申请服务期限为自本协议签订之日起至国家知识产权局专利局下发专利证书或驳回通知书之日止。</p>
+        <p class="text-bold"  style="text-indent: 0;">三、甲方权利义务</p>
+        <p>1、配合乙方办理专利申请工作，提供专利申请需要的技术信息，包括：根据乙方开具的清单提供材料，根据乙方的建议阐述技术方案内容。甲方应保证信息的真实性、合法性，同时对所需申请专利的技术方案的新颖性、创造性和实用性负责。</p>
+        <p>2、甲方应确保在本协议签订前不存在影响技术方案新颖性的行为，包括但不限于：申请专利前的销售、宣传、论文发表、及其它会导致技术信息公开的行为；因这些行为导致的专利不能授权及技术方案的提前公开，乙方不承担相关责任。</p>
+        <p>3、适时了解案件的进展程度，提出合理化建议和要求。</p>
+        <p>4、甲方应配合乙方完善本协议约定办理事项所需文书，并按时交予乙方。自付款之日起12个月内未向乙方交付、确认申请材料导致申请不能向主管部门递交，12个月后如甲方要求退款，乙方可拒绝甲方的退款申请。</p>
+        <p>5、甲方在确稿后应配合乙方完善申报信息并提交申报，若在确稿后产生的方案更换或不予申报产生的成本由甲方承担，乙方可在合同总价款中予以扣除不退还。</p>
+		<p>甲方在确稿后应配合乙方完善申报信息并提交申报，若在确稿后产生的方案更换或不予申报产生的成本由甲方承担，乙方可在合同总价款中予以扣除不退还。</p>
+        <p class="text-bold"  style="text-indent: 0;">四、乙方权利义务</p>
+        <p>1、认真履行甲方委托的事项，接受甲方监督，及时回答甲方提出的问题。适时向专利局了解案件的进展程度，并及时向甲方汇报。</p>
+        <p>2、乙方默认以电子申请方式递交专利申请文件，递交前需经甲方确认。</p>
+        <p>3、乙方对在办理甲方委托的代理事务过程中收到的所有官方通知书原件后，乙方应以电子邮件形式通知甲方，甲方需要纸件的，乙方根据甲方书面指示快递给甲方。</p>
+        <p class="text-bold"  style="text-indent: 0;">五、联络信息</p>
+        <p>甲乙双方分别指定以下联系人，若联系人或联系信息发生变化，应及时告知对方。如因一方信息变化未及时告知对方导致的损失由信息变化方承担。本合同约定的联系人及联系方式亦为双方工作联系往来、文件资料传递、通知和法律文书送达地址，任何一方当事人按下述信息向对方所发出的短信/传真/微信/电子邮件，自前述电子文件内容在发送方正确填写地址且未被系统退回的情况下，视为进入对方数据电文接收系统即视为送达。若送达日为非工作日, 则视为在下一工作日送达。</p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>联系人</td>
+                <td>电话</td>
+                <td>手机</td>
+                <td>电子邮箱</td>
+            </tr>
+            <tr>
+                <td>甲方</td>
+                <td>[[${userName}]]</td>
+                <td></td>
+                <td>[[${userPhone}]]</td>
+                
+                <td>[[${userEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">[[${userAddress}]]</td>
+            </tr>
+            <tr>
+                <td>乙方</td>
+                <td>[[${followManagerName}]]</td>
+                <td></td>
+                <td>[[${followManagerPhone}]]</td>
+                <td>[[${followManagerEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">重庆市渝北区金开大道西段106号互联网产业园猪八戒网总部大厦2号楼</td>
+            </tr>
+        </table>
+
+        <p class="text-bold"  style="text-indent: 0;">六、违约责任</p>
+        <p>1、因甲方未能或未及时提供所需材料或未及时支付费用导致申请不能顺利进行或导致甲方权利丧失的，乙方不承担法律责任；</p>
+        <p>2、因乙方未如约履行申请服务义务且给甲方造成损失的，乙方承担损害赔偿责任；</p>
+        <p>3、甲方购买“加快递交”服务的，乙方如不能如期履行义务，应退还“加快递交”服务费用；</p>
+        <p>4、因不可抗力或不能归咎于双方的原因导致本协议未能履行的，本协议自行解除。</p>
+		<p>5、甲方未按照本协议约定支付费用的，每逾期一天应按照协议总金额的万分之五向乙方支付违约金，逾期达15天及以上的，乙方有权单方解除本协议，甲方已支付费用不予退还且甲方还应支付乙方已完成部分工作的费用（如有），乙方有权继续追偿。</p>
+        <p class="text-bold"  style="text-indent: 0;">七、“风险代理”服务的退款条款</p>
+        <p>1、退款条件：</p>
+        <p>甲方购买“风险代理”的专利申请被驳回的，应在收到国家知识产权局下发的驳回通知书之日起180日内向乙方提出书面退款申请，并退还乙方开具的原始发票。</p>
+        <p>乙方已开具增值税专用发票的，甲方如无法退还原始发票，应向其税务主管机关申请《开具红字增值税专用发票信息表》（带有甲方主管国税局签章）及情况说明的原件提交给乙方，方可办理退款。</p>
+   	    <p>2、退款流程：</p>
+        <p>（1）甲方在收到国家知识产权局下发的驳回通知书之日起180日内向乙方提出书面退款申请，并退还乙方开具的原始发票；</p>
+        <p>（2）乙方在收到甲方的书面退款申请、原始发票及相关材料之日起（以后到日期为准）7日内，将被驳回的“风险代理”申请的全部代理费及费减后的官费（不含甲方未申请官费减缓或费减申请被驳回补缴的官费差额部分）一并退还至甲方付款账户。</p>
+        <p>3、出现下列情况之一的，乙方有权拒绝退款：</p>
+        <p>（1）甲方拒不采纳乙方给出的专业意见，坚持要求乙方执行自己的申请意见的；</p>
+        <p>（2）专利申请后至驳回前，甲方擅自变更代理机构、导致乙方不能答复审查意见的</p>
+        <p>（3）专利申请后至驳回前，甲方擅自变更代理机构并由乙方以外的代理机构进行答复审查意见的；</p>
+        <p>（4）甲方没有及时缴纳相关官费导致的驳回或视为撤回的；</p>
+        <p>（5）乙方已开具增值税普通发票，甲方无法退还原始发票的；</p>
+		<p>（6）乙方已开具增值税专用发票，甲方无法退还原始发票又无法提供开具红字发票信息表的；</p>
+		<p>（7）甲方在收到国家知识产权局下发的驳回通知书之日起180日内未向乙方提出书面退款申请的。</p>
+        <p class="text-bold"  style="text-indent: 0;">八、知识产权及保密条款</p>
+        <p>甲乙双方在服务过程中知悉的对方的商业和技术秘密信息，未经信息提供方允许，不得用于本协议约定服务以外的任何其他用途，亦不得以任何方式向任何第三方泄露或公开，直至相关信息已经被公开为止。</p>
+        <p>信息获取方应当告知并以适当方式要求其参与本协议约定服务之雇员遵守本协议规定，若由于参与本项工作之雇员违反本协议的规定，信息获取方应承担连带责任。</p>
+        <p>甲方根据本协议约定提供的技术资料、手续文件的知识产权归甲方所有。</p>
+        <p class="text-bold"  style="text-indent: 0;">九、其它</p>
+        <p>1、经双方协商一致，本协议可解除。</p>
+        <p>2、本协议一式貳份，双方各执一份，具有同等效力，自双方签字并盖章之日起生效；</p>
+        <p>3、本协议任何条款无效或失去效力都不影响本协议或本协议其它条款的效力。</p>
+        <p>4、本协议电子扫描件与原件具有同等法律效力。</p>
+        <p>5、本协议未明确事宜双方可在公平、平等基础上协商解决，如发生争议，可以提交北京仲裁委员会仲裁。本协议解释或争议解决均适用中华人民共和国现行法律规定。</p>
+    </div>
+	
+	
+	<div class="contain" th:if="${agentType} == 4 ">
+        <p>&nbsp;</p>
+        <p class="title"><strong>专利代理服务协议书</strong></p>
+		<p class="title"><strong>（发明专利普通申请-尊享版）</strong></p>
+        <div class="text-bold text-right">编号：[[${contractNo}]]</div>
+        <p class="text-bold" style="text-indent: 0;">甲方（委托方）：[[${customerName}]] [[${customerCardNo}]]</p>
+        <p style="text-indent: 0;">地址：[[${userAddress}]]</p>
+        <p class="text-bold" style="text-indent: 0;">乙方（受托方）：[[${accMainPartName}]]</p>
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：重庆市渝北区金开大道西段106号3号楼6F604</p>
+        <p th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：北京市海淀区中关村大街11号五层商业5B04</p>
+        <p>乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。</p>
+        <p>本协议签订地为重庆，根据相关法律法规的规定，甲、乙本着平等自愿、诚实守信的原则，经友好协商，就甲方委托乙方代为办理专利申请事宜达成一致，特签订如下协议，共同遵守：</p>
+        <p class="text-bold" style="text-indent: 0;">一、委托事项及费用</p>
+        <p style="display: flex; justify-content: space-between;"><span>1、甲方委托乙方办理专利申请事务，详情如下：</span> <span>费用单位：元</span></p>
+        <table class="borderTable">
+            <tr>
+                <td>交底名称</td>
+                <td>服务内容</td>
+                <td>单价</td>
+                <td>件数</td>
+                <td>合计金额</td>
+                <td>备注</td>
+            </tr>
+            <tr th:each="casePatentDTO, casePatentDTOStat:${casePatentDTOS}">
+                <td>[[${casePatentDTO.disclosureName}]]</td>
+                <td>[[${casePatentDTO.serviceName}]]-<span th:if="${casePatentDTO.incrementName == ''}">无</span>[[${casePatentDTO.incrementName}]]</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>1</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>[[${casePatentDTO.remark}]]</td>
+            </tr>
+        </table>
+        
+        <p>1.1 协议费用：<span class="underline">[[${count}]]</span>件共计<span class="underline">[[${totalAmount}]]</span>元人民币（大写：<span class="underline">[[${totalAmountDX}]]</span>）。</p>
+        <p>1.2 支付时间：本协议签订之日起2个工作日支付。</p>
+        <p class="text-bold">注：交底名称仅表示技术内容，不是最终专利名称，在代理人撰写中会根据专利法要求确定合理专利名称；如果暂时无法确定欲申请的技术名称，可填写“未确定”。</p>
+        <p>2、支付方式</p>
+        <p>2.1甲方应于本协议签订之日起2个工作日内，全额支付上述费用至乙方指定的下述任一账户：</p>
+        <div th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：重庆利律知识产权代理有限公司</p>
+          <p>账号：5005 0100 4141 0000 2716</p>
+          <p>开户行：中国建设银行股份有限公司重庆中山路支行</p>
+        </div>
+      	<div th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：北京酷爱智慧知识产权代理有限公司</p>
+          <p>账号：1100 1085 7000 5302 0697</p>
+          <p>开户行：中国建设银行北京中关村支行</p>
+          <p class="text-bold">（2）支付宝账户</p>
+          <p>账户名：ok@kuaizhihui.com</p>
+          <p class="text-bold">（3）猪八戒股份有限公司付款链接</p>
+          <p>甲方谅解，乙方因业务需要使用猪八戒股份有限公司支付链接作为乙方收款账户之一（款项付讫以乙方名义开具发票），猪八戒股份有限公司的收款的行为与乙方具有同等法律效力。</p>
+      	</div>
+        
+        <p>2.2甲方在付款时，应向乙方提供真实、有效的付款凭证（费用支付成功的截屏、照片等）及用途信息；甲方因未提供上述付款凭证及乙方要求备注的用途信息，导致乙方无法确认款项来源及用途的，视为甲方未支付。</p>
+        <p>3、发票开具约定</p>
+        <p>（1）甲方需要开具发票的，应如实填写下述发票需求及信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>项目</td>
+                <td>发票类型</td>
+                <td>开票金额</td>
+                <td>发票抬头</td>
+            </tr>
+            <tr>
+                <td>专利代理费</td>
+                <td th:if="${patentAgentType == 1}">专票</td>
+                <td th:if="${patentAgentType == 2}">普票</td>
+                <td th:if="${patentAgentType != 1 && patentAgentType != 2}"></td>
+                <td>[[${patentAgentAmount}]]</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]</span></td>
+            </tr>
+            <tr>
+                <td>官费</td>
+                <td th:if="${applyType == 1}">专利收据</td>
+                <td th:if="${applyType == 2}">普票</td>
+                <td th:if="${applyType != 1 && applyType != 2}"></td>
+                <td>[[${applyAmount}]]</td>
+                <td>[[${applyCustomerName}]]</td>
+            </tr>
+            <tr>
+                <td>邮寄地址</td>
+                <td>[[${applyEmailAddress}]]</td>
+                <td>收件人</td>
+                <td>[[${applyReceiveName}]]</td>
+            </tr>
+        </table>
+
+
+        <p>注：甲方需要就代理费部分开具增值税专用发票的，按照国家税务局规定，应填写以下开具专用发票的相关信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>公司名称</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]&nbsp;</span></td>
+            </tr>
+            <tr>
+                <td>纳税人识别号</td>
+                <td>[[${applyCustomerNo}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>地址、电话</td>
+                <td>[[${addressAndPhone}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>开户行及账号</td>
+                <td>[[${accountAndCard}]]&nbsp;</td>
+            </tr>
+        </table>
+        <p>3.3甲方首次委托乙方开具增值税专用发票的，还需提供一般纳税人资质证明。</p>
+        <p>3.3.1甲方已根据本协议约定支付全部款项，并在本协议签订生效之日起90日内向乙方提出发票开具申请，乙方在收到甲方开票申请之日起7个工作日内，根据上述约定的开票信息为甲方开具发票。</p>
+        <p>3.3.2甲方已根据本协议约定支付全部款项，但未在本协议签订生效之日起90日内提出发票开具申请的，乙方将根据上述约定的开票信息自行开具发票，并代为保管该发票至开票当年的12月31日，过期后乙方不负责保管此发票。</p>
+		<p>3.3.3甲方购买“尊享版”服务的，乙方在甲方支付费用后仅提供收据，甲方要求开具发票的，乙方可以根据上述开票信息为甲方开具发票，同时会把可能会退款金额单独用一张发票体现，但涉及到退款的，甲方须退还原始发票。</p>
+	    <p>3.3.4非因乙方原因导致甲方需要重新开具发票的，相关费用需由甲方承担。</p>
+	
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">（6）乙方系小规模纳税人，在开具增值税发票时，实际开票税点均以国家税收政策据实开具。</p>
+      	<p class="text-bold">4、官费收取依据：</p>
+        <p style="display: flex; justify-content: space-between;"><span>专利申请官费标准</span> <span>单位：元/件</span></p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>无减缓</td>
+                <td>85%减缓（单一申请人）</td>
+                <td>70%减缓（多个申请人</td>
+            </tr>
+            <tr>
+                <td>发明专利</td>
+                <td>3450</td>
+                <td>560</td>
+                <td>1070</td>
+            </tr>
+            <tr>
+                <td>实用新型专利</td>
+                <td>1105</td>
+                <td>170</td>
+                <td>335</td>
+            </tr>
+            <tr>
+                <td>外观设计专利</td>
+                <td>1105</td>
+                <td>170</td>
+                <td>335</td>
+            </tr>
+        </table>
+        <p>说明：</p>
+        <p>（1）发明专利的官费包含：申请费、公布印刷费和实质审查费。</p>
+        <p>（2）实用新型和外观设计官费包含：申请费、首年年费、印花税费。</p>
+        <p>（3）官费可由甲方自行缴纳至国家知识产权局，也可交由乙方代为缴纳。</p>
+        <p>（4）甲方申请官费减缓的，乙方按照上述减缓后的官费标准为甲方缴纳官费申请费。甲方未申请官费减缓或费减申请被驳回的，乙方按照无减缓的官费标准为甲方缴纳官费申请费，差价部分由甲方承担。</p>
+        <p>5、专利年费说明</p>
+        <p>（1）甲方委托乙方代缴年费的，应在当年专利年费缴纳截止之日前30日，向乙方发出明确指示，并支付当年应缴纳专利年费；</p>
+        <p>（2）甲方明确指示不需要乙方代为缴纳年费；或者乙方向甲方发出年费缴纳提醒后，甲方在专利年费缴纳截止之日前3日内仍未向乙方支付当年应缴纳专利年费的，视为甲方不再委托乙方提供年费监控及代缴服务。</p>
+        <p class="text-bold"  style="text-indent: 0;">二、服务期限</p>
+        <p>本协议约定专利申请服务期限为自本协议签订之日起至国家知识产权局专利局下发专利证书或驳回通知书之日止。</p>
+        <p class="text-bold"  style="text-indent: 0;">三、甲方权利义务</p>
+        <p>1、配合乙方办理专利申请工作，提供专利申请需要的技术信息，包括：根据乙方开具的清单提供材料，根据乙方的建议阐述技术方案内容。甲方应保证信息的真实性、合法性，同时对所需申请专利的技术方案的新颖性、创造性和实用性负责。</p>
+        <p>2、甲方应确保在本协议签订前不存在影响技术方案新颖性的行为，包括但不限于：申请专利前的销售、宣传、论文发表、及其它会导致技术信息公开的行为；因这些行为导致的专利不能授权及技术方案的提前公开，乙方不承担相关责任。</p>
+        <p>3、适时了解案件的进展程度，提出合理化建议和要求。</p>
+        <p>4、甲方应配合乙方完善本协议约定办理事项所需文书，并按时交予乙方。自付款之日起12个月内未向乙方交付、确认申请材料导致申请不能向主管部门递交，12个月后如甲方要求退款，乙方可拒绝甲方的退款申请。</p>
+        <p>5、甲方在确稿后应配合乙方完善申报信息并提交申报，若在确稿后产生的方案更换或不予申报产生的成本由甲方承担，乙方可在合同总价款中予以扣除不退还。</p>
+		<p>甲方在确稿后应配合乙方完善申报信息并提交申报，若在确稿后产生的方案更换或不予申报产生的成本由甲方承担，乙方可在合同总价款中予以扣除不退还。</p>
+        <p class="text-bold"  style="text-indent: 0;">四、乙方权利义务</p>
+        <p>1、认真履行甲方委托的事项，接受甲方监督，及时回答甲方提出的问题。适时向专利局了解案件的进展程度，并及时向甲方汇报。</p>
+        <p>2、乙方默认以电子申请方式递交专利申请文件，递交前需经甲方确认。</p>
+        <p>3、乙方对在办理甲方委托的代理事务过程中收到的所有官方通知书原件后，乙方应以电子邮件形式通知甲方，甲方需要纸件的，乙方根据甲方书面指示快递给甲方。</p>
+        <p class="text-bold"  style="text-indent: 0;">五、联络信息</p>
+        <p>甲乙双方分别指定以下联系人，若联系人或联系信息发生变化，应及时告知对方。如因一方信息变化未及时告知对方导致的损失由信息变化方承担。本合同约定的联系人及联系方式亦为双方工作联系往来、文件资料传递、通知和法律文书送达地址，任何一方当事人按下述信息向对方所发出的短信/传真/微信/电子邮件，自前述电子文件内容在发送方正确填写地址且未被系统退回的情况下，视为进入对方数据电文接收系统即视为送达。若送达日为非工作日, 则视为在下一工作日送达。</p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>联系人</td>
+                <td>电话</td>
+                <td>手机</td>
+                <td>电子邮箱</td>
+            </tr>
+            <tr>
+                <td>甲方</td>
+                <td>[[${userName}]]</td>
+                <td></td>
+                <td>[[${userPhone}]]</td>
+                
+                <td>[[${userEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">[[${userAddress}]]</td>
+            </tr>
+            <tr>
+                <td>乙方</td>
+                <td>[[${followManagerName}]]</td>
+                <td></td>
+                <td>[[${followManagerPhone}]]</td>
+                <td>[[${followManagerEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">重庆市渝北区金开大道西段106号互联网产业园猪八戒网总部大厦2号楼</td>
+            </tr>
+        </table>
+
+        <p class="text-bold"  style="text-indent: 0;">六、违约责任</p>
+        <p>1、因甲方未能或未及时提供所需材料或未及时支付费用导致申请不能顺利进行或导致甲方权利丧失的，乙方不承担法律责任；</p>
+        <p>2、因乙方未如约履行申请服务义务且给甲方造成损失的，乙方承担损害赔偿责任；</p>
+        <p>3、甲方购买“加快递交”服务的，乙方如不能如期履行义务，应退还“加快递交”服务费用；</p>
+        <p>4、因不可抗力或不能归咎于双方的原因导致本协议未能履行的，本协议自行解除。</p>
+		<p>5、甲方未按照本协议约定支付费用的，每逾期一天应按照协议总金额的万分之五向乙方支付违约金，逾期达15天及以上的，乙方有权单方解除本协议，甲方已支付费用不予退还且甲方还应支付乙方已完成部分工作的费用（如有），乙方有权继续追偿。</p>
+        <p class="text-bold"  style="text-indent: 0;">七、发明专利普通申请（尊享版）服务细则</p>
+        <p>1、发明专利普通申请（尊享版）服务承诺如下：</p>
+        <p>1.1甲方购买发明专利普通申请（尊享版）的专利申请被驳回，客户委托本代理驳回复审的，可免费享受驳回复审服务(普通复审)；</p>
+        <p>1.2甲方购买发明专利普通申请（尊享版）的专利申请被驳回，客户放弃复审要求退款的，应在收到国家知识产权局下发的驳回通知书之日起180日内向乙方提出书面退款申请。</p>
+        <p>1.3前述2款承诺针对同一件驳回的专利，不予重复享受。</p>   	   
+	    <p>2、退款流程：</p>
+        <p>2.1专利申请被驳回，已享受免费复审服务，驳回复审不成功的，“驳回复审”服务不享受退款。</p>
+        <p>2.2专利申请被驳回的，放弃复审要求退款的，应在收到国家知识产权局下发的驳回通知书之日起180日内向乙方提出书面退款申请，退款金额为：乙方在扣除3600元/件（大写：叁仟陆佰元/件）的撰写费用及官费后其余款项全部退还甲方，如有购买加急、特殊领域等超项服务的需扣除款项后退款并退还乙方开具的退款金额原始发票。</p>
+        <p>2.3乙方已开具增值税专用发票的，甲方如无法退还原始发票，应向其税务主管机关申请《开具红字增值税专用发票信息表》（带有甲方主管国税局签章）及情况说明的原件提交给乙方，方可办理退款。</p>
+      
+ 	    <p>3、退款流程：</p>
+        <p>3.1甲方在收到国家知识产权局下发的驳回通知书之日起180日内向乙方提出书面退款申请，并退还乙方开具的原始发票；</p>
+        <p>3.2乙方在收到甲方的书面退款申请、原始发票及相关材料之日起（以后到日期为准）7日内，将被驳回的发明专利普通申请（尊享版）申请的约定退款金额退还至甲方付款账户。</p>
+        <p>4、出现下列情况之一的，乙方有权拒绝退款：</p>
+        <p>4.1甲方拒不采纳乙方给出的专业意见，坚持要求乙方执行自己的申请意见的；</p>
+        <p>4.2甲方没有及时缴纳相关官费导致的驳回或视为撤回的</p>
+		<p>4.3乙方已开具增值税普通发票，甲方无法退还原始发票的；</p>
+		<p>4.4乙方已开具增值税专用发票，甲方无法退还原始发票又无法提供开具红字发票信息表的；</p>
+		<p>4.5甲方在收到国家知识产权局下发的驳回通知书之日起180日内未向乙方提出书面退款申请的。</p>
+		<p>4.6甲方选择驳回复审的。</p>
+
+        <p class="text-bold"  style="text-indent: 0;">八、知识产权及保密条款</p>
+        <p>甲乙双方在服务过程中知悉的对方的商业和技术秘密信息，未经信息提供方允许，不得用于本协议约定服务以外的任何其他用途，亦不得以任何方式向任何第三方泄露或公开，直至相关信息已经被公开为止。</p>
+        <p>信息获取方应当告知并以适当方式要求其参与本协议约定服务之雇员遵守本协议规定，若由于参与本项工作之雇员违反本协议的规定，信息获取方应承担连带责任。</p>
+        <p>甲方根据本协议约定提供的技术资料、手续文件的知识产权归甲方所有。</p>
+        <p class="text-bold"  style="text-indent: 0;">九、其它</p>
+        <p>1、经双方协商一致，本协议可解除。</p>
+        <p>2、本协议一式貳份，双方各执一份，具有同等效力，自双方签字并盖章之日起生效；</p>
+        <p>3、本协议任何条款无效或失去效力都不影响本协议或本协议其它条款的效力。</p>
+        <p>4、本协议电子扫描件与原件具有同等法律效力。</p>
+        <p>5、本协议未明确事宜双方可在公平、平等基础上协商解决，如发生争议，可以提交北京仲裁委员会仲裁。本协议解释或争议解决均适用中华人民共和国现行法律规定。</p>
+    </div>
+		
+	
+	<div class="contain" th:if="${agentType} == 5 ">
+        <p>&nbsp;</p>
+        <p class="title"><strong>专利代理服务协议书</strong></p>
+		<p class="title"><strong>（发明专利担保申请-尊享版）</strong></p>
+        <div class="text-bold text-right">编号：[[${contractNo}]]</div>
+        <p class="text-bold" style="text-indent: 0;">甲方（委托方）：[[${customerName}]] [[${customerCardNo}]]</p>
+        <p style="text-indent: 0;">地址：[[${userAddress}]]</p>
+        <p class="text-bold" style="text-indent: 0;">乙方（受托方）：[[${accMainPartName}]]</p>
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：重庆市渝北区金开大道西段106号3号楼6F604</p>
+        <p th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：北京市海淀区中关村大街11号五层商业5B04</p>
+        <p>乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。</p>
+        <p>本协议签订地为重庆，根据相关法律法规的规定，甲、乙本着平等自愿、诚实守信的原则，经友好协商，就甲方委托乙方代为办理专利申请事宜达成一致，特签订如下协议，共同遵守：</p>
+        <p class="text-bold" style="text-indent: 0;">一、委托事项及费用</p>
+        <p style="display: flex; justify-content: space-between;"><span>1、甲方委托乙方办理专利申请事务，详情如下：</span> <span>费用单位：元</span></p>
+        <table class="borderTable">
+            <tr>
+                <td>交底名称</td>
+                <td>服务内容</td>
+                <td>单价</td>
+                <td>件数</td>
+                <td>合计金额</td>
+                <td>备注</td>
+            </tr>
+            <tr th:each="casePatentDTO, casePatentDTOStat:${casePatentDTOS}">
+                <td>[[${casePatentDTO.disclosureName}]]</td>
+                <td>[[${casePatentDTO.serviceName}]]-<span th:if="${casePatentDTO.incrementName == ''}">无</span>[[${casePatentDTO.incrementName}]]</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>1</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>[[${casePatentDTO.remark}]]</td>
+            </tr>
+        </table>
+        
+        <p>1.1 协议费用：<span class="underline">[[${count}]]</span>件共计<span class="underline">[[${totalAmount}]]</span>元人民币（大写：<span class="underline">[[${totalAmountDX}]]</span>）。</p>
+        <p>1.2 支付时间：本协议签订之日起2个工作日支付。</p>
+        <p class="text-bold">注：交底名称仅表示技术内容，不是最终专利名称，在代理人撰写中会根据专利法要求确定合理专利名称；如果暂时无法确定欲申请的技术名称，可填写“未确定”。</p>
+        <p>2、支付方式</p>
+        <p>2.1甲方应于本协议签订之日起2个工作日内，全额支付上述费用至乙方指定的下述任一账户：</p>
+        <div th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：重庆利律知识产权代理有限公司</p>
+          <p>账号：5005 0100 4141 0000 2716</p>
+          <p>开户行：中国建设银行股份有限公司重庆中山路支行</p>
+        </div>
+      	<div th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：北京酷爱智慧知识产权代理有限公司</p>
+          <p>账号：1100 1085 7000 5302 0697</p>
+          <p>开户行：中国建设银行北京中关村支行</p>
+          <p class="text-bold">（2）支付宝账户</p>
+          <p>账户名：ok@kuaizhihui.com</p>
+          <p class="text-bold">（3）猪八戒股份有限公司付款链接</p>
+          <p>甲方谅解，乙方因业务需要使用猪八戒股份有限公司支付链接作为乙方收款账户之一（款项付讫以乙方名义开具发票），猪八戒股份有限公司的收款的行为与乙方具有同等法律效力。</p>
+      	</div>
+        
+        <p>2.2甲方在付款时，应向乙方提供真实、有效的付款凭证（费用支付成功的截屏、照片等）及用途信息；甲方因未提供上述付款凭证及乙方要求备注的用途信息，导致乙方无法确认款项来源及用途的，视为甲方未支付。</p>
+        <p>3、发票开具约定</p>
+        <p>（1）甲方需要开具发票的，应如实填写下述发票需求及信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>项目</td>
+                <td>发票类型</td>
+                <td>开票金额</td>
+                <td>发票抬头</td>
+            </tr>
+            <tr>
+                <td>专利代理费</td>
+                <td th:if="${patentAgentType == 1}">专票</td>
+                <td th:if="${patentAgentType == 2}">普票</td>
+                <td th:if="${patentAgentType != 1 && patentAgentType != 2}"></td>
+                <td>[[${patentAgentAmount}]]</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]</span></td>
+            </tr>
+            <tr>
+                <td>官费</td>
+                <td th:if="${applyType == 1}">专利收据</td>
+                <td th:if="${applyType == 2}">普票</td>
+                <td th:if="${applyType != 1 && applyType != 2}"></td>
+                <td>[[${applyAmount}]]</td>
+                <td>[[${applyCustomerName}]]</td>
+            </tr>
+            <tr>
+                <td>邮寄地址</td>
+                <td>[[${applyEmailAddress}]]</td>
+                <td>收件人</td>
+                <td>[[${applyReceiveName}]]</td>
+            </tr>
+        </table>
+
+
+        <p>注：甲方需要就代理费部分开具增值税专用发票的，按照国家税务局规定，应填写以下开具专用发票的相关信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>公司名称</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]&nbsp;</span></td>
+            </tr>
+            <tr>
+                <td>纳税人识别号</td>
+                <td>[[${applyCustomerNo}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>地址、电话</td>
+                <td>[[${addressAndPhone}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>开户行及账号</td>
+                <td>[[${accountAndCard}]]&nbsp;</td>
+            </tr>
+        </table>
+        <p>3.3甲方首次委托乙方开具增值税专用发票的，还需提供一般纳税人资质证明。</p>
+        <p>3.3.1甲方已根据本协议约定支付全部款项，并在本协议签订生效之日起90日内向乙方提出发票开具申请，乙方在收到甲方开票申请之日起7个工作日内，根据上述约定的开票信息为甲方开具发票。</p>
+        <p>3.3.2甲方已根据本协议约定支付全部款项，但未在本协议签订生效之日起90日内提出发票开具申请的，乙方将根据上述约定的开票信息自行开具发票，并代为保管该发票至开票当年的12月31日，过期后乙方不负责保管此发票。</p>
+		<p>3.3.3甲方购买“授权担保”服务的，乙方在甲方支付费用后仅提供收据，甲方要求开具发票的，乙方可以根据上述开票信息为甲方开具发票，但涉及到退款的，甲方须退还原始发票。</p>
+	    <p>3.3.4非因乙方原因导致甲方需要重新开具发票的，相关费用需由甲方承担。</p>
+	
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">（6）乙方系小规模纳税人，在开具增值税发票时，实际开票税点均以国家税收政策据实开具。</p>
+      	<p class="text-bold">4、官费收取依据：</p>
+        <p style="display: flex; justify-content: space-between;"><span>专利申请官费标准</span> <span>单位：元/件</span></p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>无减缓</td>
+                <td>85%减缓（单一申请人）</td>
+                <td>70%减缓（多个申请人</td>
+            </tr>
+            <tr>
+                <td>发明专利</td>
+                <td>3450</td>
+                <td>560</td>
+                <td>1070</td>
+            </tr>
+            <tr>
+                <td>实用新型专利</td>
+                <td>1105</td>
+                <td>170</td>
+                <td>335</td>
+            </tr>
+            <tr>
+                <td>外观设计专利</td>
+                <td>1105</td>
+                <td>170</td>
+                <td>335</td>
+            </tr>
+        </table>
+        <p>说明：</p>
+        <p>（1）发明专利的官费包含：申请费、公布印刷费和实质审查费。</p>
+        <p>（2）实用新型和外观设计官费包含：申请费、首年年费、印花税费。</p>
+        <p>（3）官费可由甲方自行缴纳至国家知识产权局，也可交由乙方代为缴纳。</p>
+        <p>（4）甲方申请官费减缓的，乙方按照上述减缓后的官费标准为甲方缴纳官费申请费。甲方未申请官费减缓或费减申请被驳回的，乙方按照无减缓的官费标准为甲方缴纳官费申请费，差价部分由甲方承担。</p>
+        <p>5、专利年费说明</p>
+        <p>（1）甲方委托乙方代缴年费的，应在当年专利年费缴纳截止之日前30日，向乙方发出明确指示，并支付当年应缴纳专利年费；</p>
+        <p>（2）甲方明确指示不需要乙方代为缴纳年费；或者乙方向甲方发出年费缴纳提醒后，甲方在专利年费缴纳截止之日前3日内仍未向乙方支付当年应缴纳专利年费的，视为甲方不再委托乙方提供年费监控及代缴服务。</p>
+        <p class="text-bold"  style="text-indent: 0;">二、服务期限</p>
+        <p>本协议约定专利申请服务期限为自本协议签订之日起至国家知识产权局专利局下发专利证书或驳回通知书之日止。</p>
+        <p class="text-bold"  style="text-indent: 0;">三、甲方权利义务</p>
+        <p>1、配合乙方办理专利申请工作，提供专利申请需要的技术信息，包括：根据乙方开具的清单提供材料，根据乙方的建议阐述技术方案内容。甲方应保证信息的真实性、合法性，同时对所需申请专利的技术方案的新颖性、创造性和实用性负责。</p>
+        <p>2、甲方应确保在本协议签订前不存在影响技术方案新颖性的行为，包括但不限于：申请专利前的销售、宣传、论文发表、及其它会导致技术信息公开的行为；因这些行为导致的专利不能授权及技术方案的提前公开，乙方不承担相关责任。</p>
+        <p>3、适时了解案件的进展程度，提出合理化建议和要求。</p>
+        <p>4、甲方应配合乙方完善本协议约定办理事项所需文书，并按时交予乙方。自付款之日起12个月内未向乙方交付、确认申请材料导致申请不能向主管部门递交，12个月后如甲方要求退款，乙方可拒绝甲方的退款申请。</p>
+        <p>5、甲方在确稿后应配合乙方完善申报信息并提交申报，若在确稿后产生的方案更换或不予申报产生的成本由甲方承担，乙方可在合同总价款中予以扣除不退还。</p>
+		<p>甲方在确稿后应配合乙方完善申报信息并提交申报，若在确稿后产生的方案更换或不予申报产生的成本由甲方承担，乙方可在合同总价款中予以扣除不退还。</p>
+        <p class="text-bold"  style="text-indent: 0;">四、乙方权利义务</p>
+        <p>1、认真履行甲方委托的事项，接受甲方监督，及时回答甲方提出的问题。适时向专利局了解案件的进展程度，并及时向甲方汇报。</p>
+        <p>2、乙方默认以电子申请方式递交专利申请文件，递交前需经甲方确认。</p>
+        <p>3、乙方对在办理甲方委托的代理事务过程中收到的所有官方通知书原件后，乙方应以电子邮件形式通知甲方，甲方需要纸件的，乙方根据甲方书面指示快递给甲方。</p>
+        <p class="text-bold"  style="text-indent: 0;">五、联络信息</p>
+        <p>甲乙双方分别指定以下联系人，若联系人或联系信息发生变化，应及时告知对方。如因一方信息变化未及时告知对方导致的损失由信息变化方承担。本合同约定的联系人及联系方式亦为双方工作联系往来、文件资料传递、通知和法律文书送达地址，任何一方当事人按下述信息向对方所发出的短信/传真/微信/电子邮件，自前述电子文件内容在发送方正确填写地址且未被系统退回的情况下，视为进入对方数据电文接收系统即视为送达。若送达日为非工作日, 则视为在下一工作日送达。</p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>联系人</td>
+                <td>电话</td>
+                <td>手机</td>
+                <td>电子邮箱</td>
+            </tr>
+            <tr>
+                <td>甲方</td>
+                <td>[[${userName}]]</td>
+                <td></td>
+                <td>[[${userPhone}]]</td>
+                
+                <td>[[${userEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">[[${userAddress}]]</td>
+            </tr>
+            <tr>
+                <td>乙方</td>
+                <td>[[${followManagerName}]]</td>
+                <td></td>
+                <td>[[${followManagerPhone}]]</td>
+                <td>[[${followManagerEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">重庆市渝北区金开大道西段106号互联网产业园猪八戒网总部大厦2号楼</td>
+            </tr>
+        </table>
+
+        <p class="text-bold"  style="text-indent: 0;">六、违约责任</p>
+        <p>1、因甲方未能或未及时提供所需材料或未及时支付费用导致申请不能顺利进行或导致甲方权利丧失的，乙方不承担法律责任；</p>
+        <p>2、因乙方未如约履行申请服务义务且给甲方造成损失的，乙方承担损害赔偿责任；</p>
+        <p>3、甲方购买“加快递交”服务的，乙方如不能如期履行义务，应退还“加快递交”服务费用；</p>
+        <p>4、因不可抗力或不能归咎于双方的原因导致本协议未能履行的，本协议自行解除。</p>
+		<p>5、甲方未按照本协议约定支付费用的，每逾期一天应按照协议总金额的万分之五向乙方支付违约金，逾期达15天及以上的，乙方有权单方解除本协议，甲方已支付费用不予退还且甲方还应支付乙方已完成部分工作的费用（如有），乙方有权继续追偿。</p>
+        <p class="text-bold"  style="text-indent: 0;">七、发明专利担保申请（尊享版）服务细则</p>
+        <p>1、发明专利担保申请（尊享版）服务承诺如下：</p>
+        <p>1.1甲方购买发明专利担保申请（尊享版）的专利申请被驳回，经本代理评估后可进行驳回复审的，本代理进行免费驳回复审，若驳回复审不成功，甲方可要求乙方将已收取的发明专利担保申请（尊享版）的全部代理费及费减后的官费（不含甲方未申请官费减缓或费减申请被驳回补缴的官费差额部分）一并退还至甲方付款账户；</p>
+        <p>1.2 甲方购买发明专利担保申请（尊享版）的专利申请被驳回，经本代理评估后，不可进行驳回复审的，可要求退款。</p>	   
+	    <p>2、退款流程：</p>
+        <p>2.1甲方购买发明专利担保申请（尊享版）的专利申请被驳回后，驳回复审不成功的，应在收到国家知识产权局下发的复审驳回通知书之日起180日内向乙方提出书面退款申请，并退还乙方开具的原始发票。。</p>
+        <p>2.2乙方已开具增值税专用发票的，甲方如无法退还原始发票，应向其税务主管机关申请《开具红字增值税专用发票信息表》（带有甲方主管国税局签章）及情况说明的原件提交给乙方，方可办理退款。</p>
+      
+ 	    <p>3、退款流程：</p>
+        <p>3.1甲方在收到国家知识产权局下发的复审驳回通知书之日起180日内向乙方提出书面退款申请，并退还乙方开具的原始发票；</p>
+        <p>3.2乙方在收到甲方的书面退款申请、原始发票及相关材料之日起（以后到日期为准）7日内，将被驳回的发明专利担保申请（尊享版）申请的全部代理费及费减后的官费（不含甲方未申请官费减缓或费减申请被驳回补缴的官费差额部分）一并退还至甲方付款账户。</p>
+        <p>4、出现下列情况之一的，乙方有权拒绝退款：</p>
+        <p>4.1甲方拒不采纳乙方给出的专业意见，坚持要求乙方执行自己的申请意见的；</p>
+        <p>4.2专利申请后至驳回前，甲方擅自变更代理机构、导致乙方不能答复审查意见的；</p>
+		<p>4.3专利申请后至驳回前，甲方擅自变更代理机构并由乙方以外的代理机构进行答复审查意见的；</p>
+		<p>4.4甲方没有及时缴纳相关官费导致的驳回或视为撤回的；</p>
+		<p>4.5乙方已开具增值税普通发票，甲方无法退还原始发票的；</p>
+		<p>4.6乙方已开具增值税专用发票，甲方无法退还原始发票又无法提供开具红字发票信息表的；</p>
+		<p>4.7甲方在收到国家知识产权局下发的驳回通知书之日起180日内未向乙方提出书面退款申请的。</p>
+
+        <p class="text-bold"  style="text-indent: 0;">八、知识产权及保密条款</p>
+        <p>甲乙双方在服务过程中知悉的对方的商业和技术秘密信息，未经信息提供方允许，不得用于本协议约定服务以外的任何其他用途，亦不得以任何方式向任何第三方泄露或公开，直至相关信息已经被公开为止。</p>
+        <p>信息获取方应当告知并以适当方式要求其参与本协议约定服务之雇员遵守本协议规定，若由于参与本项工作之雇员违反本协议的规定，信息获取方应承担连带责任。</p>
+        <p>甲方根据本协议约定提供的技术资料、手续文件的知识产权归甲方所有。</p>
+        <p class="text-bold"  style="text-indent: 0;">九、其它</p>
+        <p>1、经双方协商一致，本协议可解除。</p>
+        <p>2、本协议一式貳份，双方各执一份，具有同等效力，自双方签字并盖章之日起生效；</p>
+        <p>3、本协议任何条款无效或失去效力都不影响本协议或本协议其它条款的效力。</p>
+        <p>4、本协议电子扫描件与原件具有同等法律效力。</p>
+        <p>5、本协议未明确事宜双方可在公平、平等基础上协商解决，如发生争议，可以提交北京仲裁委员会仲裁。本协议解释或争议解决均适用中华人民共和国现行法律规定。</p>
+    </div>
+	
+	
+	<div class="contain" th:if="${agentType} == 6 ">
+        <p>&nbsp;</p>
+        <p class="title"><strong>专利代理服务协议书</strong></p>
+		<p class="title"><strong>（发明专利担保申请-尊享版）</strong></p>
+        <div class="text-bold text-right">编号：[[${contractNo}]]</div>
+        <p class="text-bold" style="text-indent: 0;">甲方（委托方）：[[${customerName}]] [[${customerCardNo}]]</p>
+        <p style="text-indent: 0;">地址：[[${userAddress}]]</p>
+        <p class="text-bold" style="text-indent: 0;">乙方（受托方）：[[${accMainPartName}]]</p>
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：重庆市渝北区金开大道西段106号3号楼6F604</p>
+        <p th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：北京市海淀区中关村大街11号五层商业5B04</p>
+        <p>乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。</p>
+        <p>本协议签订地为重庆，根据相关法律法规的规定，甲、乙本着平等自愿、诚实守信的原则，经友好协商，就甲方委托乙方代为办理专利申请事宜达成一致，特签订如下协议，共同遵守：</p>
+        <p class="text-bold" style="text-indent: 0;">一、委托事项及费用</p>
+        <p style="display: flex; justify-content: space-between;"><span>1、甲方委托乙方办理专利申请事务，详情如下：</span> <span>费用单位：元</span></p>
+        <table class="borderTable">
+            <tr>
+                <td>交底名称</td>
+                <td>服务内容</td>
+                <td>单价</td>
+                <td>件数</td>
+                <td>合计金额</td>
+                <td>备注</td>
+            </tr>
+            <tr th:each="casePatentDTO, casePatentDTOStat:${casePatentDTOS}">
+                <td>[[${casePatentDTO.disclosureName}]]</td>
+                <td>[[${casePatentDTO.serviceName}]]-<span th:if="${casePatentDTO.incrementName == ''}">无</span>[[${casePatentDTO.incrementName}]]</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>1</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>[[${casePatentDTO.remark}]]</td>
+            </tr>
+        </table>
+        
+        <p>1.1 协议费用：<span class="underline">[[${count}]]</span>件共计<span class="underline">[[${totalAmount}]]</span>元人民币（大写：<span class="underline">[[${totalAmountDX}]]</span>）。</p>
+        <p>1.2 支付时间：本协议签订之日起2个工作日支付。</p>
+        <p class="text-bold">注：交底名称仅表示技术内容，不是最终专利名称，在代理人撰写中会根据专利法要求确定合理专利名称；如果暂时无法确定欲申请的技术名称，可填写“未确定”。</p>
+        <p>2、支付方式</p>
+        <p>2.1甲方应于本协议签订之日起2个工作日内，全额支付上述费用至乙方指定的下述任一账户：</p>
+        <div th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：重庆利律知识产权代理有限公司</p>
+          <p>账号：5005 0100 4141 0000 2716</p>
+          <p>开户行：中国建设银行股份有限公司重庆中山路支行</p>
+        </div>
+      	<div th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：北京酷爱智慧知识产权代理有限公司</p>
+          <p>账号：1100 1085 7000 5302 0697</p>
+          <p>开户行：中国建设银行北京中关村支行</p>
+          <p class="text-bold">（2）支付宝账户</p>
+          <p>账户名：ok@kuaizhihui.com</p>
+          <p class="text-bold">（3）猪八戒股份有限公司付款链接</p>
+          <p>甲方谅解，乙方因业务需要使用猪八戒股份有限公司支付链接作为乙方收款账户之一（款项付讫以乙方名义开具发票），猪八戒股份有限公司的收款的行为与乙方具有同等法律效力。</p>
+      	</div>
+        
+        <p>2.2甲方在付款时，应向乙方提供真实、有效的付款凭证（费用支付成功的截屏、照片等）及用途信息；甲方因未提供上述付款凭证及乙方要求备注的用途信息，导致乙方无法确认款项来源及用途的，视为甲方未支付。</p>
+        <p>3、发票开具约定</p>
+        <p>（1）甲方需要开具发票的，应如实填写下述发票需求及信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>项目</td>
+                <td>发票类型</td>
+                <td>开票金额</td>
+                <td>发票抬头</td>
+            </tr>
+            <tr>
+                <td>专利代理费</td>
+                <td th:if="${patentAgentType == 1}">专票</td>
+                <td th:if="${patentAgentType == 2}">普票</td>
+                <td th:if="${patentAgentType != 1 && patentAgentType != 2}"></td>
+                <td>[[${patentAgentAmount}]]</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]</span></td>
+            </tr>
+            <tr>
+                <td>官费</td>
+                <td th:if="${applyType == 1}">专利收据</td>
+                <td th:if="${applyType == 2}">普票</td>
+                <td th:if="${applyType != 1 && applyType != 2}"></td>
+                <td>[[${applyAmount}]]</td>
+                <td>[[${applyCustomerName}]]</td>
+            </tr>
+            <tr>
+                <td>邮寄地址</td>
+                <td>[[${applyEmailAddress}]]</td>
+                <td>收件人</td>
+                <td>[[${applyReceiveName}]]</td>
+            </tr>
+        </table>
+
+
+        <p>注：甲方需要就代理费部分开具增值税专用发票的，按照国家税务局规定，应填写以下开具专用发票的相关信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>公司名称</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]&nbsp;</span></td>
+            </tr>
+            <tr>
+                <td>纳税人识别号</td>
+                <td>[[${applyCustomerNo}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>地址、电话</td>
+                <td>[[${addressAndPhone}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>开户行及账号</td>
+                <td>[[${accountAndCard}]]&nbsp;</td>
+            </tr>
+        </table>
+        <p>3.3甲方首次委托乙方开具增值税专用发票的，还需提供一般纳税人资质证明。</p>
+        <p>3.3.1甲方已根据本协议约定支付全部款项，并在本协议签订生效之日起90日内向乙方提出发票开具申请，乙方在收到甲方开票申请之日起7个工作日内，根据上述约定的开票信息为甲方开具发票。</p>
+        <p>3.3.2甲方已根据本协议约定支付全部款项，但未在本协议签订生效之日起90日内提出发票开具申请的，乙方将根据上述约定的开票信息自行开具发票，并代为保管该发票至开票当年的12月31日，过期后乙方不负责保管此发票。</p>
+		<p>3.3.3甲方购买“授权担保”服务的，乙方在甲方支付费用后仅提供收据，甲方要求开具发票的，乙方可以根据上述开票信息为甲方开具发票，但涉及到退款的，甲方须退还原始发票。</p>
+	    <p>3.3.4非因乙方原因导致甲方需要重新开具发票的，相关费用需由甲方承担。</p>
+	
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">（6）乙方系小规模纳税人，在开具增值税发票时，实际开票税点均以国家税收政策据实开具。</p>
+      	<p class="text-bold">4、官费收取依据：</p>
+        <p style="display: flex; justify-content: space-between;"><span>专利申请官费标准</span> <span>单位：元/件</span></p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>无减缓</td>
+                <td>85%减缓（单一申请人）</td>
+                <td>70%减缓（多个申请人</td>
+            </tr>
+            <tr>
+                <td>发明专利</td>
+                <td>3450</td>
+                <td>560</td>
+                <td>1070</td>
+            </tr>
+        </table>
+        <p>说明：</p>
+        <p>（1）发明专利的官费包含：申请费、公布印刷费和实质审查费。</p>
+        <p>（2）官费可由甲方自行缴纳至国家知识产权局，也可交由乙方代为缴纳。</p>
+        <p>（3）甲方申请官费减缓的，乙方按照上述减缓后的官费标准为甲方缴纳官费申请费。甲方未申请官费减缓或费减申请被驳回的，乙方按照无减缓的官费标准为甲方缴纳官费申请费，差价部分由甲方承担。</p>
+        <p>5、专利年费说明</p>
+        <p>（1）甲方委托乙方代缴年费的，应在当年专利年费缴纳截止之日前30日，向乙方发出明确指示，并支付当年应缴纳专利年费；</p>
+        <p>（2）甲方明确指示不需要乙方代为缴纳年费；或者乙方向甲方发出年费缴纳提醒后，甲方在专利年费缴纳截止之日前3日内仍未向乙方支付当年应缴纳专利年费的，视为甲方不再委托乙方提供年费监控及代缴服务。</p>
+        <p class="text-bold"  style="text-indent: 0;">二、服务期限</p>
+        <p>本协议约定专利申请服务期限为自本协议签订之日起至国家知识产权局专利局下发专利证书或驳回通知书之日止。</p>
+        <p class="text-bold"  style="text-indent: 0;">三、甲方权利义务</p>
+        <p>1、配合乙方办理专利申请工作，提供专利申请需要的技术信息，包括：根据乙方开具的清单提供材料，根据乙方的建议阐述技术方案内容。甲方应保证信息的真实性、合法性，同时对所需申请专利的技术方案的新颖性、创造性和实用性负责。</p>
+        <p>2、甲方应确保在本协议签订前不存在影响技术方案新颖性的行为，包括但不限于：申请专利前的销售、宣传、论文发表、及其它会导致技术信息公开的行为；因这些行为导致的专利不能授权及技术方案的提前公开，乙方不承担相关责任。</p>
+        <p>3、甲方须按本协议约定按时足额支付协议费用，否则乙方有权拒绝履行义务。</p>
+		<p>4、适时了解案件的进展程度，提出合理化建议和要求。</p>
+        <p>5、在本合同生效期间，若甲方的注册地址（通信地址）、联系人、联系电话等项目中有任何一项发生变化时，甲方务必将书面文件传真或扫描后发送至乙方，否则，一切因此而造成的后果将由甲方承担。</p>
+        <p>6、甲方应配合乙方完善本协议约定办理事项所需文书，并按时交予乙方。自付款之日起12个月内未向乙方交付、确认申请材料导致申请不能向主管部门递交，12个月后如甲方要求退款，乙方可拒绝甲方的退款申请。</p>
+		<p>7、甲方在确稿后应配合乙方完善申报信息并提交申报，若在确稿后产生的方案更换或不予申报产生的成本由甲方承担，乙方可在合同总价款中予以扣除不退还。</p>
+        <p class="text-bold"  style="text-indent: 0;">四、乙方权利义务</p>
+        <p>1、认真履行甲方委托的事项，接受甲方监督，及时回答甲方提出的问题。适时向专利局了解案件的进展程度，并及时向甲方汇报。</p>
+        <p>2、乙方默认以电子申请方式递交专利申请文件，递交前需经甲方确认。</p>
+        <p>3、乙方对在办理甲方委托的代理事务过程中收到的所有官方通知书原件后，乙方应以电子邮件形式通知甲方，甲方需要纸件的，乙方根据甲方书面指示快递给甲方。</p>
+        <p class="text-bold"  style="text-indent: 0;">五、联络信息</p>
+        <p>甲乙双方分别指定以下联系人，若联系人或联系信息发生变化，应及时告知对方。如因一方信息变化未及时告知对方导致的损失由信息变化方承担。本合同约定的联系人及联系方式亦为双方工作联系往来、文件资料传递、通知和法律文书送达地址，任何一方当事人按下述信息向对方所发出的短信/传真/微信/电子邮件，自前述电子文件内容在发送方正确填写地址且未被系统退回的情况下，视为进入对方数据电文接收系统即视为送达。若送达日为非工作日, 则视为在下一工作日送达。</p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>联系人</td>
+                <td>电话</td>
+                <td>手机</td>
+                <td>电子邮箱</td>
+            </tr>
+            <tr>
+                <td>甲方</td>
+                <td>[[${userName}]]</td>
+                <td></td>
+                <td>[[${userPhone}]]</td>
+                
+                <td>[[${userEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">[[${userAddress}]]</td>
+            </tr>
+            <tr>
+                <td>乙方</td>
+                <td>[[${followManagerName}]]</td>
+                <td></td>
+                <td>[[${followManagerPhone}]]</td>
+                <td>[[${followManagerEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">重庆市渝北区金开大道西段106号互联网产业园猪八戒网总部大厦2号楼</td>
+            </tr>
+        </table>
+
+        <p class="text-bold"  style="text-indent: 0;">六、违约责任</p>
+        <p>1、如甲方委托乙方的服务有弄虚作假或侵犯他人的合法权益等不正当行为，经发现和证实后，甲方应当承担相关一切责任，乙方有权利解除合同，所收费用均不予退回；</p>
+        <p>2、如甲方未能按要求按时、正确、完整的提供服务相关信息、材料或支付费用的，由此带来的风险由甲方承担；</p>
+        <p>3、基于乙方过错未如约履行服务义务且给甲方造成损失的，乙方所收取的费用应当全部退回给甲方；</p>
+        <p>4、因不可抗力或不能归咎于双方的原因导致本协议未能履行的，本协议自行解除。</p>
+	    <p class="text-bold"  style="text-indent: 0;">七、“发明权包”服务的退款条款</p>
+        <p>1、退款条件：</p>
+        <p>1.1 甲方购买“发明权保”的两件发明专利申请均被驳回后，应在收到国家知识产权局下发的第二件驳回通知书之日起180日内向乙方提出书面退款申请，并退还乙方开具的原始发票。</p>
+        <p>1.2 乙方已开具增值税专用发票的，甲方如无法退还原始发票，应向其税务主管机关申请《开具红字增值税专用发票信息表》（带有甲方主管国税局签章）及情况说明的原件提交给乙方，方可办理退款。</p>	   
+	    <p>2、退款流程：</p>
+        <p>2.1 甲方在收到国家知识产权局下发的驳回通知书之日起180日内向乙方提出书面退款申请，并退还乙方开具的原始发票；</p>
+        <p>2.2 乙方在收到甲方的书面退款申请、原始发票及相关材料之日起（以后到日期为准）7日内，将失败的“发明权保”申请的全部代理费及费减后的官费（不含甲方未申请官费减缓或费减申请被驳回补缴的官费差额部分）一并退还至甲方付款账户。（“发明权包”服务失败是指，在此服务中没有任何一件专利授权；只要有一件专利授权均为成功）</p>
+      
+ 	    <p>3、出现下列情况之一的，乙方有权拒绝退款：</p>
+        <p>3.1甲方拒不采纳乙方给出的专业意见，坚持要求乙方执行自己的申请意见的；</p>
+        <p>3.2甲方没有及时缴纳相关官费导致的驳回或视为撤回的；</p>
+        <p>3.3乙方已开具增值税普通发票，甲方无法退还原始发票的；</p>
+        <p>3.4乙方已开具增值税专用发票，甲方无法退还原始发票又无法提供开具红字发票信息表的；</p>
+        <p>3.5甲方在收到国家知识产权局下发的第二件驳回通知书之日起180日内未向乙方提出书面退款申请的；</p>
+		<p>3.6甲方购买的“发明权保”服务中有一件专利授权成功的。</p>
+	
+        <p class="text-bold"  style="text-indent: 0;">八、知识产权及保密条款</p>
+        <p>甲乙双方在服务过程中知悉的对方的商业和技术秘密信息，未经信息提供方允许，不得用于本协议约定服务以外的任何其他用途，亦不得以任何方式向任何第三方泄露或公开，直至相关信息已经被公开为止。</p>
+        <p>信息获取方应当告知并以适当方式要求其参与本协议约定服务之雇员遵守本协议规定，若由于参与本项工作之雇员违反本协议的规定，信息获取方应承担连带责任。</p>
+        <p>甲方根据本协议约定提供的技术资料、手续文件的知识产权归甲方所有。</p>
+        <p class="text-bold"  style="text-indent: 0;">九、其它</p>
+        <p>1、经双方协商一致，本协议可解除。</p>
+        <p>2、本协议一式貳份，双方各执一份，具有同等效力，自双方签字并盖章之日起生效；</p>
+        <p>3、本协议任何条款无效或失去效力都不影响本协议或本协议其它条款的效力。</p>
+        <p>4、本协议电子扫描件与原件具有同等法律效力。</p>
+        <p>5、本协议未明确事宜双方可在公平、平等基础上协商解决，如发生争议，可以提交北京仲裁委员会仲裁。本协议解释或争议解决均适用中华人民共和国现行法律规定。</p>
+    </div>
+	
+
+	<div class="contain" th:if="${agentType} == 7 ">
+        <p>&nbsp;</p>
+        <p class="title"><strong>专利代理服务协议书</strong></p>
+        <div class="text-bold text-right">编号：[[${contractNo}]]</div>
+        <p class="text-bold" style="text-indent: 0;">甲方（委托方）：[[${customerName}]] [[${customerCardNo}]]</p>
+        <p style="text-indent: 0;">地址：[[${userAddress}]]</p>
+        <p class="text-bold" style="text-indent: 0;">乙方（受托方）：[[${accMainPartName}]]</p>
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：重庆市渝北区金开大道西段106号3号楼6F604</p>
+        <p th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：北京市海淀区中关村大街11号五层商业5B04</p>
+        <p>乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。</p>
+        <p>本协议签订地为重庆，根据相关法律法规的规定，甲、乙本着平等自愿、诚实守信的原则，经友好协商，就乙方受专利权人委托向甲方转让专利并代为办理专利转让手续事宜达成一致，特签订如下协议，共同遵守：</p>
+        <p class="text-bold" style="text-indent: 0;">一、委托事项及费用</p>
+        <p style="display: flex; justify-content: space-between;"><span>1、甲方委托乙方办理专利转让事务，详情如下：</span> <span>费用单位：元</span></p>
+        <table class="borderTable">
+            <tr>
+                <td>专利信息</td>
+                <td>服务内容</td>
+                <td>单价</td>
+                <td>件数</td>
+                <td>合计金额</td>
+                <td>备注</td>
+            </tr>
+            <tr th:each="casePatentDTO, casePatentDTOStat:${casePatentDTOS}">
+                <td>[[${casePatentDTO.disclosureName}]]</td>
+                <td>[[${casePatentDTO.serviceName}]]-<span th:if="${casePatentDTO.incrementName == ''}">无</span>[[${casePatentDTO.incrementName}]]</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>1</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>[[${casePatentDTO.remark}]]</td>
+            </tr>
+        </table>
+        
+        <p>1.1 协议费用：<span class="underline">[[${count}]]</span>件共计<span class="underline">[[${totalAmount}]]</span>元人民币（大写：<span class="underline">[[${totalAmountDX}]]</span>）。</p>
+        <p>1.2 支付时间：本协议签订之日起3个工作日支付。</p>
+        <p class="text-bold">注：交底名称仅表示技术内容，不是最终专利名称，在代理人撰写中会根据专利法要求确定合理专利名称；如果暂时无法确定欲申请的技术名称，可填写“未确定”。</p>
+        <p>2、支付方式</p>
+        <p>2.1甲方应于本协议签订之日起2个工作日内，全额支付上述费用至乙方指定的下述任一账户：</p>
+        <div th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：重庆利律知识产权代理有限公司</p>
+          <p>账号：5005 0100 4141 0000 2716</p>
+          <p>开户行：中国建设银行股份有限公司重庆中山路支行</p>
+        </div>
+      	<div th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：北京酷爱智慧知识产权代理有限公司</p>
+          <p>账号：1100 1085 7000 5302 0697</p>
+          <p>开户行：中国建设银行北京中关村支行</p>
+          <p class="text-bold">（2）支付宝账户</p>
+          <p>账户名：ok@kuaizhihui.com</p>
+          <p class="text-bold">（3）猪八戒股份有限公司付款链接</p>
+          <p>   甲方谅解，乙方因业务需要使用猪八戒股份有限公司付款链接作为乙方收款账户之一（款项付讫以乙方名义开具发票），猪八戒股份有限公司的收款的行为与乙方具有同等法律效力。</p>
+      	</div>
+        
+        <p>2.2甲方在付款时，应向乙方提供真实、有效的付款凭证（费用支付成功的截屏、照片等）及用途信息；甲方因未提供上述付款凭证及乙方要求备注的用途信息，导致乙方无法确认款项来源及用途的，视为甲方未支付。</p>
+        <p>3、发票开具约定</p>
+        <p>（1）甲方需要开具发票的，应如实填写下述发票需求及信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>项目</td>
+                <td>发票类型</td>
+                <td>开票金额</td>
+                <td>发票抬头</td>
+            </tr>
+            <tr>
+                <td>专利代理费</td>
+                <td th:if="${patentAgentType == 1}">专票</td>
+                <td th:if="${patentAgentType == 2}">普票</td>
+                <td th:if="${patentAgentType != 1 && patentAgentType != 2}"></td>
+                <td>[[${patentAgentAmount}]]</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]</span></td>
+            </tr>
+            <tr>
+                <td>官费</td>
+                <td th:if="${applyType == 1}">专利收据</td>
+                <td th:if="${applyType == 2}">普票</td>
+                <td th:if="${applyType != 1 && applyType != 2}"></td>
+                <td>[[${applyAmount}]]</td>
+                <td>[[${applyCustomerName}]]</td>
+            </tr>
+            <tr>
+                <td>邮寄地址</td>
+                <td>[[${applyEmailAddress}]]</td>
+                <td>收件人</td>
+                <td>[[${applyReceiveName}]]</td>
+            </tr>
+        </table>
+
+
+        <p>注：甲方需要就代理费部分开具增值税专用发票的，按照国家税务局规定，应填写以下开具专用发票的相关信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>公司名称</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]&nbsp;</span></td>
+            </tr>
+            <tr>
+                <td>纳税人识别号</td>
+                <td>[[${applyCustomerNo}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>地址、电话</td>
+                <td>[[${addressAndPhone}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>开户行及账号</td>
+                <td>[[${accountAndCard}]]&nbsp;</td>
+            </tr>
+        </table>
+        <p>3.3甲方首次委托乙方开具增值税专用发票的，还需提供一般纳税人资质证明。</p>
+        <p>3.3.1甲方已根据本协议约定支付全部款项，并在本协议签订生效之日起90日内向乙方提出发票开具申请，乙方在收到甲方开票申请之日起7个工作日内，根据上述约定的开票信息为甲方开具发票。</p>
+        <p>3.3.2甲方已根据本协议约定支付全部款项，但未在本协议签订生效之日起90日内提出发票开具申请的，乙方将根据上述约定的开票信息自行开具发票，并代为保管该发票至开票当年的12月31日，过期后乙方不负责保管此发票。</p>
+		<p>3.3.3非因乙方原因导致甲方需要重新开具发票的，相关费用需由甲方承担。</p>
+	    <p class="text-bold"  style="text-indent: 0;">二、服务期限</p>
+        <p>本协议约定服务期限为自本协议签订之日起至双方权利义务履行完毕之日止。</p>
+        <p class="text-bold"  style="text-indent: 0;">三、甲方权利义务</p>
+        <p>1、配合乙方办理专利转让工作，提供转让需要的相关信息及资料，甲方应保证信息的真实性、合法性。</p>
+     	<p>2、适时了解案件的进展程度，提出合理化建议和要求。</p>
+        <p>3、按协议约定缴纳相关费用。</p>
+        <p class="text-bold"  style="text-indent: 0;">四、乙方权利义务</p>
+        <p>1、认真履行甲方委托的事项，接受甲方监督，及时回答甲方提出的问题。适时向专利局了解服务的进展程度，并及时向甲方汇报。</p>
+        <p>2、乙方自甲方提供的资料信息符合乙方要求，且乙方收到本协议约定的全额款项之日（以较晚的日期为准）启动服务；乙方应竭诚在本合同签订之日起30个工作日内完成本协议约定转让专利在国家专利局的专利转让公告程序。如因非乙方导致的客观因素影响，上述期限可以延长。</p>
+        <p>3、乙方有权按本合同约定代专利权人收取专利转让费、服务费、官费等相关费用。</p>
+        <p>4、乙方对在办理甲方委托的代理事务过程中收到的所有官方通知书原件后，乙方应以电子邮件形式通知甲方，甲方需要纸件的，乙方根据甲方书面指示快递给甲方。</p>
+      
+	  <p class="text-bold"  style="text-indent: 0;">五、联络信息</p>
+        <p>甲乙双方分别指定以下联系人，若联系人或联系信息发生变化，应及时告知对方。如因一方信息变化未及时告知对方导致的损失由信息变化方承担。本合同约定的联系人及联系方式亦为双方工作联系往来、文件资料传递、通知和法律文书送达地址，任何一方当事人按下述信息向对方所发出的短信/传真/微信/电子邮件，自前述电子文件内容在发送方正确填写地址且未被系统退回的情况下，视为进入对方数据电文接收系统即视为送达。若送达日为非工作日, 则视为在下一工作日送达。</p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>联系人</td>
+                <td>电话</td>
+                <td>手机</td>
+                <td>电子邮箱</td>
+            </tr>
+            <tr>
+                <td>甲方</td>
+                <td>[[${userName}]]</td>
+                <td></td>
+                <td>[[${userPhone}]]</td>
+                
+                <td>[[${userEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">[[${userAddress}]]</td>
+            </tr>
+            <tr>
+                <td>乙方</td>
+                <td>[[${followManagerName}]]</td>
+                <td></td>
+                <td>[[${followManagerPhone}]]</td>
+                <td>[[${followManagerEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">重庆市渝北区金开大道西段106号互联网产业园猪八戒网总部大厦2号楼</td>
+            </tr>
+        </table>
+
+        <p class="text-bold"  style="text-indent: 0;">六、违约责任</p>
+        <p>1、因甲方未能或未及时提供所需材料或未及时支付费用导致申请不能顺利进行或导致甲方权利丧失的，乙方不承担法律责任；</p>
+        <p>2、因乙方未如约履行申请服务义务且给甲方造成损失的，乙方承担损害赔偿责任；</p>
+        <p>3、因不可抗力或不能归咎于双方的原因导致本协议未能履行的，本协议自行解除。</p>
+        <p class="text-bold"  style="text-indent: 0;">七、知识产权及保密条款</p>
+        <p>甲乙双方在服务过程中知悉的对方的商业和技术秘密信息，未经信息提供方允许，不得用于本协议约定服务以外的任何其他用途，亦不得以任何方式向任何第三方泄露或公开，直至相关信息已经被公开为止。</p>
+        <p>信息获取方应当告知并以适当方式要求其参与本协议约定服务之雇员遵守本协议规定，若由于参与本项工作之雇员违反本协议的规定，信息获取方应承担连带责任。</p>
+        <p>甲方根据本协议约定提供的技术资料、手续文件的知识产权归甲方所有。</p>
+        <p class="text-bold"  style="text-indent: 0;">八、其它</p>
+        <p>1、经双方协商一致，本协议可解除。</p>
+        <p>2、本协议一式貳份，双方各执一份，具有同等效力，自双方签字并盖章之日起生效；</p>
+        <p>3、本协议任何条款无效或失去效力都不影响本协议或本协议其它条款的效力。</p>
+        <p>4、本协议电子扫描件与原件具有同等法律效力。</p>
+        <p>5、本协议未明确事宜双方可在公平、平等基础上协商解决，如发生争议，可以提交北京仲裁委员会仲裁。本协议解释或争议解决均适用中华人民共和国现行法律规定。</p>
+    </div>
+	
+	
+	<div class="contain" th:if="${agentType} == 8 ">
+        <p>&nbsp;</p>
+        <p class="title"><strong>专利代理服务协议书</strong></p>
+		<p class="title"><strong>（驳回复审）</strong></p>
+        <div class="text-bold text-right">编号：[[${contractNo}]]</div>
+        <p class="text-bold" style="text-indent: 0;">甲方（委托方）：[[${customerName}]] [[${customerCardNo}]]</p>
+        <p style="text-indent: 0;">地址：[[${userAddress}]]</p>
+        <p class="text-bold" style="text-indent: 0;">乙方（受托方）：[[${accMainPartName}]]</p>
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：重庆市渝北区金开大道西段106号3号楼6F604</p>
+        <p th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'" style="text-indent: 0;">地址：北京市海淀区中关村大街11号五层商业5B04</p>
+        <p>乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。乙方系一家依据中国法律注册的知识产权服务公司，具备法定的专利代理服务资质，是重庆猪八戒知识产权服务有限公司指定的专利代理服务提供商，拥有专业知识产权服务团队，可提供甲方需要的所需知识产权服务。</p>
+        <p>本协议签订地为重庆，根据相关法律法规的规定，甲、乙本着平等自愿、诚实守信的原则，经友好协商，就甲方委托乙方代为办理专利驳回复审申请事宜达成一致，特签订如下协议，共同遵守：</p>
+        <p class="text-bold" style="text-indent: 0;">一、委托事项及费用</p>
+        <p style="display: flex; justify-content: space-between;"><span>1、甲方委托乙方办理专利驳回复审申请事务，详情如下：</span> <span>费用单位：元</span></p>
+        <table class="borderTable">
+            <tr>
+                <td>专利申请号</td>
+                <td>服务内容</td>
+                <td>单价</td>
+                <td>件数</td>
+                <td>合计金额</td>
+                <td>备注</td>
+            </tr>
+            <tr th:each="casePatentDTO, casePatentDTOStat:${casePatentDTOS}">
+                <td>[[${casePatentDTO.disclosureName}]]</td>
+                <td>[[${casePatentDTO.serviceName}]]-<span th:if="${casePatentDTO.incrementName == ''}">无</span>[[${casePatentDTO.incrementName}]]</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>1</td>
+                <td>[[${casePatentDTO.discountAmount}]]</td>
+                <td>[[${casePatentDTO.remark}]]</td>
+            </tr>
+        </table>
+        
+        <p>1.1 协议费用：<span class="underline">[[${count}]]</span>件共计<span class="underline">[[${totalAmount}]]</span>元人民币（大写：<span class="underline">[[${totalAmountDX}]]</span>）。</p>
+        <p>1.2 支付时间：本协议签订之日起2个工作日支付。</p>
+        <p class="text-bold">注：交底名称仅表示技术内容，不是最终专利名称，在代理人撰写中会根据专利法要求确定合理专利名称；如果暂时无法确定欲申请的技术名称，可填写“未确定”。</p>
+        <p>2、支付方式</p>
+        <p>2.1甲方应于本协议签订之日起2个工作日内，全额支付上述费用至乙方指定的下述任一账户：</p>
+        <div th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：重庆利律知识产权代理有限公司</p>
+          <p>账号：5005 0100 4141 0000 2716</p>
+          <p>开户行：中国建设银行股份有限公司重庆中山路支行</p>
+        </div>
+      	<div th:if="${accMainPartName} != '重庆利律知识产权代理有限公司'">
+          <p class="text-bold">（1）银行账户</p>
+          <p>户名：北京酷爱智慧知识产权代理有限公司</p>
+          <p>账号：1100 1085 7000 5302 0697</p>
+          <p>开户行：中国建设银行北京中关村支行</p>
+          <p class="text-bold">（2）支付宝账户</p>
+          <p>账户名：ok@kuaizhihui.com</p>
+          <p class="text-bold">（3）猪八戒股份有限公司付款链接</p>
+          <p>甲方谅解，乙方因业务需要使用猪八戒股份有限公司支付链接作为乙方收款账户之一（款项付讫以乙方名义开具发票），猪八戒股份有限公司的收款的行为与乙方具有同等法律效力。</p>
+      	</div>
+        
+        <p>2.2甲方在付款时，应向乙方提供真实、有效的付款凭证（费用支付成功的截屏、照片等）及用途信息；甲方因未提供上述付款凭证及乙方要求备注的用途信息，导致乙方无法确认款项来源及用途的，视为甲方未支付。</p>
+        <p>3、发票开具约定</p>
+        <p>（1）甲方需要开具发票的，应如实填写下述发票需求及信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>项目</td>
+                <td>发票类型</td>
+                <td>开票金额</td>
+                <td>发票抬头</td>
+            </tr>
+            <tr>
+                <td>专利代理费</td>
+                <td th:if="${patentAgentType == 1}">专票</td>
+                <td th:if="${patentAgentType == 2}">普票</td>
+                <td th:if="${patentAgentType != 1 && patentAgentType != 2}"></td>
+                <td>[[${patentAgentAmount}]]</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]</span></td>
+            </tr>
+            <tr>
+                <td>官费</td>
+                <td th:if="${applyType == 1}">专利收据</td>
+                <td th:if="${applyType == 2}">普票</td>
+                <td th:if="${applyType != 1 && applyType != 2}"></td>
+                <td>[[${applyAmount}]]</td>
+                <td>[[${applyCustomerName}]]</td>
+            </tr>
+            <tr>
+                <td>邮寄地址</td>
+                <td>[[${applyEmailAddress}]]</td>
+                <td>收件人</td>
+                <td>[[${applyReceiveName}]]</td>
+            </tr>
+        </table>
+
+
+        <p>注：甲方需要就代理费部分开具增值税专用发票的，按照国家税务局规定，应填写以下开具专用发票的相关信息：</p>
+        <table class="borderTable">
+            <tr>
+                <td>公司名称</td>
+                <td><span th:if="${toInvoice == 1}">[[${customerName}]]&nbsp;</span></td>
+            </tr>
+            <tr>
+                <td>纳税人识别号</td>
+                <td>[[${applyCustomerNo}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>地址、电话</td>
+                <td>[[${addressAndPhone}]]&nbsp;</td>
+            </tr>
+            <tr>
+                <td>开户行及账号</td>
+                <td>[[${accountAndCard}]]&nbsp;</td>
+            </tr>
+        </table>
+        <p>3.3甲方首次委托乙方开具增值税专用发票的，还需提供一般纳税人资质证明。</p>
+        <p>3.3.1甲方已根据本协议约定支付全部款项，并在本协议签订生效之日起90日内向乙方提出发票开具申请，乙方在收到甲方开票申请之日起7个工作日内，根据上述约定的开票信息为甲方开具发票。</p>
+        <p>3.3.2甲方已根据本协议约定支付全部款项，但未在本协议签订生效之日起90日内提出发票开具申请的，乙方将根据上述约定的开票信息自行开具发票，并代为保管该发票至开票当年的12月31日，过期后乙方不负责保管此发票。</p>
+		<p>3.3.3甲方购买“授权担保”服务的，乙方在甲方支付费用后仅提供收据，甲方要求开具发票的，乙方可以根据上述开票信息为甲方开具发票，但涉及到退款的，甲方须退还原始发票。</p>
+	    <p>3.3.4非因乙方原因导致甲方需要重新开具发票的，相关费用需由甲方承担。</p>
+	
+        <p th:if="${accMainPartName} == '重庆利律知识产权代理有限公司'">（6）乙方系小规模纳税人，在开具增值税发票时，实际开票税点均以国家税收政策据实开具。</p>
+      	<p class="text-bold">4、官费收取依据：</p>
+        <p style="display: flex; justify-content: space-between;"><span>专利驳回申请官费标准 </span> <span>单位：元/件</span></p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>无减缓</td>
+                <td>85%减缓（单一申请人）</td>
+                <td>70%减缓（多个申请人</td>
+            </tr>
+            <tr>
+                <td>发明专利</td>
+                <td>1000</td>
+                <td>150</td>
+                <td>300</td>
+            </tr>
+			 <tr>
+                <td>实用新型专利</td>
+                <td>300</td>
+                <td>45</td>
+                <td>90</td>
+            </tr>
+			 <tr>
+                <td>外观设计专利</td>
+                <td>300</td>
+                <td>45</td>
+                <td>90</td>
+            </tr>
+        </table>
+        <p>说明：</p>
+        <p>（1）官费可由甲方自行缴纳至国家知识产权局，也可交由乙方代为缴纳。（协议约定之费用已包括官费）。</p>
+        <p>（2）甲方申请官费减缓的，乙方按照上述减缓后的官费标准为甲方缴纳官费申请费。甲方未申请官费减缓或费减申请被驳回的，乙方按照无减缓的官费标准为甲方缴纳官费申请费，差额部分由甲方承担。</p>
+        <p class="text-bold"  style="text-indent: 0;">二、服务期限</p>
+        <p>本协议约定专利申请服务期限为自本协议签订之日起至国家知识产权局专利局撤销驳回决定或维持驳回决定通知之日止。</p>
+        <p class="text-bold"  style="text-indent: 0;">三、甲方权利义务</p>
+        <p>1、配合乙方办理专利申请工作，提供专利驳回复审申请需要的技术信息，包括：根据乙方开具的清单提供材料，根据乙方的建议阐述技术方案内容。甲方应保证信息的真实性、合法性。</p>
+        <p>2、适时了解案件的进展程度，提出合理化建议和要求。</p>
+        <p>3、甲方须按本协议约定按时足额支付协议费用，否则乙方有权拒绝履行义务。</p>
+		<p>4、甲方应配合乙方完善本协议约定办理事项所需文书，并按时交予乙方。自付款之日起3个月内未向乙方交付、确认申请材料导致申请不能向主管部门递交，3个月后如甲方要求退款，乙方可拒绝甲方的退款申请。</p>
+        <p class="text-bold"  style="text-indent: 0;">四、乙方权利义务</p>
+        <p>1、认真履行甲方委托的事项，接受甲方监督，及时回答甲方提出的问题。适时向专利局了解案件的进展程度，并及时向甲方汇报。</p>
+        <p>2、乙方默认以电子申请方式递交专利驳回复审申请文件，递交前需经甲方确认。</p>
+        <p>3、乙方对在办理甲方委托的代理事务过程中收到的所有官方通知书原件后，乙方应以电子邮件形式通知甲方，甲方需要纸件的，乙方根据甲方书面指示快递给甲方。</p>
+        <p class="text-bold"  style="text-indent: 0;">五、联络信息</p>
+        <p>甲乙双方分别指定以下联系人，若联系人或联系信息发生变化，应及时告知对方。如因一方信息变化未及时告知对方导致的损失由信息变化方承担。本合同约定的联系人及联系方式亦为双方工作联系往来、文件资料传递、通知和法律文书送达地址，任何一方当事人按下述信息向对方所发出的短信/传真/微信/电子邮件，自前述电子文件内容在发送方正确填写地址且未被系统退回的情况下，视为进入对方数据电文接收系统即视为送达。若送达日为非工作日, 则视为在下一工作日送达。</p>
+        <table class="borderTable">
+            <tr>
+                <td></td>
+                <td>联系人</td>
+                <td>电话</td>
+                <td>手机</td>
+                <td>电子邮箱</td>
+            </tr>
+            <tr>
+                <td>甲方</td>
+                <td>[[${userName}]]</td>
+                <td></td>
+                <td>[[${userPhone}]]</td>
+                
+                <td>[[${userEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">[[${userAddress}]]</td>
+            </tr>
+            <tr>
+                <td>乙方</td>
+                <td>[[${followManagerName}]]</td>
+                <td></td>
+                <td>[[${followManagerPhone}]]</td>
+                <td>[[${followManagerEmail}]]</td>
+            </tr>
+            <tr>
+                <td>通信地址</td>
+                <td colspan="4" style="text-align: left;">重庆市渝北区金开大道西段106号互联网产业园猪八戒网总部大厦2号楼</td>
+            </tr>
+        </table>
+
+        <p class="text-bold"  style="text-indent: 0;">六、违约责任</p>
+        <p>1、如甲方委托乙方的服务有弄虚作假或侵犯他人的合法权益等不正当行为，经发现和证实后，甲方应当承担相关一切责任，乙方有权利解除合同，所收费用均不予退回；</p>
+        <p>2、如甲方未能按要求按时、正确、完整的提供服务相关信息、材料或支付费用的，由此带来的风险由甲方承担；</p>
+        <p>3、因不可抗力或不能归咎于双方的原因导致本协议未能履行的，本协议自行解除。</p>
+        <p class="text-bold"  style="text-indent: 0;">七、知识产权及保密条款</p>
+        <p>甲乙双方在服务过程中知悉的对方的商业和技术秘密信息，未经信息提供方允许，不得用于本协议约定服务以外的任何其他用途，亦不得以任何方式向任何第三方泄露或公开，直至相关信息已经被公开为止。</p>
+        <p>信息获取方应当告知并以适当方式要求其参与本协议约定服务之雇员遵守本协议规定，若由于参与本项工作之雇员违反本协议的规定，信息获取方应承担连带责任。</p>
+        <p>甲方根据本协议约定提供的技术资料、手续文件的知识产权归甲方所有。</p>
+        <p class="text-bold"  style="text-indent: 0;">八、其它</p>
+        <p>1、经双方协商一致，本协议可解除。</p>
+        <p>2、本协议一式貳份，双方各执一份，具有同等效力，自双方签字并盖章之日起生效；</p>
+        <p>3、本协议任何条款无效或失去效力都不影响本协议或本协议其它条款的效力。</p>
+        <p>4、本协议电子扫描件与原件具有同等法律效力。</p>
+        <p>5、本协议未明确事宜双方可在公平、平等基础上协商解决，如发生争议，可以提交北京仲裁委员会仲裁。本协议解释或争议解决均适用中华人民共和国现行法律规定。</p>
+    </div>
+	
+		
+    <table class="tableX" align="center" cellspacing="7" style="margin-top:150px">
+        <tr>
+            <td style="text-align:left;" colspan="3" width="45%">甲&nbsp;方：&nbsp;[[${customerName}]]</td>
+            <td colspan="1" width="10%"></td>
+            <td style="text-align:left;" colspan="3" width="45%">乙&nbsp;方：&nbsp;[[${accMainPartName}]]</td>
+        </tr>
+        <tr>
+            <td style="text-align:left;" colspan="3" width="45%">甲方签约代表：&nbsp;</td>
+            <td colspan="1" width="10%"></td>
+            <td style="text-align:left;" colspan="3" width="45">乙方签约代表：&nbsp;[[${followManagerName}]]</td>
+        </tr>
+        <tr>
+            <td style="text-align:left;" colspan="3" width="40%">日&nbsp;期：&nbsp;</td>
+            <td colspan="1" width="10%"></td>
+            <td style="text-align:left;" colspan="3" width="45%">日&nbsp;期：&nbsp;[[${nowDate}]]</td>
+        </tr>
+    </table>
+</body>
+
+</html>
